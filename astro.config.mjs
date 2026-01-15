@@ -1,5 +1,18 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 
+import cloudflare from '@astrojs/cloudflare';
+import tailwindcss from '@tailwindcss/vite';
+import alpinejs from '@astrojs/alpinejs';
+import db from '@astrojs/db';
+
 // https://astro.build/config
-export default defineConfig({});
+export default defineConfig({
+  adapter: cloudflare(),
+
+  vite: {
+    plugins: [tailwindcss()]
+  },
+
+  integrations: [alpinejs(), db()]
+});
