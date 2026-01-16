@@ -1,8 +1,0 @@
-{
-  "name": "playground-cf",
-  "compatibility_date": "2026-01-15",
-  "compatibility_flags": [
-    "global_fetch_strictly_public",
-    "disable_nodejs_process_v2"
-  ]
-}
