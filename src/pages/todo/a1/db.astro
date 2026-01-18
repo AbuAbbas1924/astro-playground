@@ -1,7 +1,10 @@
 ---
-import { db, Todo_a1 } from 'astro:db';
+import { db, Todo_a1, User_a1 } from "astro:db";
 
 const todos = await db.select().from(Todo_a1);
+const users = await db.select().from(User_a1);
 ---
 
 <pre>{JSON.stringify(todos, null, 2)}</pre>
+<hr />
+<pre>{JSON.stringify(users, null, 2)}</pre>

@@ -1,0 +1,28 @@
+---
+import "@tw";
+---
+
+<h1 class="text-3xl my-4 mx-6">Register</h1>
+<form
+  class="flex gap-2 mx-36 my-4"
+  @submit.prevent="sending()"
+  x-data="{
+        email: '',
+        password: '',
+        sending(){
+            fetch('/api/auth/a1/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email: this.email, password: this.password }),
+            }).then(res => res.json()).then(data => {
+                console.log(data);
+            });
+        }
+    }"
+>
+  <input class="border" type="email" x-model="email" />
+  <input class="border" type="password" x-model="password" />
+  <button class="border bg-blue-500 text-white px-4 py-2 rounded" type="submit"
+    >Submit</button
+  >
+</form>

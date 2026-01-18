@@ -16,5 +16,14 @@ export default defineDb({
         updated_at: column.date({ default: NOW, onUpdate: NOW }),
       },
     }),
+    User_a1: defineTable({
+      columns: {
+        id: column.text({ primaryKey: true, unique: true }),
+        email: column.text({ unique: true }),
+        password: column.text(),
+        created_at: column.date({ default: NOW }),
+        updated_at: column.date({ default: NOW, onUpdate: NOW }),
+      },
+    }),
   },
 });
