@@ -7,7 +7,10 @@ export const GET: APIRoute = async ({ params }) => {
       status: 400,
     });
   }
-  const todo = await db.select().from(Todo_a1).where(eq(Todo_a1.id, params.id));
+  const todo = await db
+    .select()
+    .from(Todo_a1)
+    .where(eq(Todo_a1.id, Number(params.id)));
   return new Response(JSON.stringify(todo), { status: 200 });
 };
 
@@ -18,10 +21,11 @@ export const PUT: APIRoute = async ({ params, request }) => {
     });
   }
   const body = await request.json();
+  const { title, completed, priority } = body;
   const todo = await db
     .update(Todo_a1)
-    .set(body)
-    .where(eq(Todo_a1.id, params.id))
+    .set({ title, completed, priority })
+    .where(eq(Todo_a1.id, Number(params.id)))
     .returning();
   return new Response(JSON.stringify(todo), { status: 201 });
 };
@@ -32,6 +36,9 @@ export const DELETE: APIRoute = async ({ params }) => {
       status: 400,
     });
   }
-  await db.delete(Todo_a1).where(eq(Todo_a1.id, params.id)).execute();
+  await db
+    .delete(Todo_a1)
+    .where(eq(Todo_a1.id, Number(params.id)))
+    .execute();
   return new Response(null, { status: 204 });
 };

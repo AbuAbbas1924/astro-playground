@@ -1,0 +1,36 @@
+---
+
+---
+
+<div
+  class="mx-auto w-fit"
+  x-data=`{
+            title: "",
+            priority: 0,
+            async addTodo() {
+              const res = await fetch("http://localhost:4321/api/todo/a1", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  title: this.title,
+                  priority: this.priority,
+                }),
+              });
+              this.todos = await res.json();
+            },
+          }`
+>
+  <input
+    type="text"
+    x-model="title"
+    placeholder="Title"
+    class="border border-violet-400"
+  />
+  <input type="number" x-model="priority" class="border border-violet-400" />
+  <button
+    class="bg-orange-400 text-white px-4 py-2 rounded"
+    @click="addTodo(); $dispatch('recall-api')">Add</button
+  >
+</div>
