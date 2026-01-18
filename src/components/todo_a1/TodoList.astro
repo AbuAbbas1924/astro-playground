@@ -2,67 +2,65 @@
 
 ---
 
-<template
-  x-for="todo in todos"
-  @recall-api.window="getTodos()"
+<div
+  x-data="{
+    todos: [],
+    async getTodos() {
+      const res = await fetch('/api/todo/a1');
+      this.todos = await res.json();
+    }
+  }"
   x-init="getTodos()"
-  x-data=`{
-            todos: [],
-            async getTodos() {
-              const res = await fetch("http://localhost:4321/api/todo/a1");
-              this.todos = await res.json();
-            }
-          }`
+  @recall-api.window="getTodos()"
 >
-  <div
-    x-data="{
-        completed: false,
-        editMode: false,
-        updateTodo(updatedTodo) {
-        fetch(`http://localhost:4321/api/todo/a1/${updatedTodo.id}`, {
-          method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(updatedTodo),
-          });
-          this.todos = this.todos.map((todo) =>
-            todo.id === updatedTodo.id ? updatedTodo : todo
-          );
-        },
-    }"
-  >
+  <template x-for="todo in todos" :key="todo.id">
     <div
-      x-show="!editMode"
-      class="flex gap-4 items-center mt-4"
-      @dblclick.stop="editMode = true; console.log('edit mode')"
+      x-data="{
+        completed: todo.completed,
+        editMode: false,
+        async updateTodo(updatedTodo) {
+          await fetch('/api/todo/a1/' + updatedTodo.id, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(updatedTodo),
+          });
+        }
+      }"
     >
-      <input type="checkbox" x-model="completed" />
-      <p
-        class="w-52"
-        x-text="todo.title"
-        :class="{ 'line-through': completed }"
+      <div
+        x-show="!editMode"
+        class="flex gap-4 items-center mt-4"
+        @dblclick.stop="editMode = true"
       >
-      </p>
-      |
-      <p x-text="todo.priority" :class="{ 'line-through': completed }"></p>
-      <p
-        class="text-red-500 cursor-pointer"
-        @click="fetch(`http://localhost:4321/api/todo/a1/${todo.id}`, { method: 'DELETE' }).then(() => { getTodos() })"
-      >
-        &times;
-      </p>
+        <input type="checkbox" x-model="completed" />
+        <p
+          class="w-52"
+          x-text="todo.title"
+          :class="{ 'line-through': completed }"
+        >
+        </p>
+        |
+        <p x-text="todo.priority" :class="{ 'line-through': completed }"></p>
+        <p
+          class="text-red-500 cursor-pointer"
+          @click="fetch('/api/todo/a1/' + todo.id, { method: 'DELETE' }).then(() => { $dispatch('recall-api') })"
+        >
+          &times;
+        </p>
+      </div>
+      <div x-show="editMode" @keydown.enter="updateTodo(todo); editMode = false; $dispatch('recall-api')">
+        <input
+          type="text"
+          x-model="todo.title"
+          class="border border-violet-400"
+        />
+        |
+        <input
+          type="text"
+          x-model="todo.priority"
+          class="border border-violet-400"
+        />
+      </div>
     </div>
-    <div x-show="editMode" @keydown.enter="updateTodo(todo); editMode = false">
-      <input
-        type="text"
-        x-model="todo.title"
-        class="border border-violet-400"
-      />
-      |
-      <input
-        type="text"
-        x-model="todo.priority"
-        class="border border-violet-400"
-      />
-    </div>
-  </div>
-</template>
+  </template>
+</div>

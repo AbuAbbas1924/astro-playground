@@ -1,6 +1,7 @@
 name = "playground"
 compatibility_date = "2026-01-15"
 compatibility_flags = [
-  "global_fetch_strictly_public",
+  "nodejs_compat",
   "disable_nodejs_process_v2"
 ]
+pages_build_output_dir = "dist"
