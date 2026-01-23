@@ -3,6 +3,12 @@ import "@tw";
 import TodoList from "src/components/todo_a1/TodoList.astro";
 import AddTodo from "src/components/todo_a1/AddTodo.astro";
 import Home from "src/layouts/Home.astro";
+
+const token = Astro.cookies.get("session")?.value;
+
+if (!token) {
+  return Astro.redirect("/todo/a1/login");
+}
 ---
 
 <Home>

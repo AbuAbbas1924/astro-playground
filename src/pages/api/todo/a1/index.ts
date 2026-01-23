@@ -18,6 +18,8 @@ export const GET: APIRoute = async () => {
 export const POST: APIRoute = async ({ request }) => {
   try {
     const body = await request.json();
+    // const { ...body } = await request.json();
+    console.log("body", body);
     if (!body.title) {
       return new Response(JSON.stringify({ error: "Title is required" }), {
         status: 400,

@@ -1,4 +1,5 @@
 import { db, Todo_a1, User_a1 } from "astro:db";
+import bcrypt from "bcryptjs";
 
 // https://astro.build/db/seed
 export default async function seed() {
@@ -10,14 +11,14 @@ export default async function seed() {
   console.log("Todo_a1 seeded");
   await db.insert(User_a1).values([
     {
-      id: "1d88229d4411cc4b44e68f2baa760a41e1c2ef02149c2c4a54f82c8f544138f2",
+      id: crypto.randomUUID(),
       email: "a@a.aa",
-      password: "a",
+      password: await bcrypt.hash("a", 10),
     },
     {
-      id: "80273a3130561c0501e3c7334dbbd740cced08bde09006f5f621acd407291bff",
+      id: crypto.randomUUID(),
       email: "b@b.bb",
-      password: "b",
+      password: await bcrypt.hash("b", 10),
     },
   ]);
   console.log("User_a1 seeded");
