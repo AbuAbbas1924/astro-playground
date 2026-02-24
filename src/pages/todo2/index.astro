@@ -1,0 +1,51 @@
+---
+import "@tailwind";
+import { db, Todo_a1 } from 'astro:db';
+const todos = await db.select().from(Todo_a1);
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script is:inline src="/htmx.min.js"></script> -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <title>Document</title>
+</head>
+<body x-data="data()">
+    <form @submit.prevent="addTodo">
+        <input type="text" x-model="title" placeholder="Enter a new todo" />
+        <button type="submit">Add</button>
+    </form>
+
+    <ul>
+        <template x-for="todo in todos" :key="todo.id">
+            <li x-text="todo.title"></li>
+        </template>
+    </ul>
+
+    <script define:vars={{ initialTodos: todos }}>
+        function data() {
+            return {
+                title: "",
+                todos: initialTodos,
+                async addTodo() {
+                    if (this.title.trim() === '') return;
+
+                    const response = await fetch("/api/todo_a1", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({ title: this.title, completed: false }),
+                    });
+                    const [newTodo] = await response.json();
+                    this.todos.push(newTodo);
+                    this.title = "";
+                }
+            }
+        }
+    </script>
+</body>
+</html>

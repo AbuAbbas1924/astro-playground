@@ -1,0 +1,43 @@
+---
+---
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width">
+    <meta name="htmx-config"
+          content='{"selfRequestsOnly":false}'>
+    <title>JS Bin</title>
+    <script is:inline src="https://unpkg.com/htmx.org"></script>
+    <script is:inline src="https://unpkg.com/htmx.org/dist/ext/client-side-templates.js"></script>
+    <script is:inline src="https://unpkg.com/mustache@latest"></script>
+</head>
+
+<body>
+    <div hx-ext="client-side-templates">
+        <button hx-get="https://hn.algolia.com/api/v1/search?tags=front_page"
+                hx-swap="innerHTML"
+                hx-target="#content"
+                mustache-template="foo">
+            Click Me
+        </button>
+
+        <ul id="content">
+            <template id="foo">
+                {{#hits}}
+                <li><a href="{{url}}">{{title}}</a></li>
+                <!-- <li> {{name}} at {{email}} is with {{company.name}}</li> -->
+                {{/hits}}
+                <li hx-get="https://hn.algolia.com/api/v1/search?tags=front_page&page=2&hitsPerPage=10"
+                    hx-trigger="revealed"
+                    hx-swap="outerHTML"
+                    mustache-template="foo">
+                </li>
+            </template>
+        </ul>
+    </div>
+</body>
+
+</html>

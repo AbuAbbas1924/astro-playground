@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        >
+        <script src="https://cdn.tailwindcss.com"></script>
+        <!-- Alpine Plugins -->
+        <script
+            defer
+            src="https://cdn.jsdelivr.net/npm/@alpinejs/mask@3.x.x/dist/cdn.min.js"
+        ></script>
+
+        <!-- Alpine Core -->
+        <script
+            defer
+            src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+        ></script>
+        <style>
+            [x-cloak] {
+                display: none !important;
+            }
+        </style>
+        <title>Document</title>
+    </head>
+
+    <body>
+        <div
+            x-data
+            class="mt-6"
+        >
+            <h3 class="mb-2 text-2xl">Enter a Date:</h3>
+            <input
+                x-mask="99/99/9999"
+                placeholder="DD/MM/YYYY"
+                type="text"
+                class="p-2 border w-full"
+            >
+        </div>
+        <input
+            x-data
+            type="text"
+            x-mask="99/99/9999"
+            placeholder="dd/MM/YYYY"
+        >
+
+        <input
+            x-data
+            x-mask:dynamic="test1"
+            placeholder="2 or 3 spaces"
+        >
+
+        <script>
+            function test1(input) {
+                return input.startsWith('34') || input.startsWith('37')
+                    ? '999 999 ' : '99 99'
+            }
+        </script>
+    </body>
+
+</html>

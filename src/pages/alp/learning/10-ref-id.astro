@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        >
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script
+            defer
+            src="https://unpkg.com/alpinejs"
+        ></script>
+        <style type="text/tailwindcss">
+            [x-cloak] {
+                display: none !important;
+            }
+            input{ @apply border-2; }
+        </style>
+        <title>Document</title>
+    </head>
+
+    <body>
+        <!-- x-ref $refs -->
+        <div x-data>
+            <input
+                x-ref="inputEmail"
+                type="text"
+                placeholder="Email"
+            />
+            <button @click="$refs.inputEmail.style.borderColor = 'red'">change input-border by $refs</button>
+        </div>
+        <hr>
+        <div
+            x-data="{remaining: 10}"
+            class="border-2 border-violet-200 w-fit"
+        >
+            <input
+                x-ref="letters"
+                type="text"
+                @keyup="remaining = 10-$refs.letters.value.length"
+            >
+            <p x-text="`${remaining} characters remaining`"></p>
+        </div>
+        <hr>
+        <div x-data>
+            <input
+                x-ref="inputEmail"
+                type="text"
+                placeholder="Email"
+            />
+            <button @click="$refs.inputEmail.style.borderColor = 'red'">get red-border by style</button>
+        </div>
+        <hr>
+        <div
+            class="space-y-4 p-4"
+            x-data
+        >
+            <div
+                class="p-4 border border-slate-500"
+                x-ref="goal"
+            >Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
+                omnis suscipit dolores nemo, inventore neque fuga dolorem earum consequuntur distinctio voluptate,
+                culpa, veniam placeat sit?</div>
+            <button
+                class="bg-red-400 px-4 py-2 text-white"
+                @click="$refs.goal.classList.add('bg-red-400')"
+            >add red</button>
+            <button
+                class="bg-red-400 px-4 py-2 text-white"
+                @click="$refs.goal.classList.remove('bg-red-400')"
+            >remove red</button>
+            <button
+                class="bg-red-400 px-4 py-2 text-white"
+                @click="$refs.goal.classList.toggle('bg-red-400')"
+            >toggle</button>
+        </div>
+        <br>
+        <hr>
+        <div x-data="{
+                    value:'',
+                    count:0,
+                    log(){
+                        let input = this.$refs.ref1.value;
+                        console.log(this.$refs.ref1.value);
+                        this.count = input.length;
+                        if(this.count > 5){
+                            this.$refs.sign.remove()
+                        }
+                    }
+                }">
+            <input
+                type="text"
+                x-ref="ref1"
+                x-model="value"
+                @input="log"
+                class="border-2"
+            >
+            <span x-text="count"></span>
+            <p x-ref="sign">disappear if words > 5</p>
+        </div>
+        <br>
+        <hr>
+        <div x-data>
+            <div x-id="['text-input']">
+                <label :for="$id('text-input')" />Lable
+                <!-- "text-input-1" -->
+                <input
+                    class="border-2"
+                    type="text"
+                    :id="$id('text-input')"
+                />
+                <!-- "text-input-1" -->
+            </div>
+        </div>
+        <br>
+        <hr>
+        <!-- focused -->
+        <div
+            class="m-4"
+            x-data="{myValue:''}"
+        >
+            <div x-text="'the Element Tag is: ' + $el.tagName"></div>
+            <input
+                class="border-2"
+                type="text"
+                x-ref="myInput"
+                x-model="myValue"
+            >
+            <button
+                class="border border-sky-800"
+                @click="$refs.myInput.focus()"
+            >focus</button>
+            <!-- changed bg by $el -->
+            <div>
+                <button
+                    class="m-3 border border-sky-800"
+                    @click="$el.style.backgroundColor='lightblue'"
+                >change style</button>
+            </div>
+        </div>
+        <div x-data>
+            <p x-ref="el1">old text</p>
+            <button
+                @click="$refs.el1.textContent = 'textContent'"
+                class="bg-red-300 p-1 text-white"
+            >textContent</button>
+            <button
+                @click="$refs.el1.innerText = 'innerText'"
+                class="bg-blue-300 p-1 text-white"
+            >innerText</button>
+            <button
+                @click="$refs.el1.innerHTML = 'innerHTML'"
+                class="bg-green-300 p-1 text-white"
+            >innerHTML</button>
+        </div>
+        <hr>
+        <template
+            x-init
+            x-for="i in 9"
+        >
+            <div>
+                <template x-if="i%2 == 0">
+                    <div
+                        :id="$id('even')"
+                        x-text="`id: ${$el.id} - index: ${i}`"
+                    ></div>
+                </template>
+                <template x-if="i%2 == 1">
+                    <div
+                        :id="$id('odd')"
+                        x-text="`id: ${$el.id} - index: ${i}`"
+                    ></div>
+                </template>
+            </div>
+        </template>
+
+    </body>
+
+</html>

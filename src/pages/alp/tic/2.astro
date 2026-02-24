@@ -1,0 +1,82 @@
+---
+import "@tw";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro</title>
+  </head>
+  <body>
+    <script is:inline>
+      function data() {
+        return {
+          title: "tic-tac-toe game",
+          board: Array(9),
+          turns: [],
+          winner: false,
+          current_turn: "X",
+          winner_position: [
+            [1, 2, 3],
+            [4, 5, 6],
+            [7, 8, 9],
+            [1, 4, 7],
+            [2, 5, 8],
+            [3, 6, 9],
+            [1, 5, 9],
+            [3, 5, 7],
+          ],
+          move(index) {
+            if (!this.board[index] && !this.winner) {
+              this.board[index] = this.current_turn;
+              this.current_turn = this.current_turn == "X" ? "O" : "X";
+              this.turns.push(index);
+              this.check_winner();
+            }
+          },
+          check_winner() {
+            for (i of this.winner_position) {
+              if (i.every((x) => this.board[x - 1] == "X")) {
+                this.title = "X win";
+                this.winner = true;
+              } else if (i.every((x) => this.board[x - 1] == "O")) {
+                this.title = "O win";
+                this.winner = true;
+              } else if (this.turns.length == 9) {
+                this.title = "Draw";
+                this.winner = true;
+              }
+            }
+          },
+          reset() {
+            this.title = "tic-tac-toe game";
+            this.board = Array(9);
+            this.turns = [];
+            this.winner = false;
+            this.current_turn = "X";
+          },
+        };
+      }
+    </script>
+
+    <div x-data="data" class="flex flex-col justify-center items-center gap-5 h-screen">
+      <div class="font-bold text-4xl" x-text="title"></div>
+      <div class="gap-3 grid grid-cols-3 bg-blue-50 p-4">
+        <template x-for="i, j in board">
+          <div
+            x-text="i"
+            @click="move(j)"
+            class="flex justify-center items-center bg-blue-200 size-20 font-bold text-white text-3xl"
+          >
+          </div>
+        </template>
+      </div>
+      <div x-text="`current player： ${current_turn}`"></div>
+      <!-- <div x-text="board"></div> -->
+      <div class="bg-blue-300 px-6 py-2 text-white" @click="reset()">Reset</div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        >
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script
+            defer
+            src="https://unpkg.com/alpinejs"
+        ></script>
+        <style>
+            [x-cloak] {
+                display: none !important;
+            }
+        </style>
+        <title>Document</title>
+    </head>
+
+    <body>
+        <!-- ^ $dispatch -->
+        <div class="m-5">
+            <div x-data="{showModal:false}">
+                <button @click="showModal = true">open-func</button>
+                <div
+                    x-show="showModal"
+                    x-data="childComponent()"
+                    @close-modal="showModal=false, console.log('test')"
+                >
+                    <h2>the modal</h2>
+                    <button @click="closeModal">close</button>
+                </div>
+            </div>
+            <script>
+                function childComponent() {
+                    return {
+                        closeModal() {
+                            this.$dispatch('close-modal');
+                        }
+                    }
+                }
+            </script>
+        </div>
+        <br>
+        <hr>
+        <div
+            x-data
+            @edit="console.log('Edit Clicked')"
+        >
+            <button @click="$dispatch('edit')">$dispatch Edit</button>
+        </div>
+        <hr>
+        <div
+            x-data
+            @notify="console.log('disptach function')"
+        >
+            <button
+                @click="$dispatch('notify')"
+                class="bg-green-600 mt-4 p-2 rounded-lg text-white"
+            >notify</button>
+        </div>
+        <br>
+        <hr>
+        <div
+            class="top-0 left-0 z-10 fixed flex justify-center items-center bg-black/30 w-full h-full"
+            x-data="{open:false}"
+            x-show="open"
+            @keyup.escape.window="open = false"
+        >
+            <div
+                class="z-20 flex justify-center items-center bg-white rounded-2xl w-4/6 h-40"
+                @click.outside="open = false"
+                @visible.window="open=true"
+            >
+                modal
+            </div>
+        </div>
+        <button
+            class="bg-red-500 px-4 py-2 text-white"
+            x-data
+            @click="$dispatch('visible')"
+        >show</button>
+        <div class="space-y-4 p-4">
+            <div
+                x-data="{msg: 'old message'}"
+                @sender.window="msg = $event.detail.content"
+            >
+                <span x-text="msg"></span>
+            </div>
+            <button
+                x-data
+                @click="$dispatch('sender', {content: 'new variable from dispatch'})"
+            >send </button>
+        </div>
+        <br>
+        <hr>
+        <!-- sending without var -->
+        <div class="space-y-4 p-4">
+            <div
+                class="p-4"
+                x-data="{message: ''}"
+                @localstatic="message = 'without variable' "
+                @global.window="message='global message'"
+            >
+                <button
+                    class="bg-slate-500 px-4 py-2 text-white"
+                    @click="$dispatch('localstatic')"
+                >ohne var</button>
+                <div
+                    class="m-10"
+                    x-text="message"
+                ></div>
+            </div>
+            <!-- sending with var -->
+            <div
+                class="p-4"
+                x-data="{message:''}"
+                @localvar=" message = $event.detail.variable"
+                @global.window="message='global message'"
+            >
+                <button
+                    @click="$dispatch('localvar', {variable: 'with variable'} )"
+                    class="bg-slate-500 px-4 py-2 text-white"
+                >mit var</button>
+                <div
+                    class="m-10"
+                    x-text="message"
+                ></div>
+            </div>
+            <div
+                x-data="{message: ''}"
+                @global.window="message='global message'"
+                x-text="message"
+            ></div>
+            <div class="p-4">
+                <button
+                    class="bg-slate-500 px-4 py-2 text-white"
+                    x-data
+                    @click="$dispatch('global')"
+                >global variable</button>
+            </div>
+        </div>
+        <div class="mx-auto max-w-screen-sm">
+            <!-- Aufgabe: Die Benachrichtigung wird empfangen und angezeigt, falls eine vorhanden ist -->
+            <div
+                x-data="{ message:'' }"
+                @notify.window="message = $event.detail.text"
+            >
+                <template x-if="message">
+                    <div class="bg-green-500 m-4 p-4 text-white">
+                        <span class="font-semibold">Nachricht: </span>
+                        <span x-text="message"></span>
+                    </div>
+                </template>
+            </div>
+            <!-- Aufgabe: Ein Klick auf den Button "Senden" verschickt den Input als Benachrichtigung -->
+            <div
+                class="space-y-4 p-4"
+                x-data="{ message: '' }"
+            >
+                <input
+                    class="border-slate-500 p-4 border w-full"
+                    type="text"
+                    x-model="message"
+                    placeholder="Nachricht"
+                />
+                <button
+                    class="bg-slate-500 px-4 py-2 w-full text-white"
+                    @click="$dispatch('notify', { text: message })"
+                >
+                    Senden
+                </button>
+            </div>
+        </div>
+        <br>
+        <hr>
+        <div x-data="{x:'A'}">
+            <button @click="$dispatch('test', {x:'C'})">change obj 2</button>
+        </div>
+        <hr>
+        <div x-data="{x:'B'}">
+            <p
+                x-text="x"
+                @test.window="x=$event.detail.x"
+            ></p>
+        </div>
+        <hr>
+        <div
+            x-data
+            @edit="console.log('Edit Clicked')"
+        >
+            <button @click="$dispatch('edit')">Edit</button>
+        </div>
+    </body>
+
+</html>

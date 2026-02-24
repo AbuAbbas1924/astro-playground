@@ -1,0 +1,117 @@
+---
+
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script is:inline src="https://unpkg.com/htmx.org"></script>
+    <meta name="htmx-config" content='{"selfRequestsOnly":false}' />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div>
+      <h3>hx-confirm: simple forms with confirmation</h3>
+      <form>
+        <input type="text" name="email" placeholder="email" />
+        <input type="text" name="password" placeholder="password" />
+        <button
+          hx-post="https://dummyjson.com/products/add"
+          hx-swap="outerHTML"
+          hx-trigger="click"
+          hx-indicator="#img1"
+          hx-confirm="are you sure?"
+        >
+          <span id="img1" class="htmx-indicator">👌</span>
+          submit
+        </button>
+      </form>
+    </div>
+    <div>
+      <h3>hx-include: forms with outside inputs</h3>
+      <input type="text" name="outside1" placeholder="simple question" />
+      <input type="text" name="outside2" placeholder="another question" />
+      <form>
+        <input type="text" name="email" />
+        <input type="text" name="password" />
+        <button
+          hx-post="https://dummyjson.com/products/add"
+          hx-swap="outerHTML"
+          hx-trigger="click"
+          hx-include="[name='outside1'], [name='outside2']"
+        >
+          <span class="htmx-indicator">👌</span>
+          submit
+        </button>
+      </form>
+    </div>
+    <div>
+      <h3>hx-vars: forms with additional static value</h3>
+      <form>
+        <input type="text" name="email" />
+        <input type="text" name="password" />
+        <button
+          hx-post="https://dummyjson.com/products/add"
+          hx-swap="outerHTML"
+          hx-trigger="click"
+          hx-vars='{"secret": "mySecret"}'
+        >
+          <span class="htmx-indicator">👌</span>
+          submit
+        </button>
+      </form>
+    </div>
+    <div>
+      <h3>htmx:configRequest:forms with additional dynamic value</h3>
+      <form>
+        <input type="text" name="email" />
+        <input type="text" name="password" />
+        <button hx-post="https://dummyjson.com/products/add" hx-swap="outerHTML" hx-trigger="click">
+          <span class="htmx-indicator">👌</span>
+          submit
+        </button>
+      </form>
+      <script>
+        document.body.addEventListener("htmx:configRequest", function (event) {
+          event.detail.parameters["auth_token"] = 123;
+        });
+      </script>
+    </div>
+    <div>
+      <h3>forms with additional dynamic value</h3>
+      <form>
+        <input type="text" name="email" />
+        <input type="text" name="password" />
+        <button hx-post="https://dummyjson.com/products/add" hx-swap="outerHTML" hx-trigger="click">
+          <span class="htmx-indicator">👌</span>
+          submit
+        </button>
+      </form>
+      <script>
+        document.body.addEventListener("htmx:configRequest", function (event) {
+          event.detail.parameters["auth_token"] = 123;
+        });
+      </script>
+    </div>
+    <div>
+      <h3>hx-params: sending selected inputs</h3>
+      <form>
+        <input type="text" name="name" />
+        <input type="text" name="email" />
+        <input type="text" name="password" />
+        <button
+          hx-post="https://dummyjson.com/products/add"
+          hx-swap="outerHTML"
+          hx-trigger="click"
+          hx-params="name, email"
+        >
+          <span class="htmx-indicator">👌</span>
+          submit
+        </button>
+      </form>
+    </div>
+  </body>
+</html>

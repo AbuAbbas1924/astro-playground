@@ -1,0 +1,7 @@
+---
+import { db, Todo_a1 } from 'astro:db';
+
+const todos = await db.select().from(Todo_a1);
+---
+
+<pre>{JSON.stringify(todos, null, 2)}</pre>

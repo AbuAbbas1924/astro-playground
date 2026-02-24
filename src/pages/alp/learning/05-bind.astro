@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+---
+import "@tailwind";
+---
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        >
+        <style>
+            [x-cloak] {
+                display: none !important;
+            }
+        </style>
+        <title>Document</title>
+    </head>
+
+    <body>
+        <!--# x-bind -->
+        <div x-data="{clicked: false}">
+            <button
+                class="red"
+                :class="clicked ? 'clicked' : ''"
+                @click="clicked = !clicked"
+            >
+                modify class
+            </button>
+        </div>
+        <div x-data="{clicked: false}">
+            <button
+                class="yellow"
+                :class="{clicked}"
+                @click="clicked = !clicked"
+            >
+                bind class
+            </button>
+        </div>
+        <style>
+            .red {
+                background-color: red;
+            }
+
+            .clicked {
+                background-color: green;
+            }
+        </style>
+        <hr>
+        <!-- x-bind: style -->
+        <div x-data="{clicked: false}">
+            <button
+                :style="clicked && {'backgroundColor': 'red'}"
+                @click="clicked = !clicked"
+            >
+                bind style
+            </button>
+        </div>
+        <hr>
+        <!-- x-bind id -->
+        <button
+            x-data="{id: ''}"
+            x-bind:id="id"
+            @click="id = Math.round(Math.random() * 10000)"
+        >
+            get random id
+        </button>
+        <hr>
+        <br>
+        <hr>
+        <!-- bind style:color -->
+        <div x-data="{colors: ['red', 'green', 'blue']}">
+            <!-- Iterate over colors and display 40x40 px boxes with given colors -->
+            <template x-for="color in colors">
+                <div
+                    style="width: 40px; height: 40px; display: inline-block"
+                    :style="{backgroundColor: color}"
+                ></div>
+            </template>
+        </div>
+        <hr>
+        <div x-data="{color:false}">
+            <span :class="{'text-green-500': color}">text is green, because the class is true</span>
+            <br>
+            <h3
+                @mouseenter="color = !color"
+                @mouseleave="color = !color"
+            >hover to change</h3>
+            <br>
+            <form
+                x-data="{name: ''}"
+                @submit.prevent="name!='' && console.log(`name: ${name}`)"
+            >
+                <input
+                    type="text"
+                    x-model="name"
+                >
+                <button
+                    x-text="name===''? `disable`:`enable`"
+                    :disabled="name===''"
+                    :class="name===''? 'bg-red-500 text-white':'bg-green-500 text-white'"
+                ></button>
+            </form>
+            <br>
+            <div x-data="{prg:0}">
+                <progress
+                    max="100"
+                    :value="prg"
+                >
+                    <span x-bind:="`${prg}%`"></span>
+                </progress>
+                <button @click="prg = prg + 5">increment</button>
+            </div>
+        </div>
+        <br>
+        <hr>
+        <div x-data="{
+                users : [
+                    {id: 1, name: 'Ahmad'},
+                    {id: 2, name: 'Shuhib'},
+                    {id: 3, name: 'Siddiqi'},
+                    ],
+                selected: [],
+                }">
+            <p x-text="`selected: ${selected}`"></p>
+            <template x-for="i in users">
+                <div>
+                    <input
+                        type="checkbox"
+                        x-model.number="selected"
+                        :value="i.id"
+                        :id="person_${i.id}"
+                    >
+                    <span
+                        x-text="i.name"
+                        :class="{'text-blue-500' : selected.includes(i.id)}"
+                    ></span>
+                </div>
+            </template>
+        </div>
+        <br>
+        <hr>
+        <div x-data="{
+                    num: 0,
+                    autoAdd (){
+                        this.num++;
+                    },
+                    init(){
+                        let interval = setInterval(() => {
+                            if (this.num > 100){
+                                clearInterval(interval)
+                            };
+
+                            this.autoAdd();
+                        }, 100)
+                    }
+                }">
+            <div class="progress">
+                <div
+                    class="progress-inner"
+                    :style="`width: ${num}%`"
+                ></div>
+            </div>
+            <button @click="num = num + 10">increment</button> |
+            <button @click="num = num - 10">decrement</button>
+        </div>
+        <br>
+
+        <style>
+            .progress {
+                height: 10px;
+                width: 300px;
+                background-color: #ccc;
+            }
+
+            .progress-inner {
+                height: 10px;
+                background-color: slategray;
+            }
+        </style>
+        <!-- ! skip markdown project -->
+        <br>
+        <hr>
+        <div
+            class="p-4"
+            x-data="{
+                    color: '',
+                    img: 'https://via.placeholder.com/500'
+                }"
+        >
+            <button
+                class="bg-slate-500 px-4 py-2 text-white"
+                :class="color"
+                @click="color = 'bg-green-500' "
+            > color change</button>
+            <button
+                class="bg-slate-500 px-4 py-2 text-white"
+                @click="img = 'https://via.placeholder.com/300'"
+            >image change</button>
+            <img
+                src="https://via.placeholder.com/500"
+                :src="img"
+                alt=""
+            >
+        </div>
+        <div class="mx-auto max-w-screen-sm">
+            <!-- Aufgabe: Mit dem Button die Klassen "px-4 py-2" zum Button hinzufügen -->
+            <div
+                class="p-4"
+                x-data="{ classes: '' }"
+            >
+                <button
+                    class="bg-slate-500 text-white"
+                    :class="classes"
+                    @click="classes = 'px-4 py-2'"
+                >Button</button>
+            </div>
+            <!-- Aufgabe: Mit den Buttons das aktuelle Bild verändern -->
+            <!-- Hinweis: Bilder gibt es unter https://via.placeholder.com/300 -->
+            <div
+                class="flex m-4"
+                x-data="{img: 'https://via.placeholder.com/300'}"
+            >
+                <img
+                    class="rounded-l-lg w-3/4"
+                    alt="Placeholder"
+                    :src="img"
+                />
+                <div class="flex flex-col bg-slate-400 rounded-r-lg divide-y divide-slate-300 text-white grow">
+                    <button
+                        class="hover:bg-slate-500 p-4 size-full"
+                        @click="img = 'https://via.placeholder.com/300'"
+                    >300</button>
+                    <button
+                        class="hover:bg-slate-500 p-4 size-full"
+                        @click="img = 'https://via.placeholder.com/400'"
+                    >400</button>
+                    <button
+                        class="hover:bg-slate-500 p-4 size-full"
+                        @click="img = 'https://via.placeholder.com/500'"
+                    >500</button>
+                </div>
+            </div>
+        </div>
+        <div
+            class="space-y-4 p-4"
+            x-data="{open:false}"
+        >
+            <button
+                class="bg-slate-500 px-4 py-2 text-white"
+                @click="open = !open"
+            >toggle</button>
+            <span x-text="open"></span>
+            <div x-show="open">Lorem ipsum dolor sit amet.</div>
+            <div
+                :class="open? 'bg-green-500': 'bg-red-500'"
+                class="p-4 w-min"
+            >if/else</div>
+            <br>
+            <span
+                class="p-2 w-min"
+                :class="open && 'bg-blue-500'"
+            >and</span>
+            <span
+                class="p-2 w-min"
+                :class="open || 'bg-yellow-500'"
+            >or</span>
+        </div>
+        <br>
+        <hr>
+        <section
+            x-data="{
+                                    myColor: 'gray',
+                                    selectClasses : 'h-full p-2 rounded ml-3 border border-gray-900 text-white focus:outline-none '
+                                }"
+            class="flex space-x-2"
+        >
+            <div
+                :class="'bg-' + myColor + '-600'"
+                style="height: 5rem; width: 5rem; border: 1px solid #555;"
+            ></div>
+            <div>
+                <div>
+                    <input
+                        type="radio"
+                        value="gray"
+                        x-model="myColor"
+                    >gray
+                </div>
+                <div>
+                    <input
+                        type="radio"
+                        x-model="myColor"
+                        value="red"
+                    >red
+                </div>
+                <div>
+                    <input
+                        type="radio"
+                        value="blue"
+                        x-model="myColor"
+                    > Blue
+                </div>
+                <div>
+                    <input
+                        type="radio"
+                        value="green"
+                        x-model="myColor"
+                    >green
+                </div>
+            </div>
+        </section>
+        <br>
+        <hr>
+        <section x-data="{myValue : 'start'}">
+            <input
+                x-model="myValue"
+                class="border-1 shadow p-1 border rounded"
+                type="text"
+            >
+            <input
+                x-model="myValue"
+                class="border-1 shadow p-1 border rounded"
+                type="text"
+            >
+        </section>
+        <hr>
+        <div x-data="{ myVar: 'new text'}">
+            <input
+                class="border-1 shadow p-1 border rounded"
+                x-model="myVar"
+                :value="myVar"
+                placeholder="some placeholder"
+                type="text"
+            >
+            <span class="text-sm italic">Input value is bound to "<b><span x-text="myVar"></span></b>"</span>
+        </div>
+        <div x-data="{ myStyle : false}">
+            <input
+                type="checkbox"
+                x-model="myStyle"
+            >
+            <span :style="{ 'font-weight': myStyle ? '700' : 'normal' }">Some text with some font weight</span><br>
+            <span class="text-sm italic">font-weight is set by "myStyle"</span>
+        </div>
+        <div x-data="{ myClass : false}">
+            <input
+                type="checkbox"
+                class="hidden"
+                id="ch1"
+            >
+            <label for="ch1">
+                <div
+                    :class="{'bg-blue-500': myClass}"
+                    class="bg-pink-300 size-20"
+                    @click="myClass = !myClass"
+                ></div>
+            </label>
+            <span class="text-sm italic">background-color is set by "box click"</span>
+        </div>
+        <hr>
+        <div class="mx-auto max-w-screen-sm">
+            <!-- Aufgabe: Mit den Tabs zwischen den Texten schalten (nur ein Text soll angezeigt werden) -->
+            <!-- Hinweis: hidden Klasse für ausblenden -->
+            <div
+                class="p-4"
+                x-data="{tab: 1}"
+            >
+                <div class="flex divide-x">
+                    <button
+                        class="bg-slate-400 px-4 py-2 text-white"
+                        :class="tab == 1 && 'bg-slate-500'"
+                        @click="tab = 1"
+                    >
+                        Tab1
+                    </button>
+                    <button
+                        class="bg-slate-400 px-4 py-2 text-white"
+                        :class="tab == 2 && 'bg-slate-500'"
+                        @click="tab = 2"
+                    >
+                        Tab2
+                    </button>
+                </div>
+                <div
+                    class="border-slate-500 p-4 border"
+                    :class="tab == 1 || 'hidden'"
+                >
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, ea?
+                </div>
+                <div
+                    class="border-slate-500 p-4 border"
+                    :class="tab == 2 || 'hidden'"
+                >
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat, vel eveniet asperiores esse autem
+                    iure
+                    repellendus odio quibusdam architecto animi.
+                </div>
+            </div>
+        </div>
+        <br>
+        <hr>
+        <div x-data="{
+                    text: '',
+                    bool: false,
+                    place: 'enter something'
+                }">
+            <!-- model -->
+            <div class="m-3">
+                <input
+                    type="text"
+                    x-model="text"
+                    :placeholder="place"
+                >
+                <button @click="console.log(text)">message log</button>
+            </div>
+            <!-- bind -->
+            <div class="m-3">
+                <button
+                    @click="bool = !bool"
+                    :disabled="bool"
+                    :class="{'border border-green-500 bg-blue-400 rounded-xl px-2 py-1':bool}"
+                    :style="bool && {color: 'red'}"
+                >toggle</button>
+            </div>
+        </div>
+        <br>
+        <hr>
+    </body>
+
+</html>

@@ -1,0 +1,73 @@
+---
+import "@tailwind";
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tailwind + Alpine Infinite Text Slider</title>
+</head>
+  <style>
+    /* Simple marquee animation: move left by half the track (because we duplicate content) */
+    @keyframes marquee-left {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    .marquee { --duration: 20s; --gap: 2rem; }
+    .marquee__track {
+      display: flex;
+      width: max-content;
+      gap: var(--gap);
+      animation: marquee-left var(--duration) linear infinite;
+    }
+    /* Pause on hover */
+    .marquee:hover .marquee__track { animation-play-state: paused; }
+  </style>
+<body >
+<div class="flex justify-center items-center bg-gray-100 p-6 min-h-screen antialiased">
+    
+      <div
+        class="group bg-white shadow border border-gray-200 rounded-xl w-full max-w-5xl overflow-hidden marquee"
+        x-data="{ speed: 20 }"
+        x-init="$el.style.setProperty('--duration', speed + 's')"
+      >
+        <div class="py-4 whitespace-nowrap marquee__track">
+          <!-- Content (1st copy) -->
+          <ul class="flex items-center gap-8 px-8">
+            <li class="font-medium text-gray-800">Tailwind CSS</li>
+            <li class="text-gray-500">•</li>
+            <li class="font-medium text-gray-800">Alpine.js</li>
+            <li class="text-gray-500">•</li>
+            <li class="font-medium text-gray-800">Lightweight</li>
+            <li class="text-gray-500">•</li>
+            <li class="font-medium text-gray-800">No dependencies</li>
+            <li class="text-gray-500">•</li>
+            <li class="font-medium text-gray-800">Infinite loop</li>
+          </ul>
+    
+          <!-- Content (2nd copy, aria-hidden for accessibility) -->
+          <ul class="flex items-center gap-8 px-8" aria-hidden="true">
+            <li class="font-medium text-gray-800">Tailwind CSS</li>
+            <li class="text-gray-500">•</li>
+            <li class="font-medium text-gray-800">Alpine.js</li>
+            <li class="text-gray-500">•</li>
+            <li class="font-medium text-gray-800">Lightweight</li>
+            <li class="text-gray-500">•</li>
+            <li class="font-medium text-gray-800">No dependencies</li>
+            <li class="text-gray-500">•</li>
+            <li class="font-medium text-gray-800">Infinite loop</li>
+          </ul>
+        </div>
+      </div>
+    
+</div>
+  <!-- Optional: quick controls example (uncomment if you want) 
+  <div class="space-x-2 mt-4 text-center">
+    <button class="bg-gray-800 px-3 py-1 rounded text-white" @click="$root.querySelector('.marquee').style.setProperty('--duration', '12s')">Faster</button>
+    <button class="bg-gray-200 px-3 py-1 rounded" @click="$root.querySelector('.marquee').style.setProperty('--duration', '28s')">Slower</button>
+  </div>
+  -->
+
+</body>
+</html>

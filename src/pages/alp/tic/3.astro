@@ -1,0 +1,64 @@
+---
+import "@tw";
+---
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+<script is:inline>
+  function data() {
+    return {
+      title: "tic-tac-toe game",
+      player: "X",
+      game_ended: false,
+      fields: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+      win_position: [
+        [1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9],
+        [1, 4, 7],
+        [2, 5, 8],
+        [3, 6, 9],
+        [1, 5, 9],
+        [3, 5, 7],
+      ],
+      add(name, id) {
+        if (!this.fields[id].name && !this.game_ended) {
+          this.fields.splice(id, 1, { name: name, id: id });
+          this.player = this.player == "X" ? "O" : "X";
+          if (this.win_position.some((x) => x.every((y) => this.fields[y - 1].name == name))) {
+            this.title = `${name} win`;
+            this.game_ended = true;
+          }
+        }
+      },
+      reset() {
+        this.title = "tic-tac-toe game";
+        this.player = "X";
+        this.game_ended = false;
+        this.fields = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+      },
+    };
+  }
+</script>
+
+<body>
+  <div class="flex flex-col justify-center items-center gap-5 h-screen" x-data="data">
+    <h1 class="font-bold text-4xl" x-text="title"></h1>
+    <div class="gap-1 grid grid-cols-3 bg-green-300">
+      <template x-for="i,j in fields">
+        <div
+          class="flex justify-center items-center bg-white size-20 text-green-300 text-3xl"
+          x-text="i.name"
+          @click="add(player, j)"
+        >
+        </div>
+      </template>
+    </div>
+    <div x-text="`current player： ${player}`"></div>
+    <!-- <div x-text="JSON.stringify(fields)"></div> -->
+    <div class="bg-green-400 px-6 py-3 text-white" @click="reset()">Reset</div>
+  </div>
+</body>

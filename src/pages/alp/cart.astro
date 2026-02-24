@@ -1,0 +1,99 @@
+---
+import "../../styles/global.css";
+---
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        >
+        <script
+            src="https://unpkg.com/@alpinejs/persist"
+            defer
+        ></script>
+        <title>Shopping Cart</title>
+    </head>
+
+    <body class="min-h-full bg-gray-50 p-6">
+        <div class="max-w-3xl mx-auto bg-white rounded-lg shadow-md p-6" x-data="{
+            cart: $persist([]),
+            category: '',
+            product: '',
+            getcategories(){
+                return [...new Set(this.cart.map(item => item.category))]
+            },
+            addItem() {
+                if (this.category && this.product) {
+                    this.cart.push({ 
+                        category: this.category, 
+                        product: this.product 
+                    });
+                    this.category = '';
+                    this.product = '';
+                }
+            }
+        }">
+            <h1 class="text-2xl font-bold mb-6 text-gray-800">Shopping Cart</h1>
+            
+            <div class="mb-6 p-4 bg-gray-100 rounded">
+                <pre class="text-xs text-gray-600 overflow-auto" x-text="JSON.stringify(cart, null, 2)"></pre>
+            </div>
+            
+            <form @submit.prevent="addItem()" class="mb-8 space-y-4">
+                <div class="flex gap-4">
+                    <input
+                        class="flex-1 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        type="text"
+                        x-model="category"
+                        placeholder="Category"
+                    >
+                    <input
+                        class="flex-1 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        type="text"
+                        x-model="product"
+                        placeholder="Product"
+                    >
+                </div>
+                <div class="flex gap-2">
+                    <button
+                        class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+                        type="submit"
+                    >
+                        Add Item
+                    </button>
+                    <button
+                        type="button"
+                        class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+                        @click="cart.pop()"
+                    >
+                        Remove Last
+                    </button>
+                </div>
+            </form>
+            
+            <div class="space-y-4">
+                <h2 class="text-xl font-semibold text-gray-700">Categories</h2>
+                <div class="grid gap-4 md:grid-cols-2">
+                    <template x-for="category in getcategories">
+                        <div class="border border-orange-200 p-4 rounded-lg bg-orange-50">
+                            <h3 class="font-medium text-lg text-orange-800 mb-2" x-text="category"></h3>
+                            <ul class="space-y-1">
+                                <template x-for="item in cart">
+                                    <li 
+                                        class="pl-3 py-1 text-gray-700 border-l-2 border-orange-400" 
+                                        x-show="item.category == category"
+                                        x-text="item.product"
+                                    ></li>
+                                </template>
+                            </ul>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>

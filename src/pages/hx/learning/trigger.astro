@@ -1,0 +1,79 @@
+---
+
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script is:inline src="https://unpkg.com/htmx.org"></script>
+    <meta name="htmx-config" content='{"selfRequestsOnly":false}' />
+    <title>Document</title>
+  </head>
+
+  <body class="flex gap-4 bg-gray-300">
+    <h1>hx-triggers - click</h1>
+    <article>
+      <h1>by click</h1>
+      <button class="border-2" hx-get="https://dummyjson.com/products/1" hx-swap="innerHTML" hx-trigger="click"
+        >click</button
+      >
+    </article>
+    <article>
+      <h1>by click+ctrl</h1>
+      <button class="border-2" hx-get="https://dummyjson.com/products/1" hx-swap="innerHTML" hx-trigger="click[ctrlKey]"
+        >click+ctrl</button
+      >
+    </article>
+    <article>
+      <h1>focused keyup</h1>
+      <button class="border-2" hx-get="https://dummyjson.com/products/1" hx-trigger="keyup[altKey&&key=='q']"
+        >focus & alt + q</button
+      >
+    </article>
+    <article>
+      <h1>keyup | you need "from:body" to call</h1>
+      <button
+        class="border-2"
+        hx-trigger="keyup[ctrlKey&&altKey&&key=='f'] from:body"
+        hx-get="https://dummyjson.com/products/1">ctrl+alt+f</button
+      >
+    </article>
+    <article>
+      <h1>by hover</h1>
+      <button class="border-2" hx-get="https://dummyjson.com/products/1" hx-swap="innerHTML" hx-trigger="mouseenter"
+        >hover</button
+      >
+    </article>
+    <article>
+      <h1>by textarea keyup</h1>
+      <button
+        class="border-2"
+        hx-get="https://dummyjson.com/products/1"
+        hx-swap="innerHTML"
+        hx-trigger="keyup changed from:#search">keyup</button
+      >
+      <div id="search-box">
+        <textarea name="" id="search"></textarea>
+      </div>
+    </article>
+    <article>
+      <h1>by textarea keyup with multiple changes</h1>
+      <button
+        class="border-2"
+        hx-get="https://dummyjson.com/products/1"
+        hx-swap="outerHTML"
+        hx-trigger="keyup changed from:#search2">keyup</button
+      >
+      <div id="search-box2">
+        <textarea
+          hx-get="https://dummyjson.com/products/1"
+          name=""
+          id="search2"
+          hx-swap="outerHTML"
+          hx-trigger="keyup changed"></textarea>
+      </div>
+    </article>
+  </body>
+</html>

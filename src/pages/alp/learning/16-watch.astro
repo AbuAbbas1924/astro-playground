@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        >
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script
+            defer
+            src="https://unpkg.com/alpinejs"
+        ></script>
+        <style>
+            [x-cloak] {
+                display: none !important;
+            }
+        </style>
+        <title>Document</title>
+    </head>
+
+    <body>
+        <!-- $watch -->
+        <div
+            class="space-y-4 p-4"
+            x-data
+            x-init="$watch('posts' , value => console.log(value))"
+        ></div>
+        <br>
+        <hr>
+        <div
+            x-data="{modal: false}"
+            x-init="$watch('modal', (val, old) => console.log(val, old))"
+        >
+            <button @click="modal = !modal">$watch in console</button>
+        </div>
+        <hr>
+        <div
+            class="space-y-4 p-4"
+            x-data="{
+                    message: 'hello',
+                    init(){
+                        this.$watch('message', (value)=>{
+                            console.log('changed', value)
+                        })
+                    }
+                }"
+        >
+            <span x-text="message"></span>
+            <button
+                @click="message = 'after click' "
+                class="bg-slate-500 px-4 py-2 text-white"
+            >change</button>
+        </div>
+        <br>
+        <hr>
+        <div
+            class="m-5"
+            x-data="form"
+            x-init="init()"
+        >
+            <h1>look into console as well</h1>
+            <input
+                class="border-2"
+                type="text"
+                x-model="search"
+            >
+            <span x-ref="outer"></span>
+        </div>
+        <script>
+            document.addEventListener('alpine:init', () => {
+                Alpine.data('form', () => ({
+                    search: '',
+                    init() {
+                        this.$watch('search', (value, oldValue) => {
+                            this.$refs.outer.innerText = value
+                            console.log(value, oldValue)
+                        })
+                    }
+                }))
+            })
+        </script>
+    </body>
+
+</html>

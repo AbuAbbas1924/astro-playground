@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        >
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script
+            defer
+            src="https://unpkg.com/alpinejs"
+        ></script>
+        <style>
+            [x-cloak] {
+                display: none !important;
+            }
+        </style>
+        <title>Document</title>
+    </head>
+
+    <body>
+        <!-- & x-for -->
+        <div x-data="{posts: [{title: 'post 1'}, {title: 'post 2'}]}">
+            <h3 class="mt-6 mb-3 font-bold text-2xl">Posts with new posts function</h3>
+            <template x-for="post in posts">
+                <div
+                    x-ref="text"
+                    x-text="post.title"
+                ></div>
+            </template>
+            <button
+                @click="posts.push({title: 'new post'})"
+                class="bg-blue-800 mt-4 px-8 py-2 rounded-lg text-white"
+            >add Post</button>
+            <button
+                @click="$refs.text.remove()"
+                class="bg-red-800 mt-4 mr-10 px-8 py-2 rounded-lg text-white"
+            >remove last Post</button>
+        </div>
+        <br>
+        <hr>
+        <div x-data="{list: ['a', 'b', 'c']}">
+            <template x-for="name, index in list">
+                <div>
+                    <span x-text="index+1"></span>: <span x-text="name"></span>
+                </div>
+            </template>
+        </div>
+        <!-- :key -->
+        <div x-data="{
+                    people:[
+                    {id: 1, name: 'a', score: 5},
+                    {id: 2, name: 'b', score: 4},
+                    {id: 3, name: 'c', score: 6},
+                    ],
+                    increment(id){
+                        this.people.find((p)=> p.id ===id).score++
+                    },
+                    listSortedDesc(){
+                        return this.people.sort((a,b)=>b.score-a.score)
+                    },
+                }">
+            <template
+                x-for="i in listSortedDesc"
+                :key="i.id"
+            >
+                <div>
+                    <span x-text="i.name"></span> (<span x-text="i.score"></span> score)
+                    <button @click="increment(i.id)">+</button>
+                </div>
+            </template>
+        </div>
+        <br>
+        <hr>
+        <div class="space-y-4 p-4">
+            <div
+                class="p-4 text-center"
+                x-data="{colors:['red', 'blue', 'green']}"
+            >
+                <template x-for="color, index in colors">
+                    <div x-text="color"></div>
+                </template>
+            </div>
+            <div
+                class="p-4 text-center"
+                x-data="{colors:['red', 'blue', 'green']}"
+            >
+                <template x-for="color, index in colors">
+                    <div>
+                        <span x-text="index"></span>
+                        <span x-text="color"></span>
+                    </div>
+                </template>
+            </div>
+            <div
+                class="p-4 text-center"
+                x-data="{letters:[
+                            {lower: 'a', upper: 'A'},
+                            {lower: 'b', upper: 'B'},
+                            {lower: 'c', upper: 'C'},
+                        ]}"
+            >
+                <template x-for="l in letters">
+                    <div>
+                        <span x-text="l.lower"></span>:
+                        <span x-text="l.upper"></span>
+                    </div>
+                </template>
+            </div>
+            <div class="space-y-4 p-4 text-center">
+                <template
+                    x-data
+                    x-for="x in 5"
+                >
+                    <span x-text="`${x}, `"></span>
+                </template>
+            </div>
+        </div>
+        <div class="mx-auto max-w-screen-sm">
+            <!-- Aufgabe: Select mit 50 Optionen 1..50 erstellen  -->
+            <div
+                class="p-4"
+                x-data
+            >
+                <div class="flex items-center gap-4">
+                    <select
+                        class="border-slate-500 px-4 p-2 border"
+                        placeholder="Textinput"
+                    >
+                        <option
+                            value=""
+                            disabled
+                        >Auswahl</option>
+                        <template x-for="i in 10">
+                            <option x-text="i"></option>
+                        </template>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <br>
+        <hr>
+        <div x-data="{
+                        posts: [{id: 1, title: 'title 1'}, {id: 2, title: 'title 2'}]
+                    }">
+            <template
+                x-for="(post, index) in posts"
+                :key="post.id"
+            >
+                <h2 x-text="post.id + '. ' + post.title"></h2>
+            </template>
+        </div>
+        <div x-data>
+            <template x-for="n in 3">
+                <p x-text="`Range: ${n}`"></p>
+            </template>
+        </div>
+        <hr>
+    </body>
+
+</html>

@@ -1,0 +1,204 @@
+---
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://cdn.tailwindcss.com" is:inline></script>
+        <title>Document</title>
+    </head>
+    <body>
+        <div x-data="calculator()">
+            <div
+                class="max-w-[265px] shadow-[0_4px_10px_rgba(0,0,0,0.2)] text-[white] mx-auto my-[50px] p-5 rounded-[20px] bg-gray-600"
+            >
+                <div class="relative mb-5 p-5 rounded-[10px] bg-gray-400">
+                    <div
+                        class="text-base text-right opacity-50 min-h-[2rem]"
+                        x-text="result"
+                    >
+                    </div>
+                    <div
+                        class="text-[2.5rem] text-right min-h-[3rem] mb-[5px]"
+                        x-text="currentInput"
+                    >
+                    </div>
+                    <div
+                        class="absolute text-[#888] text-base right-5 top-[5px]"
+                        x-text="operation"
+                    >
+                    </div>
+                </div>
+                <div class="grid grid-cols-[repeat(4,1fr)] gap-2.5">
+                    <button
+                        class="bg-[#d4d4d2] text-black rounded-md"
+                        @click="clearAll()">AC</button
+                    >
+                    <button
+                        class="bg-[#d4d4d2] text-black rounded-md"
+                        @click="toggleSign()">±</button
+                    >
+                    <button
+                        class="bg-[#d4d4d2] text-black rounded-md"
+                        @click="calculatePercentage()">%</button
+                    >
+                    <button
+                        class="bg-[#837766] rounded-md"
+                        @click="inputOperation('/')">÷</button
+                    >
+                    <button @click="inputDigit('7')">7</button>
+                    <button @click="inputDigit('8')">8</button>
+                    <button @click="inputDigit('9')">9</button>
+                    <button
+                        class="bg-[#837766] rounded-md"
+                        @click="inputOperation('*')">×</button
+                    >
+                    <button @click="inputDigit('4')">4</button>
+                    <button @click="inputDigit('5')">5</button>
+                    <button @click="inputDigit('6')">6</button>
+                    <button
+                        class="bg-[#837766] rounded-md"
+                        @click="inputOperation('-')">−</button
+                    >
+                    <button @click="inputDigit('1')">1</button>
+                    <button @click="inputDigit('2')">2</button>
+                    <button @click="inputDigit('3')">3</button>
+                    <button
+                        class="bg-[#837766] rounded-md"
+                        @click="inputOperation('+')">+</button
+                    >
+                    <button @click="inputDigit('0')" class="col-[span_2]"
+                        >0</button
+                    >
+                    <button @click="inputDecimal()">.</button>
+                    <button class="bg-[#837766] rounded-md" @click="calculate()"
+                        >=</button
+                    >
+                </div>
+            </div>
+        </div>
+        <script is:inline>
+            function calculator() {
+                return {
+                    currentInput: "0",
+                    result: "",
+                    operation: null,
+                    previousKey: "",
+                    clearAll() {
+                        this.currentInput = "0";
+                        this.result = "";
+                        this.operation = null;
+                        this.previousKey = "";
+                    },
+                    inputDigit(digit) {
+                        const maxDigits = 10;
+
+                        if (this.currentInput === "Infinity") {
+                            return;
+                        }
+
+                        if (
+                            this.previousKey === "operator" ||
+                            this.previousKey === "calculate"
+                        ) {
+                            this.currentInput = "0";
+                        }
+                        if (this.currentInput === "0") {
+                            this.currentInput = "";
+                        }
+                        this.currentInput += digit;
+                        this.previousKey = "digit";
+
+                        if (this.currentInput.length > maxDigits) {
+                            this.currentInput = parseFloat(
+                                this.currentInput,
+                            ).toExponential(3);
+                        }
+                    },
+                    inputDecimal() {
+                        if (!this.currentInput.includes(".")) {
+                            this.currentInput += ".";
+                        }
+                        this.previousKey = "decimal";
+                    },
+                    inputOperation(operator) {
+                        if (this.operation && this.previousKey === "digit") {
+                            this.calculate();
+                        }
+                        this.operation = operator;
+                        this.result = this.currentInput;
+                        this.previousKey = "operator";
+                    },
+                    toggleSign() {
+                        this.currentInput = this.currentInput
+                            ? String(-parseFloat(this.currentInput))
+                            : "";
+                        this.previousKey = "toggleSign";
+                    },
+                    calculatePercentage() {
+                        if (this.currentInput) {
+                            this.currentInput = String(
+                                parseFloat(this.currentInput) / 100,
+                            );
+                            this.result = this.currentInput;
+                        }
+                        this.previousKey = "percentage";
+                    },
+                    calculate() {
+                        let calculationResult;
+                        const current = parseFloat(this.currentInput);
+                        const previous = parseFloat(this.result);
+                        const maxDigits = 10;
+
+                        if (isNaN(previous) || isNaN(current)) return;
+
+                        switch (this.operation) {
+                            case "+":
+                                calculationResult = previous + current;
+                                break;
+                            case "-":
+                                calculationResult = previous - current;
+                                break;
+                            case "*":
+                                calculationResult = previous * current;
+                                break;
+                            case "/":
+                                if (current === 0) {
+                                    alert("You can't divide by zero.");
+                                    return;
+                                }
+                                calculationResult = previous / current;
+                                break;
+                            default:
+                                return;
+                        }
+
+                        if (
+                            calculationResult.toString().length > maxDigits ||
+                            calculationResult === 0
+                        ) {
+                            calculationResult =
+                                calculationResult.toExponential(3);
+                        } else {
+                            const decimalPlaces =
+                                maxDigits -
+                                Math.floor(calculationResult).toString().length;
+                            calculationResult = parseFloat(
+                                calculationResult.toFixed(
+                                    decimalPlaces < 0 ? 0 : decimalPlaces,
+                                ),
+                            );
+                        }
+
+                        this.currentInput = String(calculationResult);
+                        this.operation = null;
+                        this.result = "";
+                        this.previousKey = "calculate";
+                    },
+                };
+            }
+        </script>
+    </body>
+</html>

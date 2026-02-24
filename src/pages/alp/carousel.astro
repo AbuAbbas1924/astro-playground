@@ -1,0 +1,299 @@
+---
+
+---
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/@tailwindcss/browser@4" is:inline></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="h-screen snap-y snap-mandatory">
+        <section class="h-screen snap-start bg-red-100">
+            style error
+            <!-- <script is:inline>
+                function carousel() {
+                    return {
+                        currentIndex: 0,
+                        images: [
+                            'https://images.unsplash.com/photo-1713895384586-e889e771d650?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw2fHx8ZW58MHx8fHx8',
+                            'https://images.unsplash.com/photo-1716199287176-90597a25c74a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw4fHx8ZW58MHx8fHx8',
+                            'https://images.unsplash.com/photo-1716213420631-286d1d6360f5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw3fHx8ZW58MHx8fHx8'
+                        ],
+                        prev() {
+                            this.currentIndex = (this.currentIndex > 0) ? this.currentIndex - 1 : this.images.length - 1;
+                        },
+                        next() {
+                            this.currentIndex = (this.currentIndex < this.images.length - 1) ? this.currentIndex + 1 : 0;
+                        },
+                        goTo(index) {
+                            this.currentIndex = index;
+                        }
+                    }
+                }
+            </script>
+            <div class="bg-gray-200">
+                <div class="bg-white mx-auto mt-10 p-4 rounded max-w-4xl container">
+                    <h1 class="my-10 font-bold text-center text-xl md:text-4xl">Image Carousel</h1>
+                    <div class="mb-5">
+                        <div
+                            x-data="carousel()"
+                            class="relative mx-auto w-full"
+                        >
+                            <div class="relative rounded-md">
+                                <template
+                                    x-for="(image, index) in images"
+                                    :key="index"
+                                >
+                                    <div
+                                        x-show="currentIndex === index"
+                                        :class="{'translate-x-0': currentIndex === index, '-translate-x-full': currentIndex < index, 'translate-x-full': currentIndex > index}"
+                                        class="absolute inset-0 transition-transform duration-700"
+                                    >
+                                        <img
+                                            :src="image"
+                                            alt="image"
+                                            class="z-30 w-full h-64 object-cover"
+                                        >
+                                    </div>
+                                </template>
+                            </div>
+    
+                            <div class="top-36 absolute inset-0 flex justify-between items-center">
+                                <button
+                                    @click="prev()"
+                                    class="bg-gray-200 hover:bg-gray p-2 rounded-full text-white"
+                                >&#10094</button>
+                                <button
+                                    @click="next()"
+                                    class="bg-gray-200 hover:bg-gray p-2 rounded-full text-white"
+                                >&#10095</button>
+                            </div>
+                            <div class="right-0 bottom-0 left-0 absolute flex justify-center p-2">
+                                <template
+                                    x-for="(image, index) in images"
+                                    :key="index"
+                                >
+                                    <button
+                                        @click="goTo(index)"
+                                        class="mx-1 rounded-full w-3 h-3"
+                                        :class="{'bg-gray-800':currentIndex===index, 'bg-gray-400': currentIndex !== index}"
+                                    ></button>
+                                </template>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </section>
+
+        <section
+            class="h-screen snap-start bg-blue-100 flex items-center justify-center"
+        >
+            <div
+                class="my-10"
+                x-data="{
+                images: [
+                'https://picsum.photos/1000/500',
+                'https://picsum.photos/1000/501',
+                'https://picsum.photos/1001/500',
+                'https://picsum.photos/1001/501',
+                ],
+                activeImage: null,
+                prev(){
+                    let index = this.images.indexOf(this.activeImage);
+                    if (index ===0)
+                        index = this.images.length;
+                    this.activeImage = this.images[index-1];
+                },
+                next(){
+                    let index = this.images.indexOf(this.activeImage);
+                    if(index===this.images.length-1)
+                    index = -1;
+                    this.activeImage = this.images[index +1];
+                },
+                init(){
+                    this.activeImage = this.images.length > 0 ? this.images[0] : null
+                }
+            }"
+            >
+                <div class="relative flex aspect-w-3 aspect-h-2">
+                    <template x-for="image in images">
+                        <div
+                            x-show="activeImage===image"
+                            x-transition
+                            class="aspect-w-3 aspect-h-2"
+                        >
+                            <img :src="image" alt="" class="object-cover" />
+                        </div>
+                    </template>
+                    <a
+                        @click.prevent="prev"
+                        class="top-1/2 left-0 absolute text-white -translate-y-1/2 cursor-pointer"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="w-10 h-10"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M15 19l-7-7 7-7"></path>
+                        </svg>
+                    </a>
+                    <a
+                        @click.prevent="next"
+                        class="top-1/2 right-0 absolute text-white -translate-y-1/2 cursor-pointer"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="w-10 h-10"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </a>
+                </div>
+                <div class="flex">
+                    <template x-for="image in images">
+                        <a
+                            @click="activeImage=image"
+                            class="flex justify-center items-center border-gray-300 hover:border-purple-500 border w-20 cursor-pointer"
+                            :class="{'border-pruple-600': activeImage===image}"
+                        >
+                            <img :src="image" alt="" class="object-cover" />
+                        </a>
+                    </template>
+                </div>
+            </div>
+        </section>
+
+        <section class="h-screen snap-start bg-green-100 flex justify-center items-center">
+            <div>doesn't work on astro</div>
+            <div class="relative h-90 bg-amber-300">
+                <template x-data="{active: 1}" x-for="i in 5">
+                    <img :src="`https://picsum.photos/80${i}`"
+                         x-show="active === i"
+                         @click="(active === 5) ? active = 1 : active++"
+                         x-transition:enter="transition ease-out duration-500"
+                         x-transition:enter-start="opacity-0 transform "
+                         x-transition:enter-end="opacity-100 transform"
+                         x-transition:leave="transition ease-in duration-500"
+                         x-transition:leave-start="opacity-100 transform"
+                         x-transition:leave-end="opacity-0 transform "
+                         class="absolute w-full h-full object-cover">
+                </template>
+            </div>
+        </section>
+        <section class="h-screen snap-start flex items-center justify-center bg-yellow-100">
+            <div
+            class="my-10"
+            x-data="{
+                images: [ 'https://picsum.photos/1000/500', 'https://picsum.photos/1000/501', 'https://picsum.photos/1001/500', 'https://picsum.photos/1001/501', ],
+                activeImage: null,
+                prev(){
+                    let index = this.images.indexOf(this.activeImage);
+                    if (index ===0) index = this.images.length;
+                    this.activeImage = this.images[index-1];
+                },
+                next(){
+                    let index = this.images.indexOf(this.activeImage);
+                    if(index===this.images.length-1) index = -1;
+                    this.activeImage = this.images[index +1];
+                },
+                init(){
+                    this.activeImage = this.images.length > 0 ? this.images[0] : null;
+                    setTimeout(() => {
+                        this.activeImage = this.images.length > 0 ? this.images[0] : null;
+                    }, 1000);
+                }
+                }"
+        >
+            <div class="relative flex h-80">
+                <template x-for="image in images">
+                    <div
+                        x-show="activeImage===image"
+                        x-transition:enter="duration-500"
+                        x-transition:enter-start="translate-x-full"
+                        x-transition:enter-end="translate-x-0"
+                        x-transition:leave="duration-500"
+                        x-transition:leave-start="-translate-x-0"
+                        x-transition:leave-end="-translate-x-full"
+                        class="top-0 left-0 absolute w-full h-full"
+                    >
+                        <img
+                            :src="image"
+                            alt=""
+                            class="object-cover"
+                        />
+                    </div>
+                </template>
+                <a
+                    @click.prevent="prev"
+                    class="top-1/2 left-0 absolute text-white -translate-y-1/2 cursor-pointer"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="w-10 h-10"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M15 19l-7-7 7-7"
+                        />
+                    </svg>
+                </a>
+                <a
+                    @click.prevent="next"
+                    class="top-1/2 right-0 absolute text-white -translate-y-1/2 cursor-pointer"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="w-10 h-10"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M9 5l7 7-7 7"
+                        />
+                    </svg>
+                </a>
+            </div>
+            <div class="flex">
+                <template x-for="image in images">
+                    <a
+                        @click="activeImage=image"
+                        class="flex justify-center items-center border border-gray-300 hover:border-purple-500 w-20 cursor-pointer"
+                        :class="{'border-pruple-600': activeImage===image}"
+                    >
+                        <img
+                            :src="image"
+                            alt=""
+                            class="object-cover"
+                        />
+                    </a>
+                </template>
+            </div>
+        </div>
+        </section>
+    </div>
+</body>

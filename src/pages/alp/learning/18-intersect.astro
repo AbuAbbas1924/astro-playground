@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        >
+        <!-- Alpine Plugins -->
+        <script
+            defer
+            src="https://unpkg.com/@alpinejs/intersect@3.x.x/dist/cdn.min.js"
+        ></script>
+
+        <!-- Alpine Core -->
+        <script
+            defer
+            src="https://unpkg.com/alpinejs"
+        ></script>
+        <link
+            rel="stylesheet"
+            href="style.min.css"
+        >
+        <title>Document</title>
+    </head>
+
+    <body>
+
+        <div x-data="{show:false}">
+            <div x-text="show"></div>
+            <div x-intersect:leave="show = true"> it's red</div>
+            <div
+                class="bg-red-100 h-screen"
+                :class="{ 'bg-blue-100': show }"
+            ></div>
+            <div
+                x-show="show"
+                x-intersect:leave="show=false"
+            >it's blue</div>
+            <div x-text="show"></div>
+            <div class="bg-green-100 h-screen"></div>
+        </div>
+    </body>
+
+</html>

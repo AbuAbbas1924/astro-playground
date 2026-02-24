@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        >
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script
+            defer
+            src="https://unpkg.com/alpinejs"
+        ></script>
+        <style>
+            [x-cloak] {
+                display: none !important;
+            }
+        </style>
+        <title>Document</title>
+    </head>
+
+    <body>
+        <!-- $ x-model -->
+        <div x-data="{search: ''}">
+            <input
+                x-model="search"
+                type="text"
+                class="mt-6 mb-2 p-2 border w-full"
+            >
+            <p>
+                <span class="font-bold">Search:</span>
+                <span x-text="search"></span>
+            </p>
+        </div>
+        <br>
+        <hr>
+        <div x-data="{name:''}">
+            <input
+                x-model="name"
+                type="text"
+            >
+            <p x-text="name"></p>
+            <p x-text="`length: ${name.length}`"></p>
+        </div>
+        <br>
+        <hr>
+        <!-- submit.prevent -->
+        <form
+            x-data="{input:''}"
+            @submit="$event.preventDefault(); console.log(input); input = ''"
+        >
+            <input
+                x-model="input"
+                type="text"
+            >
+            <button type="submit">submit</button>
+        </form>
+        <br>
+        <div x-data="{
+                input:'',
+                upper(){
+                    this.input = this.input.toUpperCase();
+                }
+                }">
+            <input
+                type="text"
+                x-model="input"
+            >
+            <span x-text="input"></span>
+            <button @click="upper">to uppercase</button>
+        </div>
+        <br>
+        <hr>
+        <!-- submit.prevent -->
+        <form
+            x-data="{input:''}"
+            @submit="$event.preventDefault(); console.log(input); input = ''"
+        >
+            <input
+                x-model="input"
+                type="text"
+            >
+            <button type="submit">submit</button>
+        </form>
+        <br>
+        <div x-data="{
+        input:'',
+        upper(){
+            this.input = this.input.toUpperCase();
+        }
+        }">
+            <input
+                type="text"
+                x-model="input"
+            >
+            <span x-text="input"></span>
+            <button @click="upper">to uppercase</button>
+        </div>
+        <br>
+        <hr>
+        <!-- ! image-finder | doesn't work -->
+        <form
+            @submit.prevent="getImage"
+            x-data="{
+                    query: '',
+                    image: '',
+                    getImage(){
+                        this.image = `https://source.unsplash.com/1600x900?${this.query}`
+                    }
+                }"
+        >
+            <input
+                x-model="query"
+                type="text"
+            >
+            <button type="submit">search</button>
+            <p x-text="`link: ${image}`"></p>
+            <div x-show="image">
+                <img :src="image">
+            </div>
+        </form>
+        <br>
+        <hr>
+        <!-- inputs -->
+        <form
+            action=""
+            x-data="{'confirm':false}"
+        >
+            <input
+                id="cid"
+                type="checkbox"
+                x-model="confirm"
+            ><label
+                for="cd"
+                x-text="confirm"
+            ></label>
+            <p x-show="confirm"> you have confirmed</p>
+        </form>
+        <br>
+        <hr>
+        <form
+            x-data="{
+                        users: [],
+                        deleteUser(){console.log(this.users)}
+                    }"
+            @submit.prevent="deleteUser"
+        >
+            <input
+                type="checkbox"
+                name=""
+                id="1"
+                value="1"
+                x-model="users"
+            ><label for="1">ch1</label><input
+                type="checkbox"
+                name=""
+                id="2"
+                value="2"
+                x-model="users"
+            ><label for="2">ch2</label><input
+                type="checkbox"
+                name=""
+                id="3"
+                value="3"
+                x-model="users"
+            ><label for="3">ch3</label><input
+                type="checkbox"
+                name=""
+                id="4"
+                value="4"
+                x-model="users"
+            ><label for="4">ch4</label>
+            <button type="submit">submit</button>
+        </form>
+        <br>
+        <div x-data="{select: 'green'}">
+            <select x-model="select">
+                <option selected>choose</option>
+                <option value="red">red</option>
+                <option value="blue">blue</option>
+                <option value="green">green</option>
+            </select>
+            <span
+                x-show="select"
+                x-text="`you have choose ${select}`"
+            ></span>
+        </div>
+        <br>
+        <div x-data="{plan: 'd'}">
+            <input
+                type="radio"
+                name="a"
+                value="a"
+                id="a"
+                x-model="plan"
+            >
+            <label for="a">a</label>
+            <input
+                type="radio"
+                name="b"
+                value="b"
+                id="b"
+                x-model="plan"
+            >
+            <label for="b">b</label>
+            <input
+                type="radio"
+                name="c"
+                value="c"
+                id="c"
+                x-model="plan"
+            >
+            <label for="c">c</label>
+            <input
+                type="radio"
+                name="d"
+                value="d"
+                id="d"
+                x-model="plan"
+            >
+            <label for="d">d</label>
+            <div x-text="`you have choose ${plan}`"></div>
+        </div>
+        <br>
+        <hr>
+        <!-- html parser -->
+        <div class="mx-auto max-w-screen-sm">
+            <!-- Aufgabe: Input als HTML ausgeben -->
+            <div
+                class="space-y-4 p-4"
+                x-data="{ html: '' }"
+            >
+                <textarea
+                    class="border-slate-500 p-2 border w-full"
+                    type="text"
+                    placeholder="HTML Text eingeben "
+                    x-model="html"
+                ></textarea>
+                <div x-html="html"></div>
+                <!--
+                      <button class="bg-slate-500 px-4 py-2 w-full text-white">Vorlage</button>
+                      -->
+            </div>
+        </div>
+        <div
+            class="space-y-4 p-4"
+            x-data="{checked: []}"
+        >
+            <div class="items-center gap-4 flex-min-h-10">
+                <input
+                    type="checkbox"
+                    value="1"
+                    class="border-orange-400 p-2 border"
+                    x-model="checked"
+                >
+                <input
+                    type="checkbox"
+                    value="2"
+                    class="border-orange-400 p-2 border"
+                    x-model="checked"
+                >
+                <input
+                    type="checkbox"
+                    value="3"
+                    class="border-orange-400 p-2 border"
+                    x-model="checked"
+                >
+                <span x-text="checked"></span>
+            </div>
+            <div class="mx-auto max-w-screen-sm">
+                <!-- Aufgabe: Mit der "Button anzeigen" Checkbox den Button einblenden -->
+                <!-- Aufgabe: Mit der "Text anzeigen" Checkbox den Text einblenden -->
+                <!-- Aufgabe: Der Button soll den Text ein- und ausblenden -->
+                <!-- Hinweis: array.includes(element) ist wahr, falls das array das element enthält -->
+                <div
+                    class="space-y-4 p-4"
+                    x-data="{ elements: [] }"
+                >
+
+                    <div>
+                        <input
+                            id="text"
+                            class="border-slate-500 p-2 border"
+                            type="checkbox"
+                            placeholder="Textinput"
+                            value="text"
+                            x-model="elements"
+                        />
+                        <label for="text">Text anzeigen</label>
+                    </div>
+                    <div>
+                        <input
+                            id="button"
+                            class="border-slate-500 p-2 border"
+                            type="checkbox"
+                            placeholder="Textinput"
+                            value="button"
+                            x-model="elements"
+                        />
+                        <label for="button">Button anzeigen</label>
+                    </div>
+                    <div x-data="{ open: true }">
+
+                        <template x-if="elements.includes('text')">
+                            <div
+                                class="border-slate-500 p-4 border"
+                                x-show="open"
+                            >
+                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis ea fugiat incidunt
+                                doloribus
+                                odio
+                                libero sequi laboriosam pariatur voluptate fugit dolore repellendus impedit veritatis,
+                                distinctio
+                                quod
+                                dignissimos dicta eos fuga.
+                            </div>
+                        </template>
+                        <template x-if="elements.includes('button')">
+                            <button
+                                class="bg-slate-500 px-4 py-2 w-full text-white"
+                                @click="open = !open"
+                            >Toggle</button>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div
+            x-data="{r:''}"
+            class="space-y-4 p-4"
+        >
+            <div class="flex items-center gap-4 min-h-10"><input
+                    type="radio"
+                    class="border-violet-400 p-2 border"
+                    x-model="r"
+                    value="r1"
+                ><input
+                    type="radio"
+                    class="border-violet-400 p-2 border"
+                    x-model="r"
+                    value="r2"
+                >
+                <span x-text="r"></span>
+            </div>
+        </div>
+        <div class="mx-auto max-w-screen-sm">
+            <!-- Aufgabe: Mit der "Rot" Checkbox den Button Rot färben -->
+            <!-- Aufgabe: Mit der "Blau" Checkbox den Button Blau färben -->
+            <!-- Hinweis: bg-red-500 Klasse für Rot und bg-blue-500 Klasse für Blau -->
+            <div
+                class="space-y-4 p-4"
+                x-data="{ color: 'bg-slate-500' }"
+            >
+                <div class="flex gap-4">
+                    <div>
+                        <label for="red">Rot</label>
+                        <input
+                            id="red"
+                            type="radio"
+                            placeholder="Textinput"
+                            value="bg-red-500"
+                            x-model="color"
+                        />
+                    </div>
+                    <div>
+                        <label for="blue">Blau</label>
+                        <input
+                            id="blue"
+                            type="radio"
+                            placeholder="Textinput"
+                            value="bg-blue-500"
+                            x-model="color"
+                        />
+                    </div>
+                </div>
+                <button
+                    class="px-4 py-2 w-full text-white"
+                    :class="color"
+                >Button</button>
+            </div>
+        </div>
+        <div class="mx-auto max-w-screen-sm">
+            <!-- Aufgabe: Mit der Range den Button heller und dunkler machen  -->
+            <!-- Hinweis: bg-slate-100...900 Klasse zum heller und dunkler machen -->
+            <div
+                class="space-y-4 p-4"
+                x-data="{ color: 500 }"
+            >
+                <div class="flex gap-4">
+                    <input
+                        class="grow"
+                        type="range"
+                        placeholder="Textinput"
+                        min="100"
+                        step="100"
+                        max="900"
+                        x-model="color"
+                    />
+                    <span x-text="color"></span>
+                </div>
+                <button
+                    class="px-4 py-2 w-full text-white"
+                    :class="'bg-slate-' + color"
+                >Button</button>
+            </div>
+        </div>
+        <div class="mx-auto max-w-screen-sm">
+            <!-- Aufgabe: Mit dem Select den Div färben  -->
+            <!-- Hinweis: bg-red-500 Klasse für Rot und bg-blue-500 Klasse für Blau -->
+            <div
+                class="p-4"
+                x-data="{ color: '' }"
+            >
+                <div class="flex gap-4">
+                    <select
+                        class="border-slate-500 p-2 border w-1/2"
+                        placeholder="Textinput"
+                        x-model="color"
+                    >
+                        <option
+                            value=""
+                            disabled
+                        >Auswahl</option>
+                        <option value="bg-red-500">Rot</option>
+                        <option value="bg-blue-500">Blau</option>
+                    </select>
+                    <div
+                        class="border grow"
+                        :class="color"
+                    ></div>
+                </div>
+            </div>
+        </div>
+        <!-- #debounce -->
+        <div class="space-y-4 p-4">
+            <div
+                class="flex-items-center gap-4"
+                x-data="{input:''}"
+            ><input
+                    type="text"
+                    class="border-violet-500 p-2 border 1/2 w"
+                    x-model.debounce="input"
+                ><span x-text="input"></span></div>
+            <div
+                class="flex-items-center gap-4"
+                x-data="{input:''}"
+            ><input
+                    type="text"
+                    class="border-violet-500 p-2 border 1/2 w"
+                    x-model.debounce.500ms="input"
+                ><span x-text="input"></span></div>
+            <div
+                class="flex-items-center gap-4"
+                x-data="{input:''}"
+            ><input
+                    type="text"
+                    class="border-violet-500 p-2 border 1/2 w"
+                    x-model.debounce.lazy="input"
+                ><span x-text="input"></span></div>
+        </div>
+        <div class="mx-auto max-w-screen-sm">
+            <!-- Aufgabe: Array mit der Eingabe aus dem Input filtern  -->
+            <!-- Aufgabe: Die Eingabe soll verzögert verarbeitet werden -->
+            <!-- Hinweis: array.includes(element) ist wahr, falls das array das element enthält -->
+            <div
+                class="p-4"
+                x-data="{
+                      colors: ['rot', 'blau', 'grün', 'gelb', 'braun'],
+                      search: ''
+                    }"
+            >
+                <input
+                    class="border-slate-500 p-2 border w-full"
+                    type="text"
+                    placeholder="Suche"
+                    x-model.debounce.500="search"
+                />
+                <template x-for="color in colors">
+                    <template x-if="color.includes(search)">
+                        <p x-text="color"></p>
+                    </template>
+                </template>
+            </div>
+        </div>
+        <br>
+        <hr>
+        <div x-data="{keyword: null}">
+            <input
+                type="text"
+                placeholder="debounce after 500ms"
+                x-model.debounce.500ms="keyword"
+            />
+            <p x-text="keyword"></p>
+        </div>
+        <div x-data="{text: null, bg: null, id: null}">
+            <button
+                :id="id"
+                :style="{backgroundColor: bg}"
+                x-text="text"
+            ></button>
+            <br>
+            <input
+                type="text"
+                x-model="text"
+                placeholder="Text"
+            >
+            <input
+                type="text"
+                x-model="bg"
+                placeholder="Background Color"
+            >
+            <input
+                type="text"
+                x-model="id"
+                placeholder="ID"
+            >
+        </div>
+        <hr>
+        <!--$ slider | error -->
+        <script>
+            function colorslider() {
+
+                return {
+                    red: '128',
+                    green: '128',
+                    blue: '128',
+
+                    conv(color) {
+                        color = parseInt(color).toString(16).toUpperCase(); // conversion to hex value
+                        if (color.length == 1) { color = "0" + color; }
+                        return color;
+                    }
+
+                }
+
+
+            }
+        </script>
+
+        <section
+            x-data="colorslider()"
+            class="flex items-center mt-8"
+        >
+            <div id="sliders">
+                <!-- Slider for Red -->
+                <div class="flex items-center mb-5">
+                    <div class="bg-red-500 mr-3 w-5 h-5"></div>
+                    <input
+                        x-model="red"
+                        id="red"
+                        min="0"
+                        max="255"
+                        type="range"
+                        class="mr-3"
+                    >
+                    <input
+                        x-model="red"
+                        class="mr-3 p-1 w-10"
+                        placeholder="Dec."
+                        type="text"
+                        disabled
+                    >
+                    <input
+                        :value="conv(red)"
+                        class="p-1 w-10"
+                        placeholder="Hex."
+                        type="text"
+                        disabled
+                    >
+                </div>
+                <!-- Slider for Green -->
+                <div class="flex items-center mb-5">
+                    <div class="bg-green-500 mr-3 w-5 h-5"></div>
+                    <input
+                        x-model="green"
+                        id="green"
+                        min="0"
+                        max="255"
+                        type="range"
+                        class="mr-3"
+                    >
+                    <input
+                        x-model="green"
+                        class="mr-3 p-1 w-10"
+                        placeholder="Dec."
+                        type="text"
+                        disabled
+                    >
+                    <input
+                        :value="conv(green)"
+                        class="p-1 w-10"
+                        placeholder="Hex."
+                        type="text"
+                        disabled
+                    >
+                </div>
+                <!-- Slider for blue-->
+                <div class="flex items-center">
+                    <div class="bg-blue-500 mr-3 w-5 h-5"></div>
+                    <input
+                        x-model="blue"
+                        id="blue"
+                        min="0"
+                        max="255"
+                        type="range"
+                        class="mr-3"
+                    >
+                    <input
+                        x-model="blue"
+                        class="mr-3 p-1 w-10"
+                        placeholder="Dec."
+                        type="text"
+                        disabled
+                    >
+                    <input
+                        :value="conv(blue)"
+                        class="p-1 w-10"
+                        placeholder="Hex."
+                        type="text"
+                        disabled
+                    >
+                </div>
+            </div>
+            <!-- Output -->
+            <div
+                :style="'background-color:#' + conv(red) + conv(green) + conv(blue)"
+                id="result"
+                class="border-1 border-gray-600 ml-12 border w-24 h-24"
+            ></div>
+        </section>
+        <hr>
+        <script>
+            let dynamicTabs = () => {
+                return {
+                    tab: 0,
+                    tabClasses: 'px-5 py-3 rounded-xl rounded-b cursor-pointer ',
+                    tabNormalColors: 'bg-gray-200 hover:bg-gray-300',
+                    tabHiColor: 'bg-gray-400',
+                }
+            }
+        </script>
+        <section
+            x-data="dynamicTabs()"
+            class="mt-8"
+        >
+            <span
+                @click="tab=0"
+                :class="tab == 0 ? tabClasses + tabHiColor : tabClasses + tabNormalColors"
+            >Tab 1</span>
+            <span
+                @click="tab=1"
+                :class="tab == 1 ? tabClasses + tabHiColor : tabClasses + tabNormalColors"
+            >Tab 2</span>
+            <span
+                @click="tab=2"
+                :class="tab == 2 ? tabClasses + tabHiColor : tabClasses + tabNormalColors"
+            >Tab 3</span>
+            <div
+                x-show="tab == 0"
+                id="tab1Content"
+                class="block-inline mt-4 ml-2"
+                style="width: 350px;"
+            >
+                <b>This ist the content of Tab 1:</b><br>
+                Lorem ipsum dolor sit amet. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium, odio?
+            </div>
+            <div
+                x-show="tab == 1"
+                id="tab2Content"
+                class="block-inline mt-4 ml-2"
+                style="width: 350px;"
+            >
+                <b>This ist the content of Tab 2:</b><br>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, libero? Debitis praesentium enim numquam
+                provident
+                suscipit, aliquid nisi illo eveniet iure, ex magnam quas nihil?
+            </div>
+            <div
+                x-show="tab == 2"
+                id="tab3Content"
+                class="block-inline mt-4 ml-2"
+                style="width: 350px;"
+            >
+                <b>This ist the content of Tab 3:</b><br>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut ab quidem at ex. Quos sit repellendus est.
+            </div>
+        </section>
+        <hr>
+        <div
+            class="mx-auto max-w-screen-xl"
+            x-data="{value:30}"
+        >
+            <h1 class="font-extrabold text-4xl text-gray-900 leading-10 tracking-tight">Text</h1>
+            <p>subtitle</p>
+            <input
+                x-model="value"
+                type="input"
+                class="m-5 border w-1/2"
+            ><input
+                type="range"
+                min="0"
+                max="100"
+                class="m-5 w-1/2"
+                x-model="value"
+            >
+            <template x-if="value>30">
+                <div>
+                    value over 30
+                </div>
+            </template>
+            <template x-if="value>50">
+                <div>
+                    value over 50
+                </div>
+            </template>
+            <template x-if="value>70">
+                <div>
+                    value over 70
+                </div>
+            </template>
+        </div>
+    </body>
+
+</html>

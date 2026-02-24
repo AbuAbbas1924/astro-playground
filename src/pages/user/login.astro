@@ -1,0 +1,174 @@
+---
+import "@tailwind";
+export const prerender = false;
+
+import { db, User_a1, eq } from "astro:db";
+import bcrypt from "bcryptjs";
+import { randomUUID, createHmac } from "node:crypto";
+
+let email = "";
+let error = "";
+let message = "";
+let csrfToken = "";
+
+// --- Minimal stateless session (HMAC-signed cookie) ---
+function getSecret() {
+  // Use either runtime or build-time env, fallback for dev only
+  return (
+    process.env.SESSION_SECRET ||
+    import.meta.env.SESSION_SECRET ||
+    "dev-insecure-secret"
+  );
+}
+
+function sign(payload) {
+  return createHmac("sha256", getSecret()).update(payload).digest("hex"); // hex avoids base64 issues
+}
+
+function createSessionCookie(userId, maxAgeSec = 60 * 60 * 24 * 7) {
+  const exp = Math.floor(Date.now() / 1000) + maxAgeSec;
+  const payload = `${userId}.${exp}`;
+  const sig = sign(payload);
+  return { value: `${payload}.${sig}`, maxAgeSec };
+}
+
+function verifySessionCookie(cookieVal) {
+  if (!cookieVal) return null;
+  const parts = cookieVal.split(".");
+  if (parts.length !== 3) return null;
+  const [uid, expStr, sig] = parts;
+  const payload = `${uid}.${expStr}`;
+  if (sig !== sign(payload)) return null;
+  const exp = Number(expStr);
+  if (!exp || exp < Math.floor(Date.now() / 1000)) return null;
+  return { uid, exp };
+}
+
+// --- CSRF (double-submit cookie) ---
+function setCsrfCookie() {
+  csrfToken = randomUUID();
+  Astro.cookies.set("csrf_token", csrfToken, {
+    path: "/",
+    httpOnly: false, // readable by browser if needed; we embed server-side value into the form
+    sameSite: "lax",
+    secure: import.meta.env.PROD,
+    maxAge: 60 * 60, // 1 hour
+  });
+}
+
+if (Astro.request.method === "GET") {
+  setCsrfCookie();
+}
+
+if (Astro.request.method === "POST") {
+  const form = await Astro.request.formData();
+  email = String(form.get("email") ?? "").trim();
+  const password = String(form.get("password") ?? "");
+  const formToken = String(form.get("csrf_token") ?? "");
+  const cookieToken = Astro.cookies.get("csrf_token")?.value ?? "";
+
+  // CSRF check first
+  if (!formToken || !cookieToken || formToken !== cookieToken) {
+    error = "Invalid CSRF token.";
+  } else if (!email || !password) {
+    error = "Email and password are required.";
+  } else {
+    try {
+      // Lookup user and verify bcrypt hash from DB
+      const [user] = await db
+        .select()
+        .from(User_a1)
+        .where(eq(User_a1.email, email));
+      if (!user) {
+        error = "Invalid email or password.";
+      } else {
+        const ok = await bcrypt.compare(password, user.passwordHash);
+        if (!ok) {
+          error = "Invalid email or password.";
+        } else {
+          // Set a secure, signed session cookie
+          const session = createSessionCookie(user.id);
+          Astro.cookies.set("session", session.value, {
+            path: "/",
+            httpOnly: true,
+            sameSite: "lax",
+            secure: import.meta.env.PROD,
+            maxAge: session.maxAgeSec,
+          });
+
+          message = "Logged in successfully.";
+          // Rotate CSRF token after authentication
+          setCsrfCookie();
+        }
+      }
+    } catch (e) {
+      console.error(e);
+      error = "Login failed.";
+    }
+  }
+
+  // Ensure we have a token to render
+  csrfToken = Astro.cookies.get("csrf_token")?.value ?? csrfToken;
+}
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Login</title>
+  </head>
+  <body class="min-h-screen bg-gray-50 text-gray-900 antialiased p-6">
+    <main
+      class="mx-auto w-full max-w-sm bg-white shadow-sm rounded-xl p-6 border border-gray-200"
+    >
+      <h1 class="text-2xl font-semibold mb-4">Login</h1>
+
+      {error && <p class="mb-3 text-sm text-red-600">{error}</p>}
+      {message && <p class="mb-3 text-sm text-green-600">{message}</p>}
+
+      <form method="POST" class="space-y-4">
+        <input type="hidden" name="csrf_token" value={csrfToken} />
+        <div>
+          <label for="email" class="block text-sm font-medium">Email</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            value={email}
+            required
+            autocomplete="email"
+            placeholder="you@example.com"
+            class="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+        <div>
+          <label for="password" class="block text-sm font-medium"
+            >Password</label
+          >
+          <input
+            id="password"
+            name="password"
+            type="password"
+            required
+            autocomplete="current-password"
+            placeholder="••••••••"
+            class="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+        <button
+          type="submit"
+          class="w-full rounded-lg bg-blue-600 text-white font-semibold px-4 py-2 hover:bg-blue-700"
+        >
+          Sign in
+        </button>
+      </form>
+
+      <p class="mt-4 text-sm">
+        New here? <a href="/user/register" class="text-blue-600 hover:underline"
+          >Create an account</a
+        >
+      </p>
+    </main>
+  </body>
+</html>

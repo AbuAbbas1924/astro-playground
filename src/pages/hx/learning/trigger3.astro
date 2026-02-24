@@ -1,0 +1,100 @@
+---
+import "@tw";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="htmx-config" content='{"selfRequestsOnly":false}' />
+    <script src="https://unpkg.com/htmx.org"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+  </head>
+
+  <body>
+    <p>HTMX trigger on click (default)</p>
+    <div hx-get="https://v2.jokeapi.dev/joke/Any?format=txt" class="click">Click div to load jokes</div>
+
+    <br />
+    <hr /><br />
+
+    <p>HTMX trigger on every mouseenter</p>
+    <div hx-get="https://v2.jokeapi.dev/joke/Any?format=txt" hx-trigger="mouseenter" class="mouseenter">
+      Mouseover to load jokes
+    </div>
+
+    <br />
+    <hr /><br />
+
+    <p>HTMX trigger on mouseenter once</p>
+    <div hx-get="https://v2.jokeapi.dev/joke/Any?format=txt" hx-trigger="mouseenter once" class="mouseenteronce">
+      Mouseover to load jokes
+    </div>
+
+    <br />
+    <hr /><br />
+
+    <p>HTMX trigger with loading indicator</p>
+    <div hx-get="https://v2.jokeapi.dev/joke/Any?format=txt" class="indicator">
+      <!-- must be inside same DIV-->
+      Click div to load jokes<br />
+      <img class="htmx-indicator" src="https://i.imgur.com/8THYvPQ.gif" />
+    </div>
+
+    <br />
+    <hr /><br />
+
+    <p>HTMX trigger with target class</p>
+    <button hx-get="https://v2.jokeapi.dev/joke/Any?format=txt" hx-target="#result" class="btn">
+      Load jokes in target DIV
+    </button><br />
+    <div class="result" id="result"></div>
+
+    <br />
+    <hr /><br />
+
+    <p>HTMX trigger based on another event</p>
+    <!-- This adds the event modifier 'from:'-->
+    <div hx-get="https://v2.jokeapi.dev/joke/Any?format=txt" hx-trigger="click from:.btn" class="event">
+      Load when button from prev example is clicked
+    </div>
+
+    <br />
+    <hr /><br />
+
+    <p>HTMX trigger on poll every 5 seconds</p>
+    <div hx-get="https://v2.jokeapi.dev/joke/Any?format=txt" hx-trigger="every 5s" class="poll">Load Jokes</div>
+
+    <br />
+    <hr /><br />
+
+    <p>Bonus: What happens if HTMX receives raw JSON data</p>
+    <div hx-get="https://dummyjson.com/products/1" class="JSON">Click div to load JSON</div>
+
+    <p>
+      Use the <tt>hx-ext="client-side-templates"</tt> attribute to activate the client-side templates extension for HTMX.
+      This allows the use of a templating engine to transform the JSON response from the API into HTML before it shows up
+      on the page. HTMX supports 4 templating libraries: mustache.js, handlebars, nunjucks, and xslt. Requires additional
+      setup though. More info at: <br />https://htmx.org/extensions/client-side-templates/
+    </p>
+
+    <br /><br /><br /><br />
+    <small>
+      <br />Collection of HTMX examples:
+      <br />https://codepen.io/collection/NqrGQR
+    </small>
+  </body>
+  <style type="text/tailwindcss">
+    div {
+      @apply w-[90%] bg-[#eee] min-h-[50px] cursor-pointer p-2.5 rounded-[5px];
+    }
+    button {
+      @apply mx-0 my-2.5;
+    }
+    .htmx-indicator {
+      @apply h-5 w-5;
+    }
+  </style>
+</html>

@@ -1,0 +1,128 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        >
+        <script
+            src="https://unpkg.com/alpinejs"
+            defer
+        ></script>
+        <title>Document</title>
+    </head>
+
+    <body>
+        <div x-data="{
+                current: 0,
+                questions: [
+                    {
+                        question: 'q1',
+                        correctIndex: 0,
+                        points: 1,
+                        answers: [
+                            {content : 'a1.1'},
+                            {content : 'a1.2'},
+                            {content : 'a1.3'}
+                        ]
+                    },
+                    {
+                        question: 'q2',
+                        correctIndex: 1,
+                        points: 2,
+                        answers: [
+                            {content : 'a2.1'},
+                            {content : 'a2.2'},
+                            {content : 'a2.3'}
+                        ]
+                    },
+                    {
+                        question: 'q3',
+                        correctIndex: 2,
+                        points: 3,
+                        answers: [
+                            {content : 'a3.1'},
+                            {content : 'a3.2'},
+                            {content : 'a3.3'}
+                        ]
+                    },
+                ],
+                input: '',
+                message: '',
+                disabled: false,
+                showNext: false,
+                result: false,
+                total: 0,
+                resultMessage: '',
+            }">
+            <h2 x-text="`${current +1}. ${questions[current].question}`"></h2>
+            <div style="margin-left: 20px; margin-bottom: 20px">
+                <template
+                    x-for="answer, index in questions[current].answers"
+                    :key="index"
+                >
+                    <div x-text="answer.content"></div>
+                </template>
+            </div>
+            <div style="margin-bottom: 20px; display: flex; flex-direction: column">
+                <label for="ch1">antwort:</label>
+                <input
+                    :disabled="disabled"
+                    style="width: 100px"
+                    x-model="input"
+                    id="ch1"
+                    type="text"
+                >
+                <div x-text="message"></div>
+            </div>
+            <button
+                x-show="!showNext"
+                @click="
+                    question = questions[current];
+                    correctInput = question.answers[question.correctIndex].content;
+                    input === correctInput? (message='right',  total += question.points): message='wrong';
+                    disabled = true;
+                    showNext = true;
+                "
+            >check</button>
+            <button
+                @click="
+                    if (current === questions.length - 1) {
+                        const perfectScore = questions.reduce((acc, question) => acc + question.points, 0);
+                        const percentage = (total / perfectScore) * 100;
+                        if(percentage === 100){
+                            resultMessage = 'perfect score';
+                        } else if(percentage > 50){
+                            resultMessage = 'good';
+                        } else{
+                            resultMessage = 'bad';
+                        }
+                        result=true;
+                    } else{
+                        current++;
+                    }
+                    disabled=false;
+                    input='';
+                    message='';
+                    showNext = false;
+                "
+                x-show="showNext"
+            >next</button>
+            <div
+                x-show="result"
+                style="margin-top: 20px"
+            >
+                <h1 x-text="`final points: ${total}`"></h1>
+                <h2
+                    x-text="`${ ( (total / questions.reduce((acc, question) => acc + question.points, 0)) * 100).toFixed(2) }% - ${resultMessage}`">
+                </h2>
+                <button @click="current = 0; total = 0; result = false">Reset</button>
+            </div>
+        </div>
+    </body>
+
+</html>

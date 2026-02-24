@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        >
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script
+            defer
+            src="https://unpkg.com/alpinejs"
+        ></script>
+        <style>
+            [x-cloak] {
+                display: none !important;
+            }
+        </style>
+        <title>Document</title>
+    </head>
+
+    <body>
+        <!-- ~ x-teleport -->
+        <div
+            class="p-4"
+            x-data="{open:false}"
+        >
+            <div class="bg-blue-400 p-4">
+                <div class="bg-green-400 p-4">
+                    <div id="goal"></div>
+                </div>
+            </div>
+        </div>
+        <template
+            x-data
+            x-teleport="#goal"
+        >
+            <div class="bg-red-400 p-4"></div>
+        </template>
+        <br>
+        <hr>
+        <div x-data>
+            <p>Some Content</p>
+
+            <div x-data="{open: false}">
+                <button @click="open = !open">Open Modal</button>
+                <template x-teleport="body">
+                    <div x-show="open">Modal Content</div>
+                </template>
+            </div>
+
+            <p>More Content</p>
+        </div>
+        <hr>
+        <div class="mx-auto max-w-screen-sm">
+            <!-- Aufgabe: Der Button "Modal anzeigen" soll das Model einblenden -->
+            <!-- Aufgabe: Das Model soll als letztes Element vom Body eingespielt werden -->
+            <!-- Aufgabe: Das Model wird durch den Butten "Schließen" oder durch einen Klick außerhalb vom Modal geschlossen -->
+            <div
+                class="p-4"
+                x-data="{ open: false }"
+            >
+                <button
+                    class="bg-slate-500 px-4 py-2 text-white"
+                    @click="open = true"
+                >Modal anzeigen</button>
+                <template x-teleport="body">
+                    <div
+                        class="fixed inset-0 flex justify-center items-center bg-black/50"
+                        x-show="open"
+                        x-transition
+                    >
+                        <div
+                            class="space-y-4 bg-white p-8 rounded-xl max-w-sm"
+                            @click.outside="open = false"
+                        >
+                            <h3 class="font-semibold text-2xl text-center">Lorem ipsum dolor sit amet.</h3>
+                            <p class="text-justify">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi pariatur laboriosam
+                                eligendi
+                                quasi
+                                ipsum magnam culpa totam, aliquid nemo? Nemo?
+                            </p>
+                            <button
+                                class="bg-slate-500 px-4 py-2 w-full text-white"
+                                @click="open = false"
+                            >Schließen</button>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+        <br>
+        <hr>
+        <!-- ( x-ignore) -->
+        <div x-data="{name: 'Zura'}">
+            <div x-ignore>
+                <p x-text="name"></p>
+            </div>
+        </div>
+        <hr>
+        <div x-data="{ isEditing: false, text: 'Click to edit', tempText: '' }">
+            <template x-if="!isEditing">
+                <div @click="tempText = text; isEditing = true">
+                    <span x-text="text"></span>
+                </div>
+            </template>
+            <template x-if="isEditing">
+                <input
+                    type="text"
+                    x-model="tempText"
+                    @keydown.enter="text = tempText; isEditing = false"
+                    @keydown.escape="isEditing = false"
+                    @blur="text = tempText; isEditing = false"
+                />
+            </template>
+        </div>
+        <hr>
+        <div x-data="{ items: ['Item 1', 'Item 2', 'Item 3'], editingIndex: null, tempText: '' }">
+            <!-- Render List -->
+            <ul>
+                <template
+                    x-for="(item, index) in items"
+                    :key="index"
+                >
+                    <li>
+                        <!-- Show text when not editing -->
+                        <span
+                            x-show="editingIndex !== index"
+                            @click="tempText = item; editingIndex = index"
+                        >
+                            <span x-text="item"></span>
+                        </span>
+
+                        <!-- Teleported input for editing -->
+                        <x-teleport
+                            :to="'#edit-field'"
+                            x-show="editingIndex === index"
+                        >
+                            <input
+                                type="text"
+                                x-model="tempText"
+                                @keydown.enter="items[index] = tempText; editingIndex = null"
+                                @keydown.escape="editingIndex = null"
+                                @blur="items[index] = tempText; editingIndex = null"
+                                placeholder="Edit item"
+                            />
+                        </x-teleport>
+                    </li>
+                </template>
+            </ul>
+
+            <!-- Teleport Destination -->
+            <div
+                id="edit-field"
+                style="position: fixed; top: 0; left: 0;"
+            ></div>
+        </div>
+        <hr>
+
+        <div
+            x-data="editableList()"
+            class="p-4"
+        >
+            <!-- Dynamic List -->
+            <ul>
+                <template
+                    x-for="(item, index) in items"
+                    :key="index"
+                >
+                    <li>
+                        <!-- Display item text -->
+                        <span
+                            @click="startEditing(index, item, $event)"
+                            x-text="item"
+                            style="cursor: pointer; display: inline-block; margin: 5px 0;"
+                        ></span>
+                    </li>
+                </template>
+            </ul>
+
+            <!-- Teleported Input Field -->
+            <x-teleport to="#global-edit">
+                <div
+                    x-show="editingIndex !== null"
+                    style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: white; padding: 10px; border: 1px solid #ccc; box-shadow: 0px 2px 6px rgba(0,0,0,0.2);"
+                >
+                    <input
+                        x-model="tempValue"
+                        @keydown.enter="saveEditing"
+                        @keydown.escape="cancelEditing"
+                        @blur="saveEditing"
+                        x-init="$nextTick(() => $el.focus())"
+                        type="text"
+                    />
+                </div>
+            </x-teleport>
+        </div>
+
+        <!-- Teleport Destination -->
+        <div id="global-edit"></div>
+
+        <script>
+            function editableList() {
+                return {
+                    items: ["Item 1", "Item 2", "Item 3"], // Initial list items
+                    editingIndex: null,                   // Tracks the index of the item being edited
+                    tempValue: "",                        // Temporary value for the input field
+
+                    // Start editing an item
+                    startEditing(index, value) {
+                        this.editingIndex = index;
+                        this.tempValue = value;
+                    },
+
+                    // Save changes to the original list
+                    saveEditing() {
+                        if (this.editingIndex !== null) {
+                            this.items[this.editingIndex] = this.tempValue.trim() || this.items[this.editingIndex];
+                            this.editingIndex = null;
+                        }
+                    },
+
+                    // Cancel the edit operation
+                    cancelEditing() {
+                        this.editingIndex = null;
+                    }
+                };
+            }
+        </script>
+        <hr>
+        <div x-data="editableList()">
+            <!-- Dynamic List -->
+            <ul>
+                <template
+                    x-for="(item, index) in items"
+                    :key="index"
+                >
+                    <li>
+                        <!-- List item text -->
+                        <span
+                            @click="startEditing(index, item)"
+                            x-text="item"
+                            style="cursor: pointer;"
+                        ></span>
+                    </li>
+                </template>
+            </ul>
+
+            <!-- Teleported Input -->
+            <template x-teleport="body">
+                <div
+                    x-show="editingIndex !== null"
+                    style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: white; padding: 10px; border: 1px solid #ccc;"
+                >
+                    <input
+                        x-model="tempValue"
+                        @keydown.enter="saveEditing"
+                        @keydown.escape="cancelEditing"
+                        @blur="saveEditing"
+                        x-init="$nextTick(() => $el.focus())"
+                    />
+                </div>
+            </template>
+        </div>
+
+        <script>
+            function editableList() {
+                return {
+                    items: ["Item 1", "Item 2", "Item 3"],
+                    editingIndex: null,
+                    tempValue: "",
+                    startEditing(index, value) {
+                        this.editingIndex = index;
+                        this.tempValue = value;
+                    },
+                    saveEditing() {
+                        if (this.editingIndex !== null) {
+                            this.items[this.editingIndex] = this.tempValue.trim() || this.items[this.editingIndex];
+                            this.editingIndex = null;
+                        }
+                    },
+                    cancelEditing() {
+                        this.editingIndex = null;
+                    },
+                };
+            }
+        </script>
+        <hr>
+        <div x-data="editableList()">
+            <!-- Dynamic List -->
+            <ul>
+                <template
+                    x-for="(item, index) in items"
+                    :key="index"
+                >
+                    <li>
+                        <!-- List item text -->
+                        <span
+                            @click="startEditing(index, item)"
+                            x-text="item"
+                            style="cursor: pointer;"
+                        ></span>
+                    </li>
+                </template>
+            </ul>
+
+            <!-- Teleported Input -->
+            <template x-teleport="body">
+                <div
+                    x-show="editingIndex !== null"
+                    style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: white; padding: 10px; border: 1px solid #ccc;"
+                >
+                    <input
+                        x-model="tempValue"
+                        @keydown.enter="saveEditing"
+                        @keydown.escape="cancelEditing"
+                        @blur="saveEditing"
+                        x-init="$nextTick(() => $el.focus())"
+                    />
+                </div>
+            </template>
+        </div>
+
+        <script>
+            function editableList() {
+                return {
+                    items: ["Item 1", "Item 2", "Item 3"],
+                    editingIndex: null,
+                    tempValue: "",
+                    startEditing(index, value) {
+                        this.editingIndex = index;
+                        this.tempValue = value;
+                    },
+                    saveEditing() {
+                        if (this.editingIndex !== null) {
+                            this.items[this.editingIndex] = this.tempValue.trim() || this.items[this.editingIndex];
+                            this.editingIndex = null;
+                        }
+                    },
+                    cancelEditing() {
+                        this.editingIndex = null;
+                    },
+                };
+            }
+        </script>
+    </body>
+
+</html>

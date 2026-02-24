@@ -1,0 +1,282 @@
+---
+import "@tailwind";
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Random Generators — Alpine + Tailwind</title>
+</head>
+<body class="bg-gray-50 text-gray-900 antialiased">
+
+    <h1 x-data="data()" x-text="msg"></h1>
+
+  <!-- <main class="mx-auto p-6 max-w-5xl" x-data="{
+    // Inputs
+    min: 1, max: 6,
+    minFloat: 0, maxFloat: 10,
+    sMin: 100, sMax: 200,
+    arrayText: 'apple, banana, cherry',
+    shuffleText: '1, 2, 3, 4, 5',
+
+    // Outputs
+    out: {
+      rand01: null,
+      randFloat: null,
+      randIntIncl: null,
+      randIntExcl: null,
+      sample: null,
+      coin: null,
+      shuffled: null,
+      secure01: null,
+      secureInt: null,
+    },
+
+    // Generators
+    rand01() {
+      this.out.rand01 = Math.random();
+    },
+    randFloat() {
+      const min = parseFloat(this.minFloat);
+      const max = parseFloat(this.maxFloat);
+      if (!(max > min)) { this.out.randFloat = 'Invalid range'; return; }
+      this.out.randFloat = Math.random() * (max - min) + min;
+    },
+    randIntIncl() {
+      const min = Math.ceil(Number(this.min));
+      const max = Math.floor(Number(this.max));
+      if (!(max >= min)) { this.out.randIntIncl = 'Invalid range'; return; }
+      this.out.randIntIncl = Math.floor(Math.random() * (max - min + 1)) + min;
+    },
+    randIntExcl() {
+      const min = Math.ceil(Number(this.min));
+      const max = Math.floor(Number(this.max));
+      if (!(max > min)) { this.out.randIntExcl = 'Invalid range'; return; }
+      this.out.randIntExcl = Math.floor(Math.random() * (max - min)) + min;
+    },
+    sample() {
+      const arr = this.arrayText.split(',').map(s => s.trim()).filter(Boolean);
+      if (arr.length === 0) { this.out.sample = 'Provide items'; return; }
+      this.out.sample = arr[Math.floor(Math.random() * arr.length)];
+    },
+    coin() {
+      this.out.coin = Math.random() < 0.5 ? 'Heads' : 'Tails';
+    },
+    shuffle() {
+      const arr = this.shuffleText.split(',').map(s => s.trim()).filter(Boolean);
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      this.out.shuffled = arr.join(', ');
+    },
+    secure01() {
+      const u32 = new Uint32Array(1);
+      crypto.getRandomValues(u32);
+      this.out.secure01 = u32[0] / 2 ** 32; // 0 <= x < 1
+    },
+    secureInt() {
+      const min = Math.ceil(Number(this.sMin));
+      const max = Math.floor(Number(this.sMax));
+      if (!(max >= min)) { this.out.secureInt = 'Invalid range'; return; }
+
+      const range = max - min + 1;
+      const maxUint = 0xFFFFFFFF;                  // 2^32 - 1
+      const limit = Math.floor((maxUint + 1) / range) * range - 1;
+
+      while (true) {
+        const u32 = new Uint32Array(1);
+        crypto.getRandomValues(u32);
+        const r = u32[0];
+        if (r <= limit) {
+          this.out.secureInt = min + (r % range);
+          return;
+        }
+      }
+    },
+
+    // Helpers
+    generateAll() {
+      this.rand01();
+      this.randFloat();
+      this.randIntIncl();
+      this.randIntExcl();
+      this.sample();
+      this.coin();
+      this.shuffle();
+      this.secure01();
+      this.secureInt();
+    },
+    resetAll() {
+      this.out = {
+        rand01: null,
+        randFloat: null,
+        randIntIncl: null,
+        randIntExcl: null,
+        sample: null,
+        coin: null,
+        shuffled: null,
+        secure01: null,
+        secureInt: null,
+      };
+    }
+  }">
+    <h1 class="mb-4 font-bold text-2xl">Random Generators (Alpine + Tailwind)</h1>
+    <p class="mb-8 text-gray-600">
+      Use the inputs and buttons below to generate different kinds of random values. Hover the labels for quick tips.
+    </p>
+
+    <!-- Grid of cards -->
+    <div class="gap-6 grid sm:grid-cols-2 lg:grid-cols-3">
+
+      <!-- Random float 0..1 -->
+      <section class="flex flex-col gap-3 bg-white shadow p-4 border rounded-lg">
+        <h2 class="font-semibold">Float: 0 ≤ x &lt; 1</h2>
+        <button @click="rand01" class="bg-blue-600 hover:bg-blue-700 px-3 py-2 rounded text-white">Generate</button>
+        <div class="text-gray-600 text-sm">Uses Math.random().</div>
+        <div class="mt-auto">
+          <span class="text-gray-500 text-xs">Result</span>
+          <div class="font-mono" aria-live="polite" x-text="out.rand01 ?? '—'"></div>
+        </div>
+      </section>
+
+      <!-- Random float in [min, max) -->
+      <section class="flex flex-col gap-3 bg-white shadow p-4 border rounded-lg">
+        <h2 class="font-semibold">Float: [min, max)</h2>
+        <div class="flex gap-2">
+          <input type="number" step="any" class="w-1/2 input" placeholder="min" x-model="minFloat">
+          <input type="number" step="any" class="w-1/2 input" placeholder="max" x-model="maxFloat">
+        </div>
+        <button @click="randFloat" class="bg-blue-600 hover:bg-blue-700 px-3 py-2 rounded text-white">Generate</button>
+        <div class="text-gray-600 text-sm" title="Math.random() * (max - min) + min">
+          Range is half-open: includes min, excludes max.
+        </div>
+        <div class="mt-auto">
+          <span class="text-gray-500 text-xs">Result</span>
+          <div class="font-mono" aria-live="polite" x-text="out.randFloat ?? '—'"></div>
+        </div>
+      </section>
+
+      <!-- Random int inclusive [min, max] -->
+      <section class="flex flex-col gap-3 bg-white shadow p-4 border rounded-lg">
+        <h2 class="font-semibold">Int: [min, max]</h2>
+        <div class="flex gap-2">
+          <input type="number" class="w-1/2 input" placeholder="min" x-model="min">
+          <input type="number" class="w-1/2 input" placeholder="max" x-model="max">
+        </div>
+        <button @click="randIntIncl" class="bg-blue-600 hover:bg-blue-700 px-3 py-2 rounded text-white">Generate</button>
+        <div class="text-gray-600 text-sm" title="Math.floor(Math.random() * (max - min + 1)) + min">
+          Inclusive of both ends.
+        </div>
+        <div class="mt-auto">
+          <span class="text-gray-500 text-xs">Result</span>
+          <div class="font-mono" aria-live="polite" x-text="out.randIntIncl ?? '—'"></div>
+        </div>
+      </section>
+
+      <!-- Random int [min, max) -->
+      <section class="flex flex-col gap-3 bg-white shadow p-4 border rounded-lg">
+        <h2 class="font-semibold">Int: [min, max)</h2>
+        <div class="flex gap-2">
+          <input type="number" class="w-1/2 input" placeholder="min" x-model="min">
+          <input type="number" class="w-1/2 input" placeholder="max" x-model="max">
+        </div>
+        <button @click="randIntExcl" class="bg-blue-600 hover:bg-blue-700 px-3 py-2 rounded text-white">Generate</button>
+        <div class="text-gray-600 text-sm" title="Math.floor(Math.random() * (max - min)) + min">
+          Max is excluded.
+        </div>
+        <div class="mt-auto">
+          <span class="text-gray-500 text-xs">Result</span>
+          <div class="font-mono" aria-live="polite" x-text="out.randIntExcl ?? '—'"></div>
+        </div>
+      </section>
+
+      <!-- Random array element -->
+      <section class="flex flex-col gap-3 bg-white shadow p-4 border rounded-lg">
+        <h2 class="font-semibold">Array element</h2>
+        <textarea class="w-full h-24 input" x-model="arrayText" placeholder="Comma-separated items, e.g. apple, banana, cherry"></textarea>
+        <button @click="sample" class="bg-blue-600 hover:bg-blue-700 px-3 py-2 rounded text-white">Pick one</button>
+        <div class="mt-auto">
+          <span class="text-gray-500 text-xs">Result</span>
+          <div class="font-mono" aria-live="polite" x-text="out.sample ?? '—'"></div>
+        </div>
+      </section>
+
+      <!-- Random boolean -->
+      <section class="flex flex-col gap-3 bg-white shadow p-4 border rounded-lg">
+        <h2 class="font-semibold">Boolean (coin flip)</h2>
+        <button @click="coin" class="bg-blue-600 hover:bg-blue-700 px-3 py-2 rounded text-white">Flip</button>
+        <div class="text-gray-600 text-sm">Math.random() &lt; 0.5</div>
+        <div class="mt-auto">
+          <span class="text-gray-500 text-xs">Result</span>
+          <div class="font-mono" aria-live="polite" x-text="out.coin ?? '—'"></div>
+        </div>
+      </section>
+
+      <!-- Fisher–Yates shuffle -->
+      <section class="flex flex-col gap-3 bg-white shadow p-4 border rounded-lg">
+        <h2 class="font-semibold">Shuffle (Fisher–Yates)</h2>
+        <textarea class="w-full h-24 input" x-model="shuffleText" placeholder="Comma-separated list to shuffle"></textarea>
+        <button @click="shuffle" class="bg-blue-600 hover:bg-blue-700 px-3 py-2 rounded text-white">Shuffle</button>
+        <div class="text-gray-600 text-sm">Unbiased in-place shuffle.</div>
+        <div class="mt-auto">
+          <span class="text-gray-500 text-xs">Result</span>
+          <div class="font-mono break-words" aria-live="polite" x-text="out.shuffled ?? '—'"></div>
+        </div>
+      </section>
+
+      <!-- Secure float 0..1 -->
+      <section class="flex flex-col gap-3 bg-white shadow p-4 border rounded-lg">
+        <h2 class="font-semibold">Secure float: 0 ≤ x &lt; 1</h2>
+        <button @click="secure01" class="bg-emerald-600 hover:bg-emerald-700 px-3 py-2 rounded text-white">Generate</button>
+        <div class="text-gray-600 text-sm">crypto.getRandomValues(Uint32Array).</div>
+        <div class="mt-auto">
+          <span class="text-gray-500 text-xs">Result</span>
+          <div class="font-mono" aria-live="polite" x-text="out.secure01 ?? '—'"></div>
+        </div>
+      </section>
+
+      <!-- Secure int [min, max] -->
+      <section class="flex flex-col gap-3 bg-white shadow p-4 border rounded-lg">
+        <h2 class="font-semibold">Secure int: [min, max]</h2>
+        <div class="flex gap-2">
+          <input type="number" class="w-1/2 input" placeholder="min" x-model="sMin">
+          <input type="number" class="w-1/2 input" placeholder="max" x-model="sMax">
+        </div>
+        <button @click="secureInt" class="bg-emerald-600 hover:bg-emerald-700 px-3 py-2 rounded text-white">Generate</button>
+        <div class="text-gray-600 text-sm" title="Rejection sampling to avoid modulo bias">
+          Cryptographically secure, unbiased.
+        </div>
+        <div class="mt-auto">
+          <span class="text-gray-500 text-xs">Result</span>
+          <div class="font-mono" aria-live="polite" x-text="out.secureInt ?? '—'"></div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Generate all shortcut -->
+    <div class="flex gap-3 mt-8">
+      <button @click="generateAll" class="bg-gray-800 hover:bg-black px-3 py-2 rounded text-white">Generate All</button>
+      <button @click="resetAll" class="bg-gray-200 hover:bg-gray-300 px-3 py-2 rounded">Reset</button>
+    </div>
+  </main> -->
+
+  <style>
+    @reference "@tailwind";
+    .input {
+      @apply bg-white px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm;
+    }
+  </style>
+
+  <script>
+    function data() {
+      return {
+        msg: "Hello"
+      };
+    }
+  </script>
+
+</body>
+</html>

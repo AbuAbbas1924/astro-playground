@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        >
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script
+            defer
+            src="https://unpkg.com/alpinejs"
+        ></script>
+        <style>
+            [x-cloak] {
+                display: none !important;
+            }
+        </style>
+        <title>Document</title>
+    </head>
+
+    <body>
+        <!-- ^ $el + $root -->
+        <div
+            x-data
+            id="1"
+        >
+            <div>
+                <div
+                    x-data
+                    id="2"
+                >
+                    <div>
+                        <button @click="console.log($root)">$root: console parent div</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div id="20">
+            <div
+                x-data
+                x-init="console.log($root)"
+            >init </div>
+        </div>
+        <br>
+        <hr>
+        <div
+            x-data
+            x-init="console.log('Init ', $el)"
+        >
+            <button @click="console.log($el)">$el initialized by btn</button>
+        </div>
+        <hr>
+        <button
+            x-data
+            class="mt-4 p-4 border"
+            @click="$el.innerHTML = 'Inner Change'"
+        >change</button>
+        <br>
+        <hr>
+        <div
+            x-data
+            @click="window.navigator.clipboard.writeText($el.innerText)"
+        >copied text</div>
+        <input
+            type="text"
+            value="123456 < copied"
+            x-data
+            @click="window.navigator.clipboard.writeText($el.value)"
+        >
+        <br>
+        <hr>
+        <!-- $el -->
+        <div class="space-y-4 p-4">
+            <div
+                class="p-4"
+                x-data
+            >
+                <h3 @click="$el.innerText = 'text, after click'">Lorem ipsum dolor sit, amet consectetur adipisicing
+                    elit. Quia earum veritatis dolores, vitae quam error? Ea nostrum quidem laborum tempora?</h3>
+            </div>
+            <div
+                class="p-4"
+                x-data
+            >
+                <h3
+                    class="bg-slate-200 px-4 py-2 textwhite"
+                    @click="$root.classList.toggle('bg-slate-500')"
+                > change root bg</h3>
+            </div>
+        </div>
+        <div
+            class="flex flex-wrap gap-4 p-4"
+            x-data="script"
+        >
+            <div
+                class="border-slate-500 p-4 border text-slate-500"
+                @click="clone"
+            >Hello</div>
+        </div>
+        <script>
+            document.addEventListener('alpine:init', () => {
+                Alpine.data('script', () => ({
+                    clone() {
+                        let element = this.$el.cloneNode(true);
+                        this.$root.appendChild(element);
+                    }
+                }))
+            })
+        </script>
+        <br>
+        <hr>
+        <!-- ( x-ignore) -->
+        <div x-data="{name: 'Zura'}">
+            <div x-ignore>
+                <p x-text="name"></p>
+            </div>
+        </div>
+        <hr>
+    </body>
+
+</html>

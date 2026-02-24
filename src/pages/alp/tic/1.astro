@@ -1,0 +1,89 @@
+---
+import "@tw";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro</title>
+  </head>
+  <body>
+    <h1>Tic Tac Toe</h1>
+    <div x-data="data()" class="flex flex-col justify-center items-center gap-5 h-screen">
+      <div class="font-bold text-4xl" x-text="title"></div>
+      <div class="gap-4 grid grid-cols-3">
+        <template x-for="i in 9">
+          <div
+            @click="step(i)"
+            x-ref="`a${i}`"
+            class="flex justify-center items-center bg-gray-100 border border-black size-20 font-bold text-3xl"
+          >
+          </div>
+        </template>
+      </div>
+      <div x-text="all_turns"></div>
+      <button @click="reset()">Reset</button>
+    </div>
+    <script is:inline>
+      function data() {
+        return {
+          title: "tic-tac-toe game",
+          all_turns: [],
+          x_turns: [],
+          o_turns: [],
+          game_ended: false,
+          winner_position: [
+            [1, 2, 3],
+            [4, 5, 6],
+            [7, 8, 9],
+            [1, 4, 7],
+            [2, 5, 8],
+            [3, 6, 9],
+            [1, 5, 9],
+            [3, 5, 7],
+          ],
+          step(index) {
+            if (!this.all_turns.includes(index) && !this.game_ended) {
+              // 2. add turn
+              if (this.all_turns.length % 2 == 0) {
+                this.all_turns.push(index);
+                this.x_turns.push(index);
+                this.x_turns.sort();
+                this.$el.innerText = "X";
+              } else {
+                this.all_turns.push(index);
+                this.o_turns.push(index);
+                this.o_turns.sort();
+                this.$el.innerText = "O";
+              }
+              if (this.all_turns.length == 9) {
+                this.title = "Draw";
+                this.game_ended = true;
+              }
+              // 3. check winner
+              for (i of this.winner_position) {
+                if (i.every((x) => this.x_turns.includes(x))) {
+                  this.title = "X win";
+                  this.game_ended = true;
+                } else if (i.every((x) => this.o_turns.includes(x))) {
+                  this.title = "O win";
+                  this.game_ended = true;
+                }
+              }
+            }
+          },
+          reset() {
+            this.title = "tic-tac-toe game";
+            this.all_turns = [];
+            this.x_turns = [];
+            this.o_turns = [];
+            this.game_ended = false;
+          },
+        };
+      }
+    </script>
+  </body>
+</html>

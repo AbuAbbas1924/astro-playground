@@ -1,0 +1,42 @@
+---
+
+---
+
+<div x-data="data()">
+    <p x-text="msg"></p>
+    <p x-text="show"></p>
+    <button @click="toggle">Toggle</button>
+</div>
+
+<script is:inline>
+    function data() {
+        return {
+            msg: 'Hello',
+            show: true,
+            toggle() {
+                this.show = !this.show;
+            }
+        }
+    }
+</script>
+<script type="module">
+    const data = () => ({
+        msg: "Hello",
+        show: true,
+        toggle() {
+            this.show = !this.show;
+        },
+    });
+    window.data = data;
+</script>
+<script>
+    document.addEventListener("alpine:init", () => {
+        Alpine.data("data", () => ({
+            msg: "Hello",
+            show: true,
+            toggle() {
+                this.show = !this.show;
+            },
+        }));
+    });
+</script>

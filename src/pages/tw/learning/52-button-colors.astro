@@ -1,0 +1,2957 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        >
+        <script src="https://cdn.tailwindcss.com"></script>
+        <title>Document</title>
+    </head>
+
+    <body>
+        <!-- component -->
+        <div
+            class="relative absolute flex justify-center items-center bg-gradient-to-tl from-gray-800 to-gray-900 min-w-screen min-h-screen">
+            <div class="flex flex-col w-full">
+                <div class="space-x-1 space-y-2 mt-2 p-1 text-center">
+                    <button
+                        class="bg-gray-50 hover:bg-gray-100 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-gray-600 text-sm tracking-wider"
+                    >Gray50</button>
+                    <button
+                        class="bg-gray-100 hover:bg-gray-200 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-gray-600 text-sm tracking-wider"
+                    >Gray100</button>
+                    <button
+                        class="bg-gray-200 hover:bg-gray-300 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-gray-600 text-sm tracking-wider"
+                    >Gray200</button>
+                    <button
+                        class="bg-gray-300 hover:bg-gray-400 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-gray-600 text-sm tracking-wider"
+                    >Gray300</button>
+                    <button
+                        class="bg-gray-400 hover:bg-gray-500 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-gray-100 text-sm tracking-wider"
+                    >Gray400</button>
+                    <button
+                        class="bg-gray-500 hover:bg-gray-600 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-gray-100 text-sm tracking-wider"
+                    >Gray500</button>
+                    <button
+                        class="bg-gray-600 hover:bg-gray-700 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-gray-100 text-sm tracking-wider"
+                    >Gray600</button>
+                    <button
+                        class="bg-gray-700 hover:bg-gray-800 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-gray-100 text-sm tracking-wider"
+                    >Gray700</button>
+                    <button
+                        class="bg-gray-800 hover:bg-gray-900 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-gray-100 text-sm tracking-wider"
+                    >Gray800</button>
+                    <button
+                        class="bg-gray-900 hover:bg-gray-800 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-gray-100 text-sm tracking-wider"
+                    >Gray900</button>
+                </div>
+                <div class="space-x-1 space-y-2 mt-2 p-1 text-center">
+                    <button
+                        class="bg-red-50 hover:bg-red-100 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-red-600 text-sm tracking-wider"
+                    >Red50</button>
+                    <button
+                        class="bg-red-100 hover:bg-red-200 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-red-600 text-sm tracking-wider"
+                    >Red100</button>
+                    <button
+                        class="bg-red-200 hover:bg-red-300 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-red-600 text-sm tracking-wider"
+                    >Red200</button>
+                    <button
+                        class="bg-red-300 hover:bg-red-400 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-red-600 text-sm tracking-wider"
+                    >Red300</button>
+                    <button
+                        class="bg-red-400 hover:bg-red-500 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-red-100 text-sm tracking-wider"
+                    >Red400</button>
+                    <button
+                        class="bg-red-500 hover:bg-red-600 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-red-100 text-sm tracking-wider"
+                    >Red500</button>
+                    <button
+                        class="bg-red-600 hover:bg-red-700 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-red-100 text-sm tracking-wider"
+                    >Red600</button>
+                    <button
+                        class="bg-red-700 hover:bg-red-800 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-red-100 text-sm tracking-wider"
+                    >Red700</button>
+                    <button
+                        class="bg-red-800 hover:bg-red-900 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-red-100 text-sm tracking-wider"
+                    >Red800</button>
+                    <button
+                        class="bg-red-900 hover:bg-red-800 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-red-100 text-sm tracking-wider"
+                    >Red900</button>
+                </div>
+                <div class="space-x-1 space-y-2 mt-2 p-1 text-center">
+                    <button
+                        class="bg-yellow-50 hover:bg-yellow-100 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-sm text-yellow-600 tracking-wider"
+                    >Yellow50</button>
+                    <button
+                        class="bg-yellow-100 hover:bg-yellow-200 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-sm text-yellow-600 tracking-wider"
+                    >Yellow100</button>
+                    <button
+                        class="bg-yellow-200 hover:bg-yellow-300 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-sm text-yellow-600 tracking-wider"
+                    >Yellow200</button>
+                    <button
+                        class="bg-yellow-300 hover:bg-yellow-400 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-sm text-yellow-600 tracking-wider"
+                    >Yellow300</button>
+                    <button
+                        class="bg-yellow-400 hover:bg-yellow-500 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-sm text-yellow-100 tracking-wider"
+                    >Yellow400</button>
+                    <button
+                        class="bg-yellow-500 hover:bg-yellow-600 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-sm text-yellow-100 tracking-wider"
+                    >Yellow500</button>
+                    <button
+                        class="bg-yellow-600 hover:bg-yellow-700 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-sm text-yellow-100 tracking-wider"
+                    >Yellow600</button>
+                    <button
+                        class="bg-yellow-700 hover:bg-yellow-800 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-sm text-yellow-100 tracking-wider"
+                    >Yellow700</button>
+                    <button
+                        class="bg-yellow-800 hover:bg-yellow-900 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-sm text-yellow-100 tracking-wider"
+                    >Yellow800</button>
+                    <button
+                        class="bg-yellow-900 hover:bg-yellow-800 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-sm text-yellow-100 tracking-wider"
+                    >Yellow900</button>
+                </div>
+                <div class="space-x-1 space-y-2 mt-2 p-1 text-center">
+                    <button
+                        class="bg-green-50 hover:bg-green-100 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-green-600 text-sm tracking-wider"
+                    >Green50</button>
+                    <button
+                        class="bg-green-100 hover:bg-green-200 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-green-600 text-sm tracking-wider"
+                    >Green100</button>
+                    <button
+                        class="bg-green-200 hover:bg-green-300 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-green-600 text-sm tracking-wider"
+                    >Green200</button>
+                    <button
+                        class="bg-green-300 hover:bg-green-400 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-green-600 text-sm tracking-wider"
+                    >Green300</button>
+                    <button
+                        class="bg-green-400 hover:bg-green-500 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-green-100 text-sm tracking-wider"
+                    >Green400</button>
+                    <button
+                        class="bg-green-500 hover:bg-green-600 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-green-100 text-sm tracking-wider"
+                    >Green500</button>
+                    <button
+                        class="bg-green-600 hover:bg-green-700 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-green-100 text-sm tracking-wider"
+                    >Green600</button>
+                    <button
+                        class="bg-green-700 hover:bg-green-800 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-green-100 text-sm tracking-wider"
+                    >Green700</button>
+                    <button
+                        class="bg-green-800 hover:bg-green-900 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-green-100 text-sm tracking-wider"
+                    >Green800</button>
+                    <button
+                        class="bg-green-900 hover:bg-green-800 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-green-100 text-sm tracking-wider"
+                    >Green900</button>
+                </div>
+                <div class="space-x-1 space-y-2 mt-2 p-1 text-center">
+                    <button
+                        class="bg-blue-50 hover:bg-blue-100 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-blue-600 text-sm tracking-wider"
+                    >Blue50</button>
+                    <button
+                        class="bg-blue-100 hover:bg-blue-200 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-blue-600 text-sm tracking-wider"
+                    >Blue100</button>
+                    <button
+                        class="bg-blue-200 hover:bg-blue-300 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-blue-600 text-sm tracking-wider"
+                    >Blue200</button>
+                    <button
+                        class="bg-blue-300 hover:bg-blue-400 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-blue-600 text-sm tracking-wider"
+                    >Blue300</button>
+                    <button
+                        class="bg-blue-400 hover:bg-blue-500 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-blue-100 text-sm tracking-wider"
+                    >Blue400</button>
+                    <button
+                        class="bg-blue-500 hover:bg-blue-600 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-blue-100 text-sm tracking-wider"
+                    >Blue500</button>
+                    <button
+                        class="bg-blue-600 hover:bg-blue-700 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-blue-100 text-sm tracking-wider"
+                    >Blue600</button>
+                    <button
+                        class="bg-blue-700 hover:bg-blue-800 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-blue-100 text-sm tracking-wider"
+                    >Blue700</button>
+                    <button
+                        class="bg-blue-800 hover:bg-blue-900 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-blue-100 text-sm tracking-wider"
+                    >Blue800</button>
+                    <button
+                        class="bg-blue-900 hover:bg-blue-800 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-blue-100 text-sm tracking-wider"
+                    >Blue900</button>
+                </div>
+                <div class="space-x-1 space-y-2 mt-2 p-1 text-center">
+                    <button
+                        class="bg-indigo-50 hover:bg-indigo-100 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-indigo-600 text-sm tracking-wider"
+                    >Indigo50</button>
+                    <button
+                        class="bg-indigo-100 hover:bg-indigo-200 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-indigo-600 text-sm tracking-wider"
+                    >Indigo100</button>
+                    <button
+                        class="bg-indigo-200 hover:bg-indigo-300 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-indigo-600 text-sm tracking-wider"
+                    >Indigo200</button>
+                    <button
+                        class="bg-indigo-300 hover:bg-indigo-400 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-indigo-600 text-sm tracking-wider"
+                    >Indigo300</button>
+                    <button
+                        class="bg-indigo-400 hover:bg-indigo-500 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-indigo-100 text-sm tracking-wider"
+                    >Indigo400</button>
+                    <button
+                        class="bg-indigo-500 hover:bg-indigo-600 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-indigo-100 text-sm tracking-wider"
+                    >Indigo500</button>
+                    <button
+                        class="bg-indigo-600 hover:bg-indigo-700 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-indigo-100 text-sm tracking-wider"
+                    >Indigo600</button>
+                    <button
+                        class="bg-indigo-700 hover:bg-indigo-800 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-indigo-100 text-sm tracking-wider"
+                    >Indigo700</button>
+                    <button
+                        class="bg-indigo-800 hover:bg-indigo-900 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-indigo-100 text-sm tracking-wider"
+                    >Indigo800</button>
+                    <button
+                        class="bg-indigo-900 hover:bg-indigo-800 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-indigo-100 text-sm tracking-wider"
+                    >Indigo900</button>
+                </div>
+                <div class="space-x-1 space-y-2 mt-2 p-1 text-center">
+                    <button
+                        class="bg-purple-50 hover:bg-purple-100 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-purple-600 text-sm tracking-wider"
+                    >Purple50</button>
+                    <button
+                        class="bg-purple-100 hover:bg-purple-200 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-purple-600 text-sm tracking-wider"
+                    >Purple100</button>
+                    <button
+                        class="bg-purple-200 hover:bg-purple-300 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-purple-600 text-sm tracking-wider"
+                    >Purple200</button>
+                    <button
+                        class="bg-purple-300 hover:bg-purple-400 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-purple-600 text-sm tracking-wider"
+                    >Purple300</button>
+                    <button
+                        class="bg-purple-400 hover:bg-purple-500 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-purple-100 text-sm tracking-wider"
+                    >Purple400</button>
+                    <button
+                        class="bg-purple-500 hover:bg-purple-600 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-purple-100 text-sm tracking-wider"
+                    >Purple500</button>
+                    <button
+                        class="bg-purple-600 hover:bg-purple-700 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-purple-100 text-sm tracking-wider"
+                    >Purple600</button>
+                    <button
+                        class="bg-purple-700 hover:bg-purple-800 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-purple-100 text-sm tracking-wider"
+                    >Purple700</button>
+                    <button
+                        class="bg-purple-800 hover:bg-purple-900 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-purple-100 text-sm tracking-wider"
+                    >Purple800</button>
+                    <button
+                        class="bg-purple-900 hover:bg-purple-800 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-purple-100 text-sm tracking-wider"
+                    >Purple900</button>
+                </div>
+                <div class="space-x-1 space-y-2 mt-2 p-1 text-center">
+                    <button
+                        class="bg-pink-50 hover:bg-pink-100 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-pink-600 text-sm tracking-wider"
+                    >Pink50</button>
+                    <button
+                        class="bg-pink-100 hover:bg-pink-200 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-pink-600 text-sm tracking-wider"
+                    >Pink100</button>
+                    <button
+                        class="bg-pink-200 hover:bg-pink-300 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-pink-600 text-sm tracking-wider"
+                    >Pink200</button>
+                    <button
+                        class="bg-pink-300 hover:bg-pink-400 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-pink-600 text-sm tracking-wider"
+                    >Pink300</button>
+                    <button
+                        class="bg-pink-400 hover:bg-pink-500 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-pink-100 text-sm tracking-wider"
+                    >Pink400</button>
+                    <button
+                        class="bg-pink-500 hover:bg-pink-600 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-pink-100 text-sm tracking-wider"
+                    >Pink500</button>
+                    <button
+                        class="bg-pink-600 hover:bg-pink-700 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-pink-100 text-sm tracking-wider"
+                    >Pink600</button>
+                    <button
+                        class="bg-pink-700 hover:bg-pink-800 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-pink-100 text-sm tracking-wider"
+                    >Pink700</button>
+                    <button
+                        class="bg-pink-800 hover:bg-pink-900 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-pink-100 text-sm tracking-wider"
+                    >Pink800</button>
+                    <button
+                        class="bg-pink-900 hover:bg-pink-800 shadow-sm hover:shadow-2xl px-5 py-3 rounded-full font-medium text-pink-100 text-sm tracking-wider"
+                    >Pink900</button>
+                </div>
+            </div>
+        </div>
+        <div class="h-10"></div>
+        <!-- component -->
+        <div class="flex justify-center items-center bg-gray-100 bg-gray-100 py-6 min-w-screen min-h-screen font-sans">
+            <div class="container">
+                <div class="flex flex-col bg-white mb-5 px-5 py-3 rounded-xl card">
+                    <div class="font-medium text-xl title">Filled</div>
+                    <div class="py-3 w-full">
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none bg-blue-500 hover:bg-blue-600 hover:shadow-lg px-5 py-2.5 rounded-md text-sm text-white"
+                            >Primary</button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none bg-gray-500 hover:bg-gray-600 hover:shadow-lg px-5 py-2.5 rounded-md text-sm text-white"
+                            >Secondary</button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none bg-green-500 hover:bg-green-600 hover:shadow-lg px-5 py-2.5 rounded-md text-sm text-white"
+                            >Success</button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none bg-red-500 hover:bg-red-600 hover:shadow-lg px-5 py-2.5 rounded-md text-sm text-white"
+                            >Danger</button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none bg-yellow-500 hover:bg-yellow-600 hover:shadow-lg px-5 py-2.5 rounded-md text-sm text-white"
+                            >Warning</button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none bg-purple-500 hover:bg-purple-600 hover:shadow-lg px-5 py-2.5 rounded-md text-sm text-white"
+                            >Info</button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none bg-gray-700 hover:bg-gray-900 hover:shadow-lg px-5 py-2.5 rounded-md text-sm text-white"
+                            >Dark</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col bg-white mb-5 px-5 py-3 rounded-xl card">
+                    <div class="font-medium text-xl title">Border</div>
+                    <div class="py-3 w-full">
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none hover:bg-blue-50 px-5 py-2.5 border border-blue-600 rounded-md text-blue-600 text-sm"
+                            >Primary</button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none border-gray-600 hover:bg-gray-50 px-5 py-2.5 border rounded-md text-gray-600 text-sm"
+                            >Secondary</button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none border-green-600 hover:bg-green-50 px-5 py-2.5 border rounded-md text-green-600 text-sm"
+                            >Success</button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none hover:bg-red-50 px-5 py-2.5 border border-red-600 rounded-md text-red-600 text-sm"
+                            >Danger</button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none border-yellow-600 hover:bg-yellow-50 px-5 py-2.5 border rounded-md text-sm text-yellow-600"
+                            >Warning</button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none border-gray-800 hover:bg-gray-200 px-5 py-2.5 border rounded-md text-gray-800 text-sm"
+                            >Dark</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col bg-white mb-5 px-5 py-3 rounded-xl card">
+                    <div class="font-medium text-xl title">Flat</div>
+                    <div class="py-3 w-full">
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none hover:bg-blue-100 px-5 py-2.5 rounded-md text-blue-600 text-sm"
+                            >Primary</button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none hover:bg-gray-100 px-5 py-2.5 rounded-md text-gray-600 text-sm"
+                            >Secondary</button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none hover:bg-green-100 px-5 py-2.5 rounded-md text-green-600 text-sm"
+                            >Success</button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none hover:bg-red-100 px-5 py-2.5 rounded-md text-red-600 text-sm"
+                            >Danger</button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none hover:bg-yellow-100 px-5 py-2.5 rounded-md text-sm text-yellow-600"
+                            >Warning</button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none hover:bg-purple-100 px-5 py-2.5 rounded-md text-purple-600 text-sm"
+                            >Info</button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none hover:bg-gray-200 px-5 py-2.5 rounded-md text-gray-900 text-sm"
+                            >Dark</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col bg-white mb-5 px-5 py-3 rounded-xl card">
+                    <div class="font-medium text-xl title">Disabled</div>
+                    <div class="py-3 w-full">
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none bg-blue-300 px-5 py-2.5 rounded-md text-sm text-white"
+                            >Primary</button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none bg-gray-300 px-5 py-2.5 rounded-md text-sm text-white"
+                            >Secondary</button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none bg-green-300 px-5 py-2.5 rounded-md text-sm text-white"
+                            >Success</button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none bg-red-300 px-5 py-2.5 rounded-md text-sm text-white"
+                            >Danger</button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none bg-yellow-300 px-5 py-2.5 rounded-md text-sm text-white"
+                            >Warning</button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none bg-purple-300 px-5 py-2.5 rounded-md text-sm text-white"
+                            >Info</button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none bg-gray-400 px-5 py-2.5 rounded-md text-sm text-white"
+                            >Dark</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col bg-white mb-5 px-5 py-3 rounded-xl card">
+                    <div class="font-medium text-xl title">Gradient</div>
+                    <div class="py-3 w-full">
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none bg-gradient-to-r from-blue-400 to-blue-600 px-5 py-2.5 rounded-md text-sm text-white transform hover:scale-110"
+                            >Primary</button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none bg-gradient-to-r from-gray-400 to-gray-600 px-5 py-2.5 rounded-md text-sm text-white transform hover:scale-110"
+                            >Secondary</button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none bg-gradient-to-r from-green-400 to-green-600 px-5 py-2.5 rounded-md text-sm text-white transform hover:scale-110"
+                            >Success</button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none bg-gradient-to-r from-red-400 to-red-600 px-5 py-2.5 rounded-md text-sm text-white transform hover:scale-110"
+                            >Danger</button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none bg-gradient-to-r from-yellow-400 to-yellow-600 px-5 py-2.5 rounded-md text-sm text-white transform hover:scale-110"
+                            >Warning</button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none bg-gradient-to-r from-purple-400 to-purple-600 px-5 py-2.5 rounded-md text-sm text-white transform hover:scale-110"
+                            >Info</button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none bg-gradient-to-r from-gray-600 to-gray-900 px-5 py-2.5 rounded-md text-sm text-white transform hover:scale-110"
+                            >Dark</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col bg-white mb-5 px-5 py-3 rounded-xl card">
+                    <div class="font-medium text-xl title">Relief</div>
+                    <div class="py-3 w-full">
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none bg-blue-500 hover:bg-blue-400 px-5 py-2.5 border-b-4 border-blue-600 rounded-md text-sm text-white"
+                            >Primary</button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none border-gray-600 bg-gray-500 hover:bg-gray-400 px-5 py-2.5 border-b-4 rounded-md text-sm text-white"
+                            >Secondary</button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none border-green-600 bg-green-500 hover:bg-green-400 px-5 py-2.5 border-b-4 rounded-md text-sm text-white"
+                            >Success</button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none bg-red-500 hover:bg-red-400 px-5 py-2.5 border-red-600 border-b-4 rounded-md text-sm text-white"
+                            >Danger</button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none border-yellow-600 bg-yellow-500 hover:bg-yellow-400 px-5 py-2.5 border-b-4 rounded-md text-sm text-white"
+                            >Warning</button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none border-purple-600 bg-purple-500 hover:bg-purple-400 px-5 py-2.5 border-b-4 rounded-md text-sm text-white"
+                            >Info</button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none border-gray-800 bg-gray-700 hover:bg-gray-600 px-5 py-2.5 border-b-4 rounded-md text-sm text-white"
+                            >Dark</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col bg-white mb-5 px-5 py-3 rounded-xl card">
+                    <div class="font-medium text-xl title">Round</div>
+                    <div class="py-3 w-full">
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none hover:bg-blue-50 px-5 py-2.5 border border-blue-600 rounded-full text-blue-600 text-sm"
+                            >Primary</button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none border-gray-600 hover:bg-gray-50 px-5 py-2.5 border rounded-full text-gray-600 text-sm"
+                            >Secondary</button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none border-green-600 hover:bg-green-50 px-5 py-2.5 border rounded-full text-green-600 text-sm"
+                            >Success</button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none hover:bg-red-50 px-5 py-2.5 border border-red-600 rounded-full text-red-600 text-sm"
+                            >Danger</button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none border-yellow-600 hover:bg-yellow-50 px-5 py-2.5 border rounded-full text-sm text-yellow-600"
+                            >Warning</button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none border-gray-800 hover:bg-gray-200 px-5 py-2.5 border rounded-full text-gray-800 text-sm"
+                            >Dark</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col bg-white mb-5 px-5 py-3 rounded-xl card">
+                    <div class="font-medium text-xl title">Icon</div>
+                    <div class="py-3 w-full">
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none flex items-center bg-blue-500 hover:bg-blue-600 hover:shadow-lg px-5 py-2.5 rounded-md text-sm text-white"
+                            >
+                                <svg
+                                    class="mr-2 w-4 h-4"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"
+                                    />
+                                </svg>
+                                Primary
+                            </button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none flex items-center bg-gray-500 hover:bg-gray-600 hover:shadow-lg px-5 py-2.5 rounded-md text-sm text-white"
+                            >
+                                <svg
+                                    class="mr-2 w-4 h-4"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                                    />
+                                </svg>
+                                Secondary
+                            </button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none flex items-center bg-green-500 hover:bg-green-600 hover:shadow-lg px-5 py-2.5 rounded-md text-sm text-white"
+                            >
+                                <svg
+                                    class="mr-2 w-4 h-4"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"
+                                    />
+                                </svg>
+                                Success
+                            </button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none flex items-center bg-red-500 hover:bg-red-600 hover:shadow-lg px-5 py-2.5 rounded-md text-sm text-white"
+                            >
+                                <svg
+                                    class="mr-2 w-4 h-4"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M20.618 5.984A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016zM12 9v2m0 4h.01"
+                                    />
+                                </svg>
+                                Danger
+                            </button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none flex items-center bg-yellow-500 hover:bg-yellow-600 hover:shadow-lg px-5 py-2.5 rounded-md text-sm text-white"
+                            >
+                                <svg
+                                    class="mr-2 w-4 h-4"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                                    />
+                                </svg>
+                                Warning
+                            </button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none flex items-center bg-purple-500 hover:bg-purple-600 hover:shadow-lg px-5 py-2.5 rounded-md text-sm text-white"
+                            >
+                                <svg
+                                    class="mr-2 w-4 h-4"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                    />
+                                </svg>
+                                Info
+                            </button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none flex items-center bg-gray-700 hover:bg-gray-900 hover:shadow-lg px-5 py-2.5 rounded-md text-sm text-white"
+                            >
+                                <svg
+                                    class="mr-2 w-4 h-4"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                                    />
+                                </svg>
+                                Dark
+                            </button>
+                        </div>
+                    </div>
+                    <div class="py-3 w-full">
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none flex items-center hover:bg-blue-50 px-5 py-2.5 border border-blue-600 rounded-md text-blue-600 text-sm"
+                            >
+                                <svg
+                                    class="mr-2 w-4 h-4"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"
+                                    />
+                                </svg>
+                                Primary
+                            </button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none flex items-center border-gray-600 hover:bg-gray-50 px-5 py-2.5 border rounded-md text-gray-600 text-sm"
+                            >
+                                <svg
+                                    class="mr-2 w-4 h-4"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                                    />
+                                </svg>
+                                Secondary
+                            </button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none flex items-center border-green-600 hover:bg-green-50 px-5 py-2.5 border rounded-md text-green-600 text-sm"
+                            >
+                                <svg
+                                    class="mr-2 w-4 h-4"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"
+                                    />
+                                </svg>
+                                Success
+                            </button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none flex items-center hover:bg-red-50 px-5 py-2.5 border border-red-600 rounded-md text-red-600 text-sm"
+                            >
+                                <svg
+                                    class="mr-2 w-4 h-4"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M20.618 5.984A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016zM12 9v2m0 4h.01"
+                                    />
+                                </svg>
+                                Danger
+                            </button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none flex items-center border-yellow-600 hover:bg-yellow-50 px-5 py-2.5 border rounded-md text-sm text-yellow-600"
+                            >
+                                <svg
+                                    class="mr-2 w-4 h-4"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                                    />
+                                </svg>
+                                Warning
+                            </button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none flex items-center border-purple-600 hover:bg-purple-50 px-5 py-2.5 border rounded-md text-purple-600 text-sm"
+                            >
+                                <svg
+                                    class="mr-2 w-4 h-4"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                    />
+                                </svg>
+                                Info
+                            </button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none flex items-center border-gray-800 hover:bg-gray-200 px-5 py-2.5 border rounded-md text-gray-800 text-sm"
+                            >
+                                <svg
+                                    class="mr-2 w-4 h-4"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                                    />
+                                </svg>
+                                Dark
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col bg-white mb-5 px-5 py-3 rounded-xl card">
+                    <div class="font-medium text-xl title">Icon only</div>
+                    <div class="py-3 w-full">
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none bg-blue-500 hover:bg-blue-600 hover:shadow-lg px-5 py-2.5 rounded-md text-sm text-white"
+                            >
+                                <svg
+                                    class="w-4 h-4"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"
+                                    />
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none bg-gray-500 hover:bg-gray-600 hover:shadow-lg px-5 py-2.5 rounded-md text-sm text-white"
+                            >
+                                <svg
+                                    class="w-4 h-4"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                                    />
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none bg-green-500 hover:bg-green-600 hover:shadow-lg px-5 py-2.5 rounded-md text-sm text-white"
+                            >
+                                <svg
+                                    class="w-4 h-4"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"
+                                    />
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none bg-red-500 hover:bg-red-600 hover:shadow-lg px-5 py-2.5 rounded-md text-sm text-white"
+                            >
+                                <svg
+                                    class="w-4 h-4"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M20.618 5.984A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016zM12 9v2m0 4h.01"
+                                    />
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none bg-yellow-500 hover:bg-yellow-600 hover:shadow-lg px-5 py-2.5 rounded-md text-sm text-white"
+                            >
+                                <svg
+                                    class="w-4 h-4"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                                    />
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none bg-purple-500 hover:bg-purple-600 hover:shadow-lg px-5 py-2.5 rounded-md text-sm text-white"
+                            >
+                                <svg
+                                    class="w-4 h-4"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                    />
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none bg-gray-700 hover:bg-gray-900 hover:shadow-lg px-5 py-2.5 rounded-md text-sm text-white"
+                            >
+                                <svg
+                                    class="w-4 h-4"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                                    />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col bg-white mb-5 px-5 py-3 rounded-xl card">
+                    <div class="font-medium text-xl title">Group</div>
+                    <div class="py-3 w-full">
+                        <div
+                            class="inline-flex flex mr-2"
+                            role="group"
+                        >
+                            <button
+                                type="button"
+                                class="focus:outline-none bg-blue-500 hover:bg-blue-600 hover:shadow-lg px-5 py-2.5 rounded-l-md text-sm text-white"
+                            >Left</button>
+                            <button
+                                type="button"
+                                class="focus:outline-none bg-blue-500 hover:bg-blue-600 hover:shadow-lg px-5 py-2.5 text-sm text-white"
+                            >Middle</button>
+                            <button
+                                type="button"
+                                class="focus:outline-none bg-blue-500 hover:bg-blue-600 hover:shadow-lg px-5 py-2.5 rounded-r-md text-sm text-white"
+                            >Right</button>
+                        </div>
+
+                        <div
+                            class="inline-flex flex mr-2"
+                            role="group"
+                        >
+                            <button
+                                type="button"
+                                class="focus:outline-none bg-green-500 hover:bg-green-600 hover:shadow-lg px-5 py-2.5 rounded-l-md text-sm text-white"
+                            >Left</button>
+                            <button
+                                type="button"
+                                class="focus:outline-none bg-green-500 hover:bg-green-600 hover:shadow-lg px-5 py-2.5 text-sm text-white"
+                            >Middle</button>
+                            <button
+                                type="button"
+                                class="focus:outline-none bg-green-500 hover:bg-green-600 hover:shadow-lg px-5 py-2.5 rounded-r-md text-sm text-white"
+                            >Right</button>
+                        </div>
+
+                        <div
+                            class="inline-flex flex mr-2"
+                            role="group"
+                        >
+                            <button
+                                type="button"
+                                class="focus:outline-none bg-purple-500 hover:bg-purple-600 hover:shadow-lg px-5 py-2.5 rounded-l-md text-sm text-white"
+                            >Left</button>
+                            <button
+                                type="button"
+                                class="focus:outline-none bg-purple-500 hover:bg-purple-600 hover:shadow-lg px-5 py-2.5 text-sm text-white"
+                            >Middle</button>
+                            <button
+                                type="button"
+                                class="focus:outline-none bg-purple-500 hover:bg-purple-600 hover:shadow-lg px-5 py-2.5 rounded-r-md text-sm text-white"
+                            >Right</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col bg-white mb-5 px-5 py-3 rounded-xl card">
+                    <div class="font-medium text-xl title">Sizes</div>
+                    <div class="py-3 w-full">
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none bg-blue-500 hover:bg-blue-600 hover:shadow-lg px-6 py-3 rounded-md text-md text-white"
+                            >Large</button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none bg-blue-500 hover:bg-blue-600 hover:shadow-lg px-5 py-2.5 rounded-md text-sm text-white"
+                            >Default</button>
+                        </div>
+                        <div class="inline-block mt-2 mr-2">
+                            <button
+                                type="button"
+                                class="focus:outline-none bg-blue-500 hover:bg-blue-600 hover:shadow-lg px-4 py-2 rounded-md text-white text-xs"
+                            >Small</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="h-10"></div>
+        <!-- component -->
+        <div class="mr-6">
+            <button
+                class="block border-purple-300 bg-purple-200 hover:bg-purple-300 mb-4 px-9 py-4 border-b rounded-sm focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 focus:ring-offset-white w-full sm:w-auto font-semibold text-base focus:outline-none text-purple-700 transition-colors duration-200"
+            >Learn More</button>
+            <button
+                class="block bg-red-200 hover:bg-red-300 mb-4 px-8 py-3.5 border-red-300 border-b rounded-sm focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 focus:ring-offset-white w-full sm:w-auto font-semibold text-base focus:outline-none text-red-900 transition-colors duration-200"
+            >New</button>
+            <button
+                class="block border-yellow-300 bg-yellow-200 hover:bg-yellow-300 mb-4 px-7 py-3 border-b rounded-sm focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 focus:ring-offset-white w-full sm:w-auto font-semibold text-base focus:outline-none text-yellow-900 transition-colors duration-200"
+            >New</button>
+            <button
+                class="block border-green-300 bg-green-200 hover:bg-green-300 mb-4 px-6 py-3 border-b rounded-sm focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 focus:ring-offset-white w-full sm:w-auto font-semibold text-base leading-6 focus:outline-none text-green-900 transition-colors duration-200"
+            >New</button>
+            <button
+                class="block border-indigo-300 bg-indigo-200 hover:bg-indigo-300 mb-4 px-5 py-2 border-b rounded-sm focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 focus:ring-offset-white w-full sm:w-auto font-medium text-sm focus:outline-none text-indigo-900 transition-colors duration-200"
+            >New</button>
+        </div>
+
+        <br>
+
+        <div class="mr-6">
+            <button
+                class="block border-purple-300 bg-purple-200 hover:bg-purple-300 mb-4 px-9 py-4 border-b rounded-md focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 focus:ring-offset-white w-full sm:w-auto font-semibold text-base focus:outline-none text-purple-700 transition-colors duration-200"
+            >Learn More</button>
+            <button
+                class="block bg-red-200 hover:bg-red-300 mb-4 px-8 py-3.5 border-red-300 border-b rounded-md focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 focus:ring-offset-white w-full sm:w-auto font-semibold text-base focus:outline-none text-red-900 transition-colors duration-200"
+            >New</button>
+            <button
+                class="block border-yellow-300 bg-yellow-200 hover:bg-yellow-300 mb-4 px-7 py-3 border-b rounded-md focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 focus:ring-offset-white w-full sm:w-auto font-semibold text-base focus:outline-none text-yellow-900 transition-colors duration-200"
+            >New</button>
+            <button
+                class="block border-green-300 bg-green-200 hover:bg-green-300 mb-4 px-6 py-3 border-b rounded-md focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 focus:ring-offset-white w-full sm:w-auto font-semibold text-base leading-6 focus:outline-none text-green-900 transition-colors duration-200"
+            >New</button>
+            <button
+                class="block border-indigo-300 bg-indigo-200 hover:bg-indigo-300 mb-4 px-5 py-2 border-b rounded-md focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 focus:ring-offset-white w-full sm:w-auto font-medium text-sm focus:outline-none text-indigo-900 transition-colors duration-200"
+            >New</button>
+        </div>
+
+        <br>
+
+
+        <div class="mr-6">
+            <button
+                class="block border-purple-300 bg-purple-200 hover:bg-purple-300 mb-4 px-9 py-4 border-b rounded-xl focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 focus:ring-offset-white w-full sm:w-auto font-semibold text-base focus:outline-none text-purple-700 transition-colors duration-200"
+            >Learn More</button>
+            <button
+                class="block bg-red-200 hover:bg-red-300 mb-4 px-8 py-3.5 border-red-300 border-b rounded-xl focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 focus:ring-offset-white w-full sm:w-auto font-semibold text-base focus:outline-none text-red-900 transition-colors duration-200"
+            >New</button>
+            <button
+                class="block border-yellow-300 bg-yellow-200 hover:bg-yellow-300 mb-4 px-7 py-3 border-b rounded-xl focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 focus:ring-offset-white w-full sm:w-auto font-semibold text-base focus:outline-none text-yellow-900 transition-colors duration-200"
+            >New</button>
+            <button
+                class="block border-green-300 bg-green-200 hover:bg-green-300 mb-4 px-6 py-3 border-b rounded-xl focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 focus:ring-offset-white w-full sm:w-auto font-semibold text-base leading-6 focus:outline-none text-green-900 transition-colors duration-200"
+            >New</button>
+            <button
+                class="block border-indigo-300 bg-indigo-200 hover:bg-indigo-300 mb-4 px-5 py-2 border-b rounded-xl focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 focus:ring-offset-white w-full sm:w-auto font-medium text-sm focus:outline-none text-indigo-900 transition-colors duration-200"
+            >New</button>
+        </div>
+
+        <br>
+
+
+        <div class="mr-6">
+            <button
+                class="block border-purple-300 bg-purple-200 hover:bg-purple-300 mb-4 px-9 py-4 border-b rounded-full focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 focus:ring-offset-white w-full sm:w-auto font-semibold text-base focus:outline-none text-purple-700 transition-colors duration-200"
+            >Learn More</button>
+            <button
+                class="block border-purple-300 bg-red-200 hover:bg-red-300 mb-4 px-8 py-3.5 border-b rounded-full focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 focus:ring-offset-white w-full sm:w-auto font-semibold text-base focus:outline-none text-red-900 transition-colors duration-200"
+            >New</button>
+            <button
+                class="block border-purple-300 bg-yellow-200 hover:bg-yellow-300 mb-4 px-7 py-3 border-b rounded-full focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 focus:ring-offset-white w-full sm:w-auto font-semibold text-base focus:outline-none text-yellow-900 transition-colors duration-200"
+            >New</button>
+            <button
+                class="block border-purple-300 bg-green-200 hover:bg-green-300 mb-4 px-6 py-3 border-b rounded-full focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 focus:ring-offset-white w-full sm:w-auto font-semibold text-base leading-6 focus:outline-none text-green-900 transition-colors duration-200"
+            >New</button>
+            <button
+                class="block border-purple-300 bg-indigo-200 hover:bg-indigo-300 mb-4 px-5 py-2 border-b rounded-full focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 focus:ring-offset-white w-full sm:w-auto font-medium text-sm focus:outline-none text-indigo-900 transition-colors duration-200"
+            >New</button>
+        </div>
+
+        <br>
+
+        <div>
+            <button
+                class="block border-purple-700 bg-transparent hover:bg-purple-700 mb-4 px-9 py-4 border rounded-full focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 focus:ring-offset-white w-full sm:w-auto font-semibold text-base focus:outline-none text-purple-700 hover:text-purple-200 transition-colors duration-200"
+            >Learn More</button>
+            <button
+                class="block bg-transparent hover:bg-red-700 mb-4 px-8 py-3.5 border border-red-700 rounded-full focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 focus:ring-offset-white w-full sm:w-auto font-semibold text-base focus:outline-none text-red-700 hover:text-red-200 transition-colors duration-200"
+            >New</button>
+            <button
+                class="block border-yellow-700 bg-transparent hover:bg-yellow-700 mb-4 px-7 py-3 border rounded-full focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 focus:ring-offset-white w-full sm:w-auto font-semibold text-base focus:outline-none text-yellow-700 hover:text-yellow-200 transition-colors duration-200"
+            >New</button>
+            <button
+                class="block border-green-700 bg-transparent hover:bg-green-700 mb-4 px-6 py-3 border rounded-full focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 focus:ring-offset-white w-full sm:w-auto font-semibold text-base hover:text-green-200 leading-6 focus:outline-none text-green-700 transition-colors duration-200"
+            >New</button>
+            <button
+                class="block border-indigo-700 bg-transparent hover:bg-indigo-700 mb-4 px-5 py-2 border rounded-full focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 focus:ring-offset-white w-full sm:w-auto font-medium text-sm focus:outline-none text-indigo-700 hover:text-indigo-200 transition-colors duration-200"
+            >New</button>
+        </div>
+        <div class="h-10"></div>
+        <!-- component -->
+        <!-- This is an example component -->
+        <div class="place-items-center grid grid-cols-1 md:grid-cols-3 w-screen h-screen">
+            <div
+                role="buttons"
+                class="flex flex-col items-baseline"
+            >
+                <button
+                    class="bg-red-500 my-2 p-2 rounded-md ring-offset-2 text-white focus:outline-none ring-red-300 focus:ring-2"
+                >Danger</button>
+                <button
+                    class="bg-blue-500 my-2 p-2 rounded-md ring-offset-2 text-white focus:outline-none ring-blue-300 focus:ring-2"
+                >Primary</button>
+                <button
+                    class="bg-gray-500 my-2 p-2 rounded-md ring-offset-2 text-white focus:outline-none ring-gray-300 focus:ring-2"
+                >Secondary</button>
+                <button
+                    class="bg-yellow-500 my-2 p-2 rounded-md ring-offset-2 text-white focus:outline-none ring-yellow-300 focus:ring-2"
+                >Warning</button>
+                <button
+                    class="bg-blue-400 my-2 p-2 rounded-md ring-offset-2 text-white focus:outline-none ring-blue-200 focus:ring-2"
+                >Info</button>
+            </div>
+            <div
+                role="inputs"
+                class="flex flex-col items-baseline"
+            >
+                <input
+                    type="text"
+                    placeholder="text...."
+                    class="border-gray-300 my-2 p-2 border rounded-md focus:outline-none ring-blue-200 focus:ring-2"
+                />
+                <input
+                    type="number"
+                    placeholder="number...."
+                    class="border-gray-300 my-2 p-2 border rounded-md focus:outline-none ring-blue-200 focus:ring-2"
+                />
+                <input
+                    type="date"
+                    placeholder="date...."
+                    class="border-gray-300 my-2 p-2 border rounded-md focus:outline-none ring-blue-200 focus:ring-2"
+                />
+                <input
+                    type="range"
+                    placeholder="range...."
+                    class="border-gray-300 my-2 p-2 border rounded-md w-full app focus:outline-none"
+                />
+                <textarea
+                    type="range"
+                    placeholder="range...."
+                    class="border-gray-300 my-2 p-2 border rounded-md ring-blue-200 focus:ring-2 w-full app focus:outline-none"
+                > </textarea>
+            </div>
+            <div
+                role="alert"
+                class="flex flex-col items-baseline"
+            >
+                <div class="border-green-600 bg-green-300 my-2 px-2 py-3 border rounded text-green-800">Success , Lorem
+                    ipsum
+                    dolor sit amet.</div>
+                <div class="bg-red-300 my-2 px-2 py-3 border border-red-600 rounded text-red-800">Danger , Lorem ipsum
+                    dolor sit
+                    amet.</div>
+                <div class="border-yellow-600 bg-yellow-300 my-2 px-2 py-3 border rounded text-yellow-800">Warning ,
+                    Lorem ipsum
+                    dolor sit amet.</div>
+                <div class="border-gray-600 bg-gray-300 my-2 px-2 py-3 border rounded text-gray-800">Secondary , Lorem
+                    ipsum
+                    dolor sit amet.</div>
+                <div class="bg-blue-300 my-2 px-2 py-3 border border-blue-600 rounded text-blue-800">Info , Lorem ipsum
+                    dolor
+                    sit amet.</div>
+            </div>
+        </div>
+        <div class="h-10"></div>
+        <!-- component -->
+        <!-- This is an example component -->
+        <div class="place-items-center grid grid-cols-1 md:grid-cols-3 w-screen h-screen">
+            <div
+                role="buttons"
+                class="flex flex-col items-baseline"
+            >
+                <button
+                    class="bg-red-500 my-2 p-2 rounded-md ring-offset-2 text-white focus:outline-none ring-red-300 focus:ring-2"
+                >Danger</button>
+                <button
+                    class="bg-blue-500 my-2 p-2 rounded-md ring-offset-2 text-white focus:outline-none ring-blue-300 focus:ring-2"
+                >Primary</button>
+                <button
+                    class="bg-gray-500 my-2 p-2 rounded-md ring-offset-2 text-white focus:outline-none ring-gray-300 focus:ring-2"
+                >Secondary</button>
+                <button
+                    class="bg-yellow-500 my-2 p-2 rounded-md ring-offset-2 text-white focus:outline-none ring-yellow-300 focus:ring-2"
+                >Warning</button>
+                <button
+                    class="bg-blue-400 my-2 p-2 rounded-md ring-offset-2 text-white focus:outline-none ring-blue-200 focus:ring-2"
+                >Info</button>
+            </div>
+            <div
+                role="inputs"
+                class="flex flex-col items-baseline"
+            >
+                <input
+                    type="text"
+                    placeholder="text...."
+                    class="border-gray-300 my-2 p-2 border rounded-md focus:outline-none ring-blue-200 focus:ring-2"
+                />
+                <input
+                    type="number"
+                    placeholder="number...."
+                    class="border-gray-300 my-2 p-2 border rounded-md focus:outline-none ring-blue-200 focus:ring-2"
+                />
+                <input
+                    type="date"
+                    placeholder="date...."
+                    class="border-gray-300 my-2 p-2 border rounded-md focus:outline-none ring-blue-200 focus:ring-2"
+                />
+                <input
+                    type="range"
+                    placeholder="range...."
+                    class="border-gray-300 my-2 p-2 border rounded-md w-full app focus:outline-none"
+                />
+                <textarea
+                    type="range"
+                    placeholder="range...."
+                    class="border-gray-300 my-2 p-2 border rounded-md ring-blue-200 focus:ring-2 w-full app focus:outline-none"
+                > </textarea>
+            </div>
+            <div
+                role="alert"
+                class="flex flex-col items-baseline"
+            >
+                <div class="border-green-600 bg-green-300 my-2 px-2 py-3 border rounded text-green-800">Success , Lorem
+                    ipsum
+                    dolor sit amet.</div>
+                <div class="bg-red-300 my-2 px-2 py-3 border border-red-600 rounded text-red-800">Danger , Lorem ipsum
+                    dolor sit
+                    amet.</div>
+                <div class="border-yellow-600 bg-yellow-300 my-2 px-2 py-3 border rounded text-yellow-800">Warning ,
+                    Lorem ipsum
+                    dolor sit amet.</div>
+                <div class="border-gray-600 bg-gray-300 my-2 px-2 py-3 border rounded text-gray-800">Secondary , Lorem
+                    ipsum
+                    dolor sit amet.</div>
+                <div class="bg-blue-300 my-2 px-2 py-3 border border-blue-600 rounded text-blue-800">Info , Lorem ipsum
+                    dolor
+                    sit amet.</div>
+            </div>
+        </div>
+        <div class="h-10"></div>
+        <!-- component -->
+        <!-- This is an example component -->
+        <div class="w-full">
+            <div class="gap-16 grid grid-cols-2 bg-white shadow-lg mx-auto p-16 rounded-lg w-full overflow-hidden">
+
+
+                <div class="gap-2 grid">
+
+                    <button
+                        class="flex items-center bg-blue-600 shadow-sm hover:shadow-lg p-3 rounded-full w-12 max-w-max h-12 text-blue-50 uppercase"
+                    >
+                        <svg
+                            width="32"
+                            height="32"
+                            viewBox="0 0 32 32"
+                            style="transform: rotate(360deg);"
+                        >
+                            <path
+                                d="M29 27.586l-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29zM4 13a9 9 0 1 1 9 9a9.01 9.01 0 0 1-9-9z"
+                                fill="currentColor"
+                            ></path>
+                        </svg>
+                    </button>
+
+                    <button
+                        class="flex items-center bg-yellow-500 shadow-sm hover:shadow-lg p-3 rounded-full w-12 max-w-max h-12 text-blue-50 uppercase"
+                    >
+                        <svg
+                            width="32"
+                            height="32"
+                            preserveAspectRatio="xMidYMid meet"
+                            viewBox="0 0 32 32"
+                            style="transform: rotate(360deg);"
+                        >
+                            <path
+                                d="M26 18A10 10 0 1 1 16 8h6.182l-3.584 3.585L20 13l6-6l-6-6l-1.402 1.414L22.185 6H16a12 12 0 1 0 12 12z"
+                                fill="currentColor"
+                            ></path>
+                        </svg>
+                    </button>
+                    <button
+                        class="flex items-center bg-red-500 shadow-sm hover:shadow-lg p-3 rounded-full w-12 max-w-max h-12 text-blue-50 uppercase"
+                    >
+                        <svg
+                            width="32"
+                            height="32"
+                            preserveAspectRatio="xMidYMid meet"
+                            viewBox="0 0 32 32"
+                            style="transform: rotate(360deg);"
+                        >
+                            <path
+                                d="M12 12h2v12h-2z"
+                                fill="currentColor"
+                            ></path>
+                            <path
+                                d="M18 12h2v12h-2z"
+                                fill="currentColor"
+                            ></path>
+                            <path
+                                d="M4 6v2h2v20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8h2V6zm4 22V8h16v20z"
+                                fill="currentColor"
+                            ></path>
+                            <path
+                                d="M12 2h8v2h-8z"
+                                fill="currentColor"
+                            ></path>
+                        </svg>
+                    </button>
+                    <button
+                        class="flex items-center bg-gray-500 shadow-sm hover:shadow-lg p-3 rounded-full w-12 max-w-max h-12 text-blue-50 uppercase"
+                    >
+                        <svg
+                            width="32"
+                            height="32"
+                            preserveAspectRatio="xMidYMid meet"
+                            viewBox="0 0 32 32"
+                            style="transform: rotate(360deg);"
+                        >
+                            <path
+                                d="M15 2h2v3h-2z"
+                                fill="currentColor"
+                            ></path>
+                            <path
+                                d="M27 15h3v2h-3z"
+                                fill="currentColor"
+                            ></path>
+                            <path
+                                d="M15 27h2v3h-2z"
+                                fill="currentColor"
+                            ></path>
+                            <path
+                                d="M2 15h3v2H2z"
+                                fill="currentColor"
+                            ></path>
+                            <path
+                                d="M5.45 6.884l1.414-1.415l2.121 2.122l-1.414 1.414z"
+                                fill="currentColor"
+                            ></path>
+                            <path
+                                d="M23 7.58l2.121-2.12l1.414 1.414l-2.121 2.121z"
+                                fill="currentColor"
+                            ></path>
+                            <path
+                                d="M23.002 24.416l1.415-1.414l2.12 2.122l-1.413 1.414z"
+                                fill="currentColor"
+                            ></path>
+                            <path
+                                d="M5.47 25.13L7.59 23L9 24.42l-2.12 2.12l-1.41-1.41z"
+                                fill="currentColor"
+                            ></path>
+                            <path
+                                d="M16 8a8 8 0 1 0 8 8a8 8 0 0 0-8-8zm0 14a6 6 0 0 1 0-12z"
+                                fill="currentColor"
+                            ></path>
+                        </svg>
+                    </button>
+                    <button
+                        class="flex items-center bg-green-500 shadow-sm hover:shadow-lg p-3 rounded-full w-12 max-w-max h-12 text-blue-50 uppercase"
+                    >
+                        <svg
+                            width="32"
+                            height="32"
+                            viewBox="0 0 32 32"
+                            style="transform: rotate(360deg);"
+                        >
+                            <path
+                                d="M23 20a5 5 0 0 0-3.89 1.89l-7.31-4.57a4.46 4.46 0 0 0 0-2.64l7.31-4.57A5 5 0 1 0 18 7a4.79 4.79 0 0 0 .2 1.32l-7.31 4.57a5 5 0 1 0 0 6.22l7.31 4.57A4.79 4.79 0 0 0 18 25a5 5 0 1 0 5-5zm0-16a3 3 0 1 1-3 3a3 3 0 0 1 3-3zM7 19a3 3 0 1 1 3-3a3 3 0 0 1-3 3zm16 9a3 3 0 1 1 3-3a3 3 0 0 1-3 3z"
+                                fill="currentColor"
+                            ></path>
+                        </svg> </button>
+                </div>
+
+                <div class="gap-2 grid">
+
+                    <button
+                        class="flex items-center shadow-sm hover:shadow-lg p-3 border border-blue-600 rounded-full w-12 max-w-max h-12 text-blue-600 uppercase"
+                    >
+                        <svg
+                            width="32"
+                            height="32"
+                            viewBox="0 0 32 32"
+                            style="transform: rotate(360deg);"
+                        >
+                            <path
+                                d="M29 27.586l-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29zM4 13a9 9 0 1 1 9 9a9.01 9.01 0 0 1-9-9z"
+                                fill="currentColor"
+                            ></path>
+                        </svg>
+                    </button>
+
+                    <button
+                        class="flex items-center border-yellow-600 shadow-sm hover:shadow-lg p-3 border rounded-full w-12 max-w-max h-12 text-yellow-600 uppercase"
+                    >
+                        <svg
+                            width="32"
+                            height="32"
+                            preserveAspectRatio="xMidYMid meet"
+                            viewBox="0 0 32 32"
+                            style="transform: rotate(360deg);"
+                        >
+                            <path
+                                d="M26 18A10 10 0 1 1 16 8h6.182l-3.584 3.585L20 13l6-6l-6-6l-1.402 1.414L22.185 6H16a12 12 0 1 0 12 12z"
+                                fill="currentColor"
+                            ></path>
+                        </svg>
+                    </button>
+                    <button
+                        class="flex items-center shadow-sm hover:shadow-lg p-3 border border-red-600 rounded-full w-12 max-w-max h-12 text-red-600 uppercase"
+                    >
+                        <svg
+                            width="32"
+                            height="32"
+                            preserveAspectRatio="xMidYMid meet"
+                            viewBox="0 0 32 32"
+                            style="transform: rotate(360deg);"
+                        >
+                            <path
+                                d="M12 12h2v12h-2z"
+                                fill="currentColor"
+                            ></path>
+                            <path
+                                d="M18 12h2v12h-2z"
+                                fill="currentColor"
+                            ></path>
+                            <path
+                                d="M4 6v2h2v20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8h2V6zm4 22V8h16v20z"
+                                fill="currentColor"
+                            ></path>
+                            <path
+                                d="M12 2h8v2h-8z"
+                                fill="currentColor"
+                            ></path>
+                        </svg>
+                    </button>
+                    <button
+                        class="flex items-center border-gray-600 shadow-sm hover:shadow-lg p-3 border rounded-full w-12 max-w-max h-12 text-gray-600 uppercase"
+                    >
+                        <svg
+                            width="32"
+                            height="32"
+                            preserveAspectRatio="xMidYMid meet"
+                            viewBox="0 0 32 32"
+                            style="transform: rotate(360deg);"
+                        >
+                            <path
+                                d="M15 2h2v3h-2z"
+                                fill="currentColor"
+                            ></path>
+                            <path
+                                d="M27 15h3v2h-3z"
+                                fill="currentColor"
+                            ></path>
+                            <path
+                                d="M15 27h2v3h-2z"
+                                fill="currentColor"
+                            ></path>
+                            <path
+                                d="M2 15h3v2H2z"
+                                fill="currentColor"
+                            ></path>
+                            <path
+                                d="M5.45 6.884l1.414-1.415l2.121 2.122l-1.414 1.414z"
+                                fill="currentColor"
+                            ></path>
+                            <path
+                                d="M23 7.58l2.121-2.12l1.414 1.414l-2.121 2.121z"
+                                fill="currentColor"
+                            ></path>
+                            <path
+                                d="M23.002 24.416l1.415-1.414l2.12 2.122l-1.413 1.414z"
+                                fill="currentColor"
+                            ></path>
+                            <path
+                                d="M5.47 25.13L7.59 23L9 24.42l-2.12 2.12l-1.41-1.41z"
+                                fill="currentColor"
+                            ></path>
+                            <path
+                                d="M16 8a8 8 0 1 0 8 8a8 8 0 0 0-8-8zm0 14a6 6 0 0 1 0-12z"
+                                fill="currentColor"
+                            ></path>
+                        </svg>
+                    </button>
+                    <button
+                        class="flex items-center border-green-600 shadow-sm hover:shadow-lg p-3 border rounded-full w-12 max-w-max h-12 text-green-600 uppercase"
+                    >
+                        <svg
+                            width="32"
+                            height="32"
+                            viewBox="0 0 32 32"
+                            style="transform: rotate(360deg);"
+                        >
+                            <path
+                                d="M23 20a5 5 0 0 0-3.89 1.89l-7.31-4.57a4.46 4.46 0 0 0 0-2.64l7.31-4.57A5 5 0 1 0 18 7a4.79 4.79 0 0 0 .2 1.32l-7.31 4.57a5 5 0 1 0 0 6.22l7.31 4.57A4.79 4.79 0 0 0 18 25a5 5 0 1 0 5-5zm0-16a3 3 0 1 1-3 3a3 3 0 0 1 3-3zM7 19a3 3 0 1 1 3-3a3 3 0 0 1-3 3zm16 9a3 3 0 1 1 3-3a3 3 0 0 1-3 3z"
+                                fill="currentColor"
+                            ></path>
+                        </svg> </button>
+                </div>
+                <div class="gap-2 grid">
+
+                    <button
+                        class="bg-blue-600 shadow-sm hover:shadow-lg px-8 py-2 max-w-max text-blue-50 uppercase">button</button>
+                    <button
+                        class="bg-yellow-500 shadow-sm hover:shadow-lg px-8 py-2 max-w-max text-blue-50 uppercase">button</button>
+                    <button
+                        class="bg-red-600 shadow-sm hover:shadow-lg px-8 py-2 max-w-max text-blue-50 uppercase">button</button>
+                    <button
+                        class="bg-gray-600 shadow-sm hover:shadow-lg px-8 py-2 max-w-max text-blue-50 uppercase">button</button>
+                    <button
+                        class="bg-green-600 shadow-sm hover:shadow-lg px-8 py-2 max-w-max text-blue-50 uppercase">button</button>
+
+                </div>
+                <div class="gap-2 grid">
+                    <button
+                        class="shadow-sm hover:shadow-lg px-8 py-2 border border-blue-600 max-w-max text-blue-600 uppercase"
+                    >button</button>
+                    <button
+                        class="border-yellow-600 shadow-sm hover:shadow-lg px-8 py-2 border max-w-max text-yellow-600 uppercase"
+                    >button</button>
+                    <button
+                        class="shadow-sm hover:shadow-lg px-8 py-2 border border-red-600 max-w-max text-red-600 uppercase"
+                    >button</button>
+                    <button
+                        class="border-gray-600 shadow-sm hover:shadow-lg px-8 py-2 border max-w-max text-gray-600 uppercase"
+                    >button</button>
+                    <button
+                        class="border-green-600 shadow-sm hover:shadow-lg px-8 py-2 border max-w-max text-green-600 uppercase"
+                    >button</button>
+
+                </div>
+                <div class="gap-2 grid">
+
+                    <button
+                        class="bg-blue-300 shadow-sm hover:shadow-lg px-8 py-2 max-w-max text-blue-600 uppercase">button</button>
+                    <button
+                        class="bg-yellow-300 shadow-sm hover:shadow-lg px-8 py-2 max-w-max text-yellow-600 uppercase"
+                    >button</button>
+                    <button
+                        class="bg-red-300 shadow-sm hover:shadow-lg px-8 py-2 max-w-max text-red-600 uppercase">button</button>
+                    <button
+                        class="bg-gray-300 shadow-sm hover:shadow-lg px-8 py-2 max-w-max text-gray-600 uppercase">button</button>
+                    <button
+                        class="bg-green-300 shadow-sm hover:shadow-lg px-8 py-2 max-w-max text-green-600 uppercase">button</button>
+
+                </div>
+                <div class="gap-2 grid">
+
+                    <button
+                        class="bg-blue-600 shadow-sm hover:shadow-lg px-8 py-2 rounded max-w-max text-blue-50 uppercase"
+                    >button</button>
+                    <button
+                        class="bg-yellow-500 shadow-sm hover:shadow-lg px-8 py-2 rounded max-w-max text-blue-50 uppercase"
+                    >button</button>
+                    <button
+                        class="bg-red-600 shadow-sm hover:shadow-lg px-8 py-2 rounded max-w-max text-blue-50 uppercase"
+                    >button</button>
+                    <button
+                        class="bg-gray-600 shadow-sm hover:shadow-lg px-8 py-2 rounded max-w-max text-blue-50 uppercase"
+                    >button</button>
+                    <button
+                        class="bg-green-600 shadow-sm hover:shadow-lg px-8 py-2 rounded max-w-max text-blue-50 uppercase"
+                    >button</button>
+
+                </div>
+                <div class="gap-2 grid">
+                    <button
+                        class="shadow-sm hover:shadow-lg px-8 py-2 border border-blue-600 rounded max-w-max text-blue-600 uppercase"
+                    >button</button>
+                    <button
+                        class="border-yellow-600 shadow-sm hover:shadow-lg px-8 py-2 border rounded max-w-max text-yellow-600 uppercase"
+                    >button</button>
+                    <button
+                        class="shadow-sm hover:shadow-lg px-8 py-2 border border-red-600 rounded max-w-max text-red-600 uppercase"
+                    >button</button>
+                    <button
+                        class="border-gray-600 shadow-sm hover:shadow-lg px-8 py-2 border rounded max-w-max text-gray-600 uppercase"
+                    >button</button>
+                    <button
+                        class="border-green-600 shadow-sm hover:shadow-lg px-8 py-2 border rounded max-w-max text-green-600 uppercase"
+                    >button</button>
+
+                </div>
+                <div class="gap-2 grid">
+
+                    <button
+                        class="bg-blue-300 shadow-sm hover:shadow-lg px-8 py-2 rounded max-w-max text-blue-600 uppercase"
+                    >button</button>
+                    <button
+                        class="bg-yellow-300 shadow-sm hover:shadow-lg px-8 py-2 rounded max-w-max text-yellow-600 uppercase"
+                    >button</button>
+                    <button
+                        class="bg-red-300 shadow-sm hover:shadow-lg px-8 py-2 rounded max-w-max text-red-600 uppercase"
+                    >button</button>
+                    <button
+                        class="bg-gray-300 shadow-sm hover:shadow-lg px-8 py-2 rounded max-w-max text-gray-600 uppercase"
+                    >button</button>
+                    <button
+                        class="bg-green-300 shadow-sm hover:shadow-lg px-8 py-2 rounded max-w-max text-green-600 uppercase"
+                    >button</button>
+
+                </div>
+
+                <div class="gap-2 grid">
+
+                    <button
+                        class="bg-blue-600 shadow-sm hover:shadow-lg px-8 py-2 rounded-full max-w-max text-blue-50 uppercase"
+                    >button</button>
+                    <button
+                        class="bg-yellow-500 shadow-sm hover:shadow-lg px-8 py-2 rounded-full max-w-max text-blue-50 uppercase"
+                    >button</button>
+                    <button
+                        class="bg-red-600 shadow-sm hover:shadow-lg px-8 py-2 rounded-full max-w-max text-blue-50 uppercase"
+                    >button</button>
+                    <button
+                        class="bg-gray-600 shadow-sm hover:shadow-lg px-8 py-2 rounded-full max-w-max text-blue-50 uppercase"
+                    >button</button>
+                    <button
+                        class="bg-green-600 shadow-sm hover:shadow-lg px-8 py-2 rounded-full max-w-max text-blue-50 uppercase"
+                    >button</button>
+
+                </div>
+                <div class="gap-2 grid">
+                    <button
+                        class="shadow-sm hover:shadow-lg px-8 py-2 border border-blue-600 rounded-full max-w-max text-blue-600 uppercase"
+                    >button</button>
+                    <button
+                        class="border-yellow-600 shadow-sm hover:shadow-lg px-8 py-2 border rounded-full max-w-max text-yellow-600 uppercase"
+                    >button</button>
+                    <button
+                        class="shadow-sm hover:shadow-lg px-8 py-2 border border-red-600 rounded-full max-w-max text-red-600 uppercase"
+                    >button</button>
+                    <button
+                        class="border-gray-600 shadow-sm hover:shadow-lg px-8 py-2 border rounded-full max-w-max text-gray-600 uppercase"
+                    >button</button>
+                    <button
+                        class="border-green-600 shadow-sm hover:shadow-lg px-8 py-2 border rounded-full max-w-max text-green-600 uppercase"
+                    >button</button>
+
+                </div>
+                <div class="gap-2 grid">
+
+                    <button
+                        class="bg-blue-300 shadow-sm hover:shadow-lg px-8 py-2 rounded-full max-w-max text-blue-600 uppercase"
+                    >button</button>
+                    <button
+                        class="bg-yellow-300 shadow-sm hover:shadow-lg px-8 py-2 rounded-full max-w-max text-yellow-600 uppercase"
+                    >button</button>
+                    <button
+                        class="bg-red-300 shadow-sm hover:shadow-lg px-8 py-2 rounded-full max-w-max text-red-600 uppercase"
+                    >button</button>
+                    <button
+                        class="bg-gray-300 shadow-sm hover:shadow-lg px-8 py-2 rounded-full max-w-max text-gray-600 uppercase"
+                    >button</button>
+                    <button
+                        class="bg-green-300 shadow-sm hover:shadow-lg px-8 py-2 rounded-full max-w-max text-green-600 uppercase"
+                    >button</button>
+                </div>
+            </div>
+        </div>
+        <div class="h-10"></div>
+        <!-- component -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css"
+        />
+
+        <div class="space-y-8 mb-6">
+            <div class="space-x-3 space-y-3 m-6">
+                <button
+                    class="inline-block bg-blue-700 hover:bg-blue-800 shadow hover:shadow-lg px-6 py-2 rounded font-medium text-center text-white text-xs uppercase leading-6 transition ripple focus:outline-none"
+                >
+                    Primary
+                </button>
+                <button
+                    class="inline-block bg-pink-500 hover:bg-pink-600 shadow hover:shadow-lg px-6 py-2 rounded font-medium text-center text-white text-xs uppercase leading-6 transition ripple focus:outline-none"
+                >
+                    Secondary
+                </button>
+                <button
+                    class="inline-block bg-green-500 hover:bg-green-600 shadow hover:shadow-lg px-6 py-2 rounded font-medium text-center text-white text-xs uppercase leading-6 transition ripple focus:outline-none"
+                >
+                    Success
+                </button>
+                <button
+                    class="inline-block bg-red-500 hover:bg-red-600 shadow hover:shadow-lg px-6 py-2 rounded font-medium text-center text-white text-xs uppercase leading-6 transition ripple focus:outline-none"
+                >
+                    Danger
+                </button>
+                <button
+                    class="inline-block bg-yellow-500 hover:bg-yellow-600 shadow hover:shadow-lg px-6 py-2 rounded font-medium text-center text-white text-xs uppercase leading-6 transition ripple focus:outline-none"
+                >
+                    Warning
+                </button>
+                <button
+                    class="inline-block bg-indigo-500 hover:bg-indigo-600 shadow hover:shadow-lg px-6 py-2 rounded font-medium text-center text-white text-xs uppercase leading-6 transition ripple focus:outline-none"
+                >
+                    Info
+                </button>
+                <button
+                    class="inline-block bg-gray-100 hover:bg-gray-200 shadow hover:shadow-lg px-6 py-2 rounded font-medium text-black text-center text-xs uppercase leading-6 transition ripple focus:outline-none"
+                >
+                    Light
+                </button>
+                <button
+                    class="inline-block bg-black hover:bg-black shadow hover:shadow-lg px-6 py-2 rounded font-medium text-center text-white text-xs uppercase leading-6 transition ripple waves-light focus:outline-none"
+                >
+                    Dark
+                </button>
+                <button
+                    class="inline-block bg-transparent px-6 py-2 rounded font-medium text-blue-700 text-center text-xs hover:text-blue-900 underline uppercase leading-6 transition ripple focus:outline-none"
+                >
+                    Link
+                </button>
+            </div>
+            <div class="space-x-3 space-y-3 m-6">
+                <button
+                    class="inline-block bg-blue-700 hover:bg-blue-800 shadow hover:shadow-lg px-6 py-2 rounded-full font-medium text-center text-white text-xs uppercase leading-6 transition ripple focus:outline-none"
+                >
+                    Primary
+                </button>
+                <button
+                    class="inline-block bg-pink-500 hover:bg-pink-600 shadow hover:shadow-lg px-6 py-2 rounded-full font-medium text-center text-white text-xs uppercase leading-6 transition ripple focus:outline-none"
+                >
+                    Secondary
+                </button>
+                <button
+                    class="inline-block bg-green-500 hover:bg-green-600 shadow hover:shadow-lg px-6 py-2 rounded-full font-medium text-center text-white text-xs uppercase leading-6 transition ripple focus:outline-none"
+                >
+                    Success
+                </button>
+                <button
+                    class="inline-block bg-red-500 hover:bg-red-600 shadow hover:shadow-lg px-6 py-2 rounded-full font-medium text-center text-white text-xs uppercase leading-6 transition ripple focus:outline-none"
+                >
+                    Danger
+                </button>
+                <button
+                    class="inline-block bg-yellow-500 hover:bg-yellow-600 shadow hover:shadow-lg px-6 py-2 rounded-full font-medium text-center text-white text-xs uppercase leading-6 transition ripple focus:outline-none"
+                >
+                    Warning
+                </button>
+                <button
+                    class="inline-block bg-indigo-500 hover:bg-indigo-600 shadow hover:shadow-lg px-6 py-2 rounded-full font-medium text-center text-white text-xs uppercase leading-6 transition ripple focus:outline-none"
+                >
+                    Info
+                </button>
+                <button
+                    class="inline-block bg-gray-100 hover:bg-gray-200 shadow hover:shadow-lg px-6 py-2 rounded-full font-medium text-black text-center text-xs uppercase leading-6 transition ripple focus:outline-none"
+                >
+                    Light
+                </button>
+                <button
+                    class="inline-block bg-black hover:bg-black shadow hover:shadow-lg px-6 py-2 rounded-full font-medium text-center text-white text-xs uppercase leading-6 transition ripple waves-light focus:outline-none"
+                >
+                    Dark
+                </button>
+            </div>
+            <div class="space-x-3 space-y-3 m-6">
+                <button
+                    class="inline-block border-2 bg-transparent hover:bg-blue-100 px-6 py-2 border-blue-700 rounded font-medium text-blue-700 text-center text-xs uppercase leading-6 transition ripple focus:outline-none"
+                >
+                    Primary
+                </button>
+                <button
+                    class="inline-block border-2 border-pink-500 bg-transparent hover:bg-pink-100 px-6 py-2 rounded font-medium text-center text-pink-500 text-xs uppercase leading-6 transition ripple focus:outline-none"
+                >
+                    Secondary
+                </button>
+                <button
+                    class="inline-block border-2 border-green-500 bg-transparent hover:bg-green-100 px-6 py-2 rounded font-medium text-center text-green-500 text-xs uppercase leading-6 transition ripple focus:outline-none"
+                >
+                    Success
+                </button>
+                <button
+                    class="inline-block border-2 bg-transparent hover:bg-red-100 px-6 py-2 border-red-500 rounded font-medium text-center text-red-500 text-xs uppercase leading-6 transition ripple focus:outline-none"
+                >
+                    Danger
+                </button>
+                <button
+                    class="inline-block border-2 border-yellow-500 bg-transparent hover:bg-yellow-100 px-6 py-2 rounded font-medium text-center text-xs text-yellow-500 uppercase leading-6 transition ripple focus:outline-none"
+                >
+                    Warning
+                </button>
+                <button
+                    class="inline-block border-2 border-indigo-500 bg-transparent hover:bg-indigo-100 px-6 py-2 rounded font-medium text-center text-indigo-500 text-xs uppercase leading-6 transition ripple focus:outline-none"
+                >
+                    Info
+                </button>
+                <button
+                    class="inline-block border-2 bg-transparent hover:bg-gray-100 px-6 py-2 border-black rounded font-medium text-black text-center text-xs uppercase leading-6 transition ripple focus:outline-none"
+                >
+                    Dark
+                </button>
+            </div>
+            <div class="space-x-3 space-y-3 m-6">
+                <button
+                    class="inline-block border-2 bg-transparent hover:bg-blue-100 px-6 py-2 border-blue-700 rounded-full font-medium text-blue-700 text-center text-xs uppercase leading-6 transition ripple focus:outline-none"
+                >
+                    Primary
+                </button>
+                <button
+                    class="inline-block border-2 border-pink-500 bg-transparent hover:bg-pink-100 px-6 py-2 rounded-full font-medium text-center text-pink-500 text-xs uppercase leading-6 transition ripple focus:outline-none"
+                >
+                    Secondary
+                </button>
+                <button
+                    class="inline-block border-2 border-green-500 bg-transparent hover:bg-green-100 px-6 py-2 rounded-full font-medium text-center text-green-500 text-xs uppercase leading-6 transition ripple focus:outline-none"
+                >
+                    Success
+                </button>
+                <button
+                    class="inline-block border-2 bg-transparent hover:bg-red-100 px-6 py-2 border-red-500 rounded-full font-medium text-center text-red-500 text-xs uppercase leading-6 transition ripple focus:outline-none"
+                >
+                    Danger
+                </button>
+                <button
+                    class="inline-block border-2 border-yellow-500 bg-transparent hover:bg-yellow-100 px-6 py-2 rounded-full font-medium text-center text-xs text-yellow-500 uppercase leading-6 transition ripple focus:outline-none"
+                >
+                    Warning
+                </button>
+                <button
+                    class="inline-block border-2 border-indigo-500 bg-transparent hover:bg-indigo-100 px-6 py-2 rounded-full font-medium text-center text-indigo-500 text-xs uppercase leading-6 transition ripple focus:outline-none"
+                >
+                    Info
+                </button>
+                <button
+                    class="inline-block border-2 bg-transparent hover:bg-gray-100 px-6 py-2 border-black rounded-full font-medium text-black text-center text-xs uppercase leading-6 transition ripple focus:outline-none"
+                >
+                    Dark
+                </button>
+            </div>
+
+            <div class="space-x-3 m-6">
+                <button
+                    class="inline-block bg-blue-700 hover:bg-blue-800 shadow hover:shadow-lg p-3 rounded-full text-center text-white transition ripple focus:outline-none"
+                >
+                    <svg
+                        class="w-5 h-5 text-white"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                    >
+                        <path
+                            fill-rule="evenodd"
+                            d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z"
+                            clip-rule="evenodd"
+                        />
+                    </svg>
+                </button>
+                <button
+                    class="inline-block bg-red-500 hover:bg-red-600 shadow hover:shadow-lg p-3 rounded-full text-center text-white transition ripple focus:outline-none"
+                >
+                    <svg
+                        class="w-5 h-5 text-white"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                    >
+                        <path
+                            fill-rule="evenodd"
+                            d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                            clip-rule="evenodd"
+                        />
+                    </svg>
+                </button>
+                <button
+                    class="inline-block border-yellow-500 hover:bg-yellow-100 p-3 border rounded-full text-center text-white transition ripple focus:outline-none"
+                >
+                    <svg
+                        class="w-5 h-5 text-yellow-500"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                    >
+                        <path
+                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                        />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Brand Icons -->
+            <!-- https://simpleicons.org/ -->
+            <div class="space-x-3 m-6">
+                <!-- Github -->
+                <button
+                    class="inline-block bg-black hover:bg-black shadow hover:shadow-lg px-4 py-2 rounded text-center text-white transition ripple waves-light focus:outline-none"
+                >
+                    <svg
+                        class="w-5 h-5 text-white fill-current"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                            d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+                        />
+                    </svg>
+                </button>
+                <!-- Twitter -->
+
+                <button
+                    class="inline-block bg-blue-500 hover:bg-blue-600 shadow hover:shadow-lg px-4 py-2 rounded text-center text-white transition ripple focus:outline-none"
+                >
+                    <svg
+                        class="w-5 h-5 text-white fill-current"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                            d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"
+                        />
+                    </svg>
+                </button>
+            </div>
+
+            <div class="space-y-3 m-6 w-72">
+                <button
+                    class="block bg-blue-700 hover:bg-blue-800 shadow hover:shadow-lg px-6 py-2 rounded w-full font-medium text-center text-white text-xs uppercase leading-6 transition ripple focus:outline-none"
+                >
+                    Primary
+                </button>
+                <button
+                    class="block bg-pink-500 hover:bg-pink-600 shadow hover:shadow-lg px-6 py-2 rounded w-full font-medium text-center text-white text-xs uppercase leading-6 transition ripple focus:outline-none"
+                >
+                    Secondary
+                </button>
+            </div>
+
+            <div class="space-x-3 space-y-3 m-6">
+                <button
+                    class="inline-block bg-blue-700 hover:bg-blue-800 shadow hover:shadow-lg px-4 py-2 rounded font-medium text-center text-white text-xs uppercase transition ripple focus:outline-none"
+                >
+                    Button
+                </button>
+                <button
+                    class="inline-block bg-blue-700 hover:bg-blue-800 shadow hover:shadow-lg px-6 py-2 rounded font-medium text-center text-white text-xs uppercase leading-6 transition ripple focus:outline-none"
+                >
+                    Button
+                </button>
+                <button
+                    class="inline-block bg-blue-700 hover:bg-blue-800 shadow hover:shadow-lg px-6 py-2 rounded font-medium text-center text-white uppercase leading-7 transition ripple focus:outline-none"
+                >
+                    Button
+                </button>
+                <button
+                    class="inline-block bg-blue-700 hover:bg-blue-800 shadow hover:shadow-lg px-4 py-2 rounded-full font-medium text-center text-white text-xs uppercase transition ripple focus:outline-none"
+                >
+                    Button
+                </button>
+                <button
+                    class="inline-block bg-blue-700 hover:bg-blue-800 shadow hover:shadow-lg px-6 py-2 rounded-full font-medium text-center text-white text-xs uppercase leading-6 transition ripple focus:outline-none"
+                >
+                    Button
+                </button>
+                <button
+                    class="inline-block bg-blue-700 hover:bg-blue-800 shadow hover:shadow-lg px-6 py-2 rounded-full font-medium text-center text-white uppercase leading-7 transition ripple focus:outline-none"
+                >
+                    Button
+                </button>
+            </div>
+            <div class="space-x-3 space-y-3 m-6">
+                <button
+                    class="inline-block border-2 bg-transparent hover:bg-blue-100 shadow hover:shadow-lg px-4 py-2 border-blue-700 rounded font-medium text-blue-700 text-center text-xs uppercase transition ripple focus:outline-none"
+                >
+                    Button
+                </button>
+                <button
+                    class="inline-block border-2 bg-transparent hover:bg-blue-100 shadow hover:shadow-lg px-6 py-2 border-blue-700 rounded font-medium text-blue-700 text-center text-xs uppercase leading-6 transition ripple focus:outline-none"
+                >
+                    Button
+                </button>
+                <button
+                    class="inline-block border-2 bg-transparent hover:bg-blue-100 shadow hover:shadow-lg px-6 py-2 border-blue-700 rounded font-medium text-blue-700 text-center uppercase leading-7 transition ripple focus:outline-none"
+                >
+                    Button
+                </button>
+                <button
+                    class="inline-block border-2 bg-transparent hover:bg-blue-100 shadow hover:shadow-lg px-4 py-2 border-blue-700 rounded-full font-medium text-blue-700 text-center text-xs uppercase transition ripple focus:outline-none"
+                >
+                    Button
+                </button>
+                <button
+                    class="inline-block border-2 bg-transparent hover:bg-blue-100 shadow hover:shadow-lg px-6 py-2 border-blue-700 rounded-full font-medium text-blue-700 text-center text-xs uppercase leading-6 transition ripple focus:outline-none"
+                >
+                    Button
+                </button>
+                <button
+                    class="inline-block border-2 bg-transparent hover:bg-blue-100 shadow hover:shadow-lg px-6 py-2 border-blue-700 rounded-full font-medium text-blue-700 text-center uppercase leading-7 transition ripple focus:outline-none"
+                >
+                    Button
+                </button>
+            </div>
+
+        </div>
+
+        <!-- http://fian.my.id/Waves/ -->
+        <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+        <script type="text/javascript">
+            Waves.attach('.ripple')
+            Waves.init()
+        </script>
+        <div class="h-10"></div>
+        <!-- component -->
+        <div class="mb-4">
+            <button
+                class="border-0 bg-gray-50 hover:bg-gray-100 active:bg-gray-200 px-4 py-2 rounded-md focus:ring focus:ring-gray-300 font-medium text-sm focus:outline-none text-gray-600 hover:text-gray-800 transition"
+                type="submit"
+            >Button</button>
+            <button
+                class="border-0 bg-purple-50 hover:bg-purple-100 active:bg-purple-200 px-4 py-2 rounded-md focus:ring focus:ring-purple-300 font-medium text-sm focus:outline-none text-purple-600 hover:text-purple-800 transition"
+                type="submit"
+            >Button</button>
+            <button
+                class="border-0 bg-blue-50 hover:bg-blue-100 active:bg-blue-200 px-4 py-2 rounded-md focus:ring focus:ring-blue-300 font-medium text-sm focus:outline-none text-blue-600 hover:text-blue-800 transition"
+                type="submit"
+            >Button</button>
+            <button
+                class="border-0 bg-green-50 hover:bg-green-100 active:bg-green-200 px-4 py-2 rounded-md focus:ring focus:ring-green-300 font-medium text-sm focus:outline-none text-green-600 hover:text-green-800 transition"
+                type="submit"
+            >Button</button>
+            <button
+                class="border-0 bg-yellow-50 hover:bg-yellow-100 active:bg-yellow-200 px-4 py-2 rounded-md focus:ring focus:ring-yellow-300 font-medium text-sm focus:outline-none text-yellow-600 hover:text-yellow-800 transition"
+                type="submit"
+            >Button</button>
+            <button
+                class="border-0 bg-red-50 hover:bg-red-100 active:bg-red-200 px-4 py-2 rounded-md focus:ring focus:ring-red-300 font-medium text-sm focus:outline-none text-red-600 hover:text-red-800 transition"
+                type="submit"
+            >Button</button>
+        </div>
+
+        <div class="mb-4">
+            <button
+                class="border-0 bg-gray-500 hover:bg-gray-600 active:bg-gray-700 px-4 py-2 rounded-md focus:ring font-medium text-sm focus:outline-none focus:ring-gray-300 text-white transition"
+                type="submit"
+            >Button</button>
+            <button
+                class="border-0 bg-purple-500 hover:bg-purple-600 active:bg-purple-700 px-4 py-2 rounded-md focus:ring font-medium text-sm focus:outline-none focus:ring-purple-300 text-white transition"
+                type="submit"
+            >Button</button>
+            <button
+                class="border-0 bg-blue-500 hover:bg-blue-600 active:bg-blue-700 px-4 py-2 rounded-md focus:ring font-medium text-sm focus:outline-none focus:ring-blue-300 text-white transition"
+                type="submit"
+            >Button</button>
+            <button
+                class="border-0 bg-green-500 hover:bg-green-600 active:bg-green-700 px-4 py-2 rounded-md focus:ring font-medium text-sm focus:outline-none focus:ring-green-300 text-white transition"
+                type="submit"
+            >Button</button>
+            <button
+                class="border-0 bg-yellow-500 hover:bg-yellow-600 active:bg-yellow-700 px-4 py-2 rounded-md focus:ring font-medium text-sm focus:outline-none focus:ring-yellow-300 text-white transition"
+                type="submit"
+            >Button</button>
+            <button
+                class="border-0 bg-red-500 hover:bg-red-600 active:bg-red-700 px-4 py-2 rounded-md focus:ring font-medium text-sm focus:outline-none focus:ring-red-300 text-white transition"
+                type="submit"
+            >Button</button>
+        </div>
+
+        <div class="mb-4">
+            <button
+                class="border-gray-600 hover:bg-gray-600 active:bg-gray-700 px-4 py-2 border rounded-md focus:ring focus:ring-gray-300 font-medium text-sm focus:outline-none text-gray-600 hover:text-white transition"
+                type="submit"
+            >Button</button>
+            <button
+                class="border-purple-600 hover:bg-purple-600 active:bg-purple-700 px-4 py-2 border rounded-md focus:ring focus:ring-purple-300 font-medium text-sm focus:outline-none text-purple-600 hover:text-white transition"
+                type="submit"
+            >Button</button>
+            <button
+                class="hover:bg-blue-600 active:bg-blue-700 px-4 py-2 border border-blue-600 rounded-md focus:ring focus:ring-blue-300 font-medium text-sm focus:outline-none text-blue-600 hover:text-white transition"
+                type="submit"
+            >Button</button>
+            <button
+                class="border-green-600 hover:bg-green-600 active:bg-green-700 px-4 py-2 border rounded-md focus:ring focus:ring-green-300 font-medium text-sm focus:outline-none text-green-600 hover:text-white transition"
+                type="submit"
+            >Button</button>
+            <button
+                class="border-yellow-600 hover:bg-yellow-600 active:bg-yellow-700 px-4 py-2 border rounded-md focus:ring focus:ring-yellow-300 font-medium text-sm focus:outline-none text-yellow-600 hover:text-white transition"
+                type="submit"
+            >Button</button>
+            <button
+                class="hover:bg-red-600 active:bg-red-700 px-4 py-2 border border-red-600 rounded-md focus:ring focus:ring-red-300 font-medium text-sm focus:outline-none text-red-600 hover:text-white transition"
+                type="submit"
+            >Button</button>
+        </div>
+
+        <div class="mb-4">
+            <button
+                class="border-gray-200 bg-gray-50 hover:bg-gray-100 active:bg-gray-200 shadow px-4 py-2 border rounded-md focus:ring focus:ring-gray-300 font-medium text-sm focus:outline-none text-gray-600 transition"
+                type="submit"
+            >Button</button>
+            <button
+                class="border-purple-200 bg-purple-50 hover:bg-purple-100 active:bg-purple-200 shadow px-4 py-2 border rounded-md focus:ring focus:ring-purple-300 font-medium text-sm focus:outline-none text-purple-600 transition"
+                type="submit"
+            >Button</button>
+            <button
+                class="bg-blue-50 hover:bg-blue-100 active:bg-blue-200 shadow px-4 py-2 border border-blue-200 rounded-md focus:ring focus:ring-blue-300 font-medium text-sm focus:outline-none text-blue-600 transition"
+                type="submit"
+            >Button</button>
+            <button
+                class="border-green-200 bg-green-50 hover:bg-green-100 active:bg-green-200 shadow px-4 py-2 border rounded-md focus:ring focus:ring-green-300 font-medium text-sm focus:outline-none text-green-600 transition"
+                type="submit"
+            >Button</button>
+            <button
+                class="border-yellow-200 bg-yellow-50 hover:bg-yellow-100 active:bg-yellow-200 shadow px-4 py-2 border rounded-md focus:ring focus:ring-yellow-300 font-medium text-sm focus:outline-none text-yellow-600 transition"
+                type="submit"
+            >Button</button>
+            <button
+                class="bg-red-50 hover:bg-red-100 active:bg-red-200 shadow px-4 py-2 border border-red-200 rounded-md focus:ring focus:ring-red-300 font-medium text-sm focus:outline-none text-red-600 transition"
+                type="submit"
+            >Button</button>
+        </div>
+
+        <div class="mb-4">
+            <button
+                class="hover:bg-gray-50 active:bg-gray-100 px-4 py-2 rounded-md focus:ring font-medium text-sm focus:outline-none focus:ring-gray-300 text-gray-600 transition"
+                type="submit"
+            >Button</button>
+            <button
+                class="hover:bg-purple-50 active:bg-purple-100 px-4 py-2 rounded-md focus:ring font-medium text-sm focus:outline-none focus:ring-purple-300 text-purple-600 transition"
+                type="submit"
+            >Button</button>
+            <button
+                class="hover:bg-blue-50 active:bg-blue-100 px-4 py-2 rounded-md focus:ring font-medium text-sm focus:outline-none focus:ring-blue-300 text-blue-600 transition"
+                type="submit"
+            >Button</button>
+            <button
+                class="hover:bg-green-50 active:bg-green-100 px-4 py-2 rounded-md focus:ring font-medium text-sm focus:outline-none focus:ring-green-300 text-green-600 transition"
+                type="submit"
+            >Button</button>
+            <button
+                class="hover:bg-yellow-50 active:bg-yellow-100 px-4 py-2 rounded-md focus:ring font-medium text-sm focus:outline-none focus:ring-yellow-300 text-yellow-600 transition"
+                type="submit"
+            >Button</button>
+            <button
+                class="hover:bg-red-50 active:bg-red-100 px-4 py-2 rounded-md focus:ring font-medium text-sm focus:outline-none focus:ring-red-300 text-red-600 transition"
+                type="submit"
+            >Button</button>
+        </div>
+
+        <div class="mb-4">
+            <button
+                class="border-gray-800 bg-gray-500 hover:bg-gray-600 active:bg-gray-700 px-4 py-2 border-b-2 rounded-md focus:ring font-medium text-sm focus:outline-none focus:ring-gray-300 text-white transition"
+                type="submit"
+            >Button</button>
+            <button
+                class="border-purple-800 bg-purple-500 hover:bg-purple-600 active:bg-purple-700 px-4 py-2 border-b-2 rounded-md focus:ring font-medium text-sm focus:outline-none focus:ring-purple-300 text-white transition"
+                type="submit"
+            >Button</button>
+            <button
+                class="bg-blue-500 hover:bg-blue-600 active:bg-blue-700 px-4 py-2 border-b-2 border-blue-800 rounded-md focus:ring font-medium text-sm focus:outline-none focus:ring-blue-300 text-white transition"
+                type="submit"
+            >Button</button>
+            <button
+                class="border-green-800 bg-green-500 hover:bg-green-600 active:bg-green-700 px-4 py-2 border-b-2 rounded-md focus:ring font-medium text-sm focus:outline-none focus:ring-green-300 text-white transition"
+                type="submit"
+            >Button</button>
+            <button
+                class="border-yellow-800 bg-yellow-500 hover:bg-yellow-600 active:bg-yellow-700 px-4 py-2 border-b-2 rounded-md focus:ring font-medium text-sm focus:outline-none focus:ring-yellow-300 text-white transition"
+                type="submit"
+            >Button</button>
+            <button
+                class="bg-red-500 hover:bg-red-600 active:bg-red-700 px-4 py-2 border-red-800 border-b-2 rounded-md focus:ring font-medium text-sm focus:outline-none focus:ring-red-300 text-white transition"
+                type="submit"
+            >Button</button>
+        </div>
+
+        <div class="mb-4">
+            <button
+                disabled
+                class="bg-gray-300 px-4 py-2 rounded-md focus:ring focus:ring-gray-200 font-medium text-sm text-white transition cursor-default focus:outline-none"
+                type="submit"
+            >Button</button>
+            <button
+                disabled
+                class="bg-purple-300 px-4 py-2 rounded-md focus:ring focus:ring-purple-200 font-medium text-sm text-white transition cursor-default focus:outline-none"
+                type="submit"
+            >Button</button>
+            <button
+                disabled
+                class="bg-blue-300 px-4 py-2 rounded-md focus:ring focus:ring-blue-200 font-medium text-sm text-white transition cursor-default focus:outline-none"
+                type="submit"
+            >Button</button>
+            <button
+                disabled
+                class="bg-green-300 px-4 py-2 rounded-md focus:ring focus:ring-green-200 font-medium text-sm text-white transition cursor-default focus:outline-none"
+                type="submit"
+            >Button</button>
+            <button
+                disabled
+                class="bg-yellow-300 px-4 py-2 rounded-md focus:ring focus:ring-yellow-200 font-medium text-sm text-white transition cursor-default focus:outline-none"
+                type="submit"
+            >Button</button>
+            <button
+                disabled
+                class="bg-red-300 px-4 py-2 rounded-md focus:ring focus:ring-red-200 font-medium text-sm text-white transition cursor-default focus:outline-none"
+                type="submit"
+            >Button</button>
+        </div>
+        <div class="h-10"></div>
+        <!-- component -->
+        <!-- component -->
+        <!-- Classic Button -->
+        <div class="flex flex-col">
+            <div class="bg-white">
+                <div class="flex flex-col mt-20 w-full text-center">
+                    <h1 class="mb-4 font-medium text-2xl text-gray-900 sm:text-3xl title-font">Example</h1>
+                    <p class="mx-auto lg:w-2/3 text-base leading-relaxed">Tailwind includes several predefined button
+                        styles,
+                        each serving its own semantic purpose, with a few extras thrown in for more control.</p>
+                </div>
+                <div class="flex justify-center py-8">
+                    <a
+                        href=""
+                        class="bg-blue-500 hover:bg-blue-600 mr-6 px-4 py-3 font-bold text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="bg-green-500 hover:bg-green-600 mr-6 px-4 py-3 font-bold text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="bg-red-600 hover:bg-red-700 mr-6 px-4 py-3 font-bold text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="bg-gray-500 hover:bg-gray-600 mr-6 px-4 py-3 font-bold text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="bg-gray-800 hover:bg-black mr-6 px-4 py-3 font-bold text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="bg-blue-400 hover:bg-blue-500 mr-6 px-4 py-3 font-bold text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="bg-yellow-500 hover:bg-yellow-600 mr-6 px-4 py-3 font-bold text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="bg-indigo-500 hover:bg-indigo-600 mr-6 px-4 py-3 font-bold text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="bg-purple-500 hover:bg-purple-600 mr-6 px-4 py-3 font-bold text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="bg-pink-500 hover:bg-pink-600 mr-6 px-4 py-3 font-bold text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                </div>
+                <div class="flex justify-center py-8">
+                    <a
+                        href=""
+                        class="bg-blue-500 hover:bg-blue-600 mr-6 px-4 py-3 rounded-lg font-bold text-center text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="bg-green-500 hover:bg-green-600 mr-6 px-4 py-3 rounded-lg font-bold text-center text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="bg-red-600 hover:bg-red-700 mr-6 px-4 py-3 rounded-lg font-bold text-center text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="bg-gray-500 hover:bg-gray-600 mr-6 px-4 py-3 rounded-lg font-bold text-center text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="bg-gray-800 hover:bg-black mr-6 px-4 py-3 rounded-lg font-bold text-center text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="bg-blue-400 hover:bg-blue-500 mr-6 px-4 py-3 rounded-lg font-bold text-center text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="bg-yellow-500 hover:bg-yellow-600 mr-6 px-4 py-3 rounded-lg font-bold text-center text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="bg-indigo-500 hover:bg-indigo-600 mr-6 px-4 py-3 rounded-lg font-bold text-center text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="bg-purple-500 hover:bg-purple-600 mr-6 px-4 py-3 rounded-lg font-bold text-center text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="bg-pink-500 hover:bg-pink-600 mr-6 px-4 py-3 rounded-lg font-bold text-center text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                </div>
+                <div class="flex justify-center py-8">
+                    <a
+                        href=""
+                        class="bg-blue-500 hover:bg-blue-600 mr-6 px-4 py-3 rounded-full font-bold text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="bg-green-500 hover:bg-green-600 mr-6 px-4 py-3 rounded-full font-bold text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="bg-red-600 hover:bg-red-700 mr-6 px-4 py-3 rounded-full font-bold text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="bg-gray-500 hover:bg-gray-600 mr-6 px-4 py-3 rounded-full font-bold text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="bg-gray-800 hover:bg-black mr-6 px-4 py-3 rounded-full font-bold text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="bg-blue-400 hover:bg-blue-500 mr-6 px-4 py-3 rounded-full font-bold text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="bg-yellow-500 hover:bg-yellow-600 mr-6 px-4 py-3 rounded-full font-bold text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="bg-indigo-500 hover:bg-indigo-600 mr-6 px-4 py-3 rounded-full font-bold text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="bg-purple-500 hover:bg-purple-600 mr-6 px-4 py-3 rounded-full font-bold text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="bg-pink-500 hover:bg-pink-600 mr-6 px-4 py-3 rounded-full font-bold text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                </div>
+            </div>
+            <div class="bg-white">
+                <div class="flex flex-col mt-20 w-full text-center">
+                    <h1 class="mb-4 font-medium text-2xl text-gray-900 sm:text-3xl title-font">Outline buttons</h1>
+                    <p class="mx-auto lg:w-2/3 text-base leading-relaxed">Tailwind includes several predefined button
+                        styles,
+                        each serving its own semantic purpose, with a few extras thrown in for more control.</p>
+                </div>
+                <div class="flex justify-center mt-4 py-8">
+                    <a
+                        href=""
+                        class="border-2 hover:bg-blue-500 mr-6 px-4 py-3 border-blue-500 font-bold text-blue-500 hover:text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="border-2 border-green-500 hover:bg-green-500 mr-6 px-4 py-3 font-bold text-green-500 hover:text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="border-2 hover:bg-red-600 mr-6 px-4 py-3 border-red-600 font-bold text-red-600 hover:text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="border-2 border-gray-500 hover:bg-gray-500 mr-6 px-4 py-3 font-bold text-gray-500 hover:text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="border-2 hover:bg-black mr-6 px-4 py-3 border-black font-bold text-black hover:text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="border-2 hover:bg-blue-400 mr-6 px-4 py-3 border-blue-400 font-bold text-blue-400 hover:text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="border-2 border-yellow-500 hover:bg-yellow-500 mr-6 px-4 py-3 font-bold text-yellow-500 hover:text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="border-2 border-indigo-500 hover:bg-indigo-500 mr-6 px-4 py-3 font-bold text-indigo-500 hover:text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="border-2 border-purple-500 hover:bg-purple-500 mr-6 px-4 py-3 font-bold text-purple-500 hover:text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="border-2 border-pink-500 hover:bg-pink-500 mr-6 px-4 py-3 font-bold text-pink-500 hover:text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                </div>
+                <div class="flex justify-center mt-4 py-8">
+                    <a
+                        href=""
+                        class="border-2 hover:bg-blue-500 mr-6 px-4 py-3 border-blue-500 rounded-lg font-bold text-blue-500 hover:text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="border-2 border-green-500 hover:bg-green-500 mr-6 px-4 py-3 rounded-lg font-bold text-green-500 hover:text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="border-2 hover:bg-red-600 mr-6 px-4 py-3 border-red-600 rounded-lg font-bold text-red-600 hover:text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="border-2 border-gray-500 hover:bg-gray-500 mr-6 px-4 py-3 rounded-lg font-bold text-gray-500 hover:text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="border-2 hover:bg-black mr-6 px-4 py-3 border-black rounded-lg font-bold text-black hover:text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="border-2 hover:bg-blue-400 mr-6 px-4 py-3 border-blue-400 rounded-lg font-bold text-blue-400 hover:text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="border-2 border-yellow-500 hover:bg-yellow-500 mr-6 px-4 py-3 rounded-lg font-bold text-yellow-500 hover:text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="border-2 border-indigo-500 hover:bg-indigo-500 mr-6 px-4 py-3 rounded-lg font-bold text-indigo-500 hover:text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="border-2 border-purple-500 hover:bg-purple-500 mr-6 px-4 py-3 rounded-lg font-bold text-purple-500 hover:text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="border-2 border-pink-500 hover:bg-pink-500 mr-6 px-4 py-3 rounded-lg font-bold text-pink-500 hover:text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                </div>
+                <div class="flex justify-center mt-4 py-8">
+                    <a
+                        href=""
+                        class="border-2 hover:bg-blue-500 mr-6 px-4 py-3 border-blue-500 rounded-full font-bold text-blue-500 hover:text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="border-2 border-green-500 hover:bg-green-500 mr-6 px-4 py-3 rounded-full font-bold text-green-500 hover:text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="border-2 hover:bg-red-600 mr-6 px-4 py-3 border-red-600 rounded-full font-bold text-red-600 hover:text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="border-2 border-gray-500 hover:bg-gray-500 mr-6 px-4 py-3 rounded-full font-bold text-gray-500 hover:text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="border-2 hover:bg-black mr-6 px-4 py-3 border-black rounded-full font-bold text-black hover:text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="border-2 hover:bg-blue-400 mr-6 px-4 py-3 border-blue-400 rounded-full font-bold text-blue-400 hover:text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="border-2 border-yellow-500 hover:bg-yellow-500 mr-6 px-4 py-3 rounded-full font-bold text-yellow-500 hover:text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="border-2 border-indigo-500 hover:bg-indigo-500 mr-6 px-4 py-3 rounded-full font-bold text-indigo-500 hover:text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="border-2 border-purple-500 hover:bg-purple-500 mr-6 px-4 py-3 rounded-full font-bold text-purple-500 hover:text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                    <a
+                        href=""
+                        class="border-2 border-pink-500 hover:bg-pink-500 mr-6 px-4 py-3 rounded-full font-bold text-pink-500 hover:text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                    </a>
+                </div>
+            </div>
+            <div class="bg-white">
+                <div class="flex flex-col my-20 w-full text-center">
+                    <h1 class="mb-4 font-medium text-2xl text-gray-900 sm:text-3xl title-font">Button Icon</h1>
+                    <p class="mx-auto lg:w-2/3 text-base leading-relaxed">Tailwind includes several predefined button
+                        styles,
+                        each serving its own semantic purpose, with a few extras thrown in for more control.</p>
+                </div>
+                <div class="flex justify-center mt-4">
+                    <a
+                        href=""
+                        class="flex bg-blue-500 hover:bg-blue-600 mr-6 px-4 py-3 font-bold text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="inline ml-2 w-6 text-white stroke-2 stroke-current"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <line
+                                x1="5"
+                                y1="12"
+                                x2="19"
+                                y2="12"
+                            />
+                            <polyline points="12 5 19 12 12 19" />
+                        </svg>
+                    </a>
+                    <a
+                        href=""
+                        class="flex bg-blue-500 hover:bg-blue-600 mr-6 px-4 py-3 rounded-lg font-bold text-center text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="inline ml-2 w-6 text-white stroke-2 stroke-current"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <line
+                                x1="5"
+                                y1="12"
+                                x2="19"
+                                y2="12"
+                            />
+                            <polyline points="12 5 19 12 12 19" />
+                        </svg>
+                    </a>
+                    <a
+                        href=""
+                        class="flex bg-blue-500 hover:bg-blue-600 mr-6 px-4 py-3 rounded-full font-bold text-white transition duration-300 ease-in-out"
+                    >
+                        Click here
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="inline ml-2 w-6 text-white stroke-2 stroke-current"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <line
+                                x1="5"
+                                y1="12"
+                                x2="19"
+                                y2="12"
+                            />
+                            <polyline points="12 5 19 12 12 19" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="flex justify-center mt-16">
+                    <a
+                        href=""
+                        class="flex bg-blue-500 hover:bg-blue-600 mr-6 px-4 py-4 font-bold text-white transition duration-300 ease-in-out"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="inline w-6 text-white stroke-2 stroke-current"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <line
+                                x1="5"
+                                y1="12"
+                                x2="19"
+                                y2="12"
+                            />
+                            <polyline points="12 5 19 12 12 19" />
+                        </svg>
+                    </a>
+                    <a
+                        href=""
+                        class="flex bg-blue-500 hover:bg-blue-600 mr-6 px-4 py-3 rounded-lg font-bold text-center text-white transition duration-300 ease-in-out"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="inline w-6 text-white stroke-2 stroke-current"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <line
+                                x1="5"
+                                y1="12"
+                                x2="19"
+                                y2="12"
+                            />
+                            <polyline points="12 5 19 12 12 19" />
+                        </svg>
+                    </a>
+                    <a
+                        href=""
+                        class="flex bg-blue-500 hover:bg-blue-600 mr-6 px-4 py-4 rounded-full font-bold text-white transition duration-300 ease-in-out"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="inline w-6 text-white stroke-2 stroke-current"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <line
+                                x1="5"
+                                y1="12"
+                                x2="19"
+                                y2="12"
+                            />
+                            <polyline points="12 5 19 12 12 19" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="bg-white">
+                <div class="flex flex-col mt-16 w-full text-center">
+                    <h1 class="mb-4 font-medium text-2xl text-gray-900 sm:text-3xl title-font">Button Other Color</h1>
+                    <p class="mx-auto lg:w-2/3 text-base leading-relaxed">Tailwind includes several predefined button
+                        styles,
+                        each serving its own semantic purpose, with a few extras thrown in for more control.</p>
+                </div>
+                <div class="flex justify-center mt-4 mb-20">
+                    <button
+                        type="button"
+                        class="border-indigo-500 bg-indigo-500 hover:bg-indigo-600 focus:shadow-outline m-2 px-4 py-2 border rounded-md text-white transition duration-500 select-none ease focus:outline-none"
+                    >
+                        Primary
+                    </button>
+                    <button
+                        type="button"
+                        class="border-green-500 bg-green-500 hover:bg-green-600 focus:shadow-outline m-2 px-4 py-2 border rounded-md text-white transition duration-500 select-none ease focus:outline-none"
+                    >
+                        Success
+                    </button>
+                    <button
+                        type="button"
+                        class="bg-red-500 hover:bg-red-600 focus:shadow-outline m-2 px-4 py-2 border border-red-500 rounded-md text-white transition duration-500 select-none ease focus:outline-none"
+                    >
+                        Error
+                    </button>
+                    <button
+                        type="button"
+                        class="border-yellow-500 bg-yellow-500 hover:bg-yellow-600 focus:shadow-outline m-2 px-4 py-2 border rounded-md text-white transition duration-500 select-none ease focus:outline-none"
+                    >
+                        Warning
+                    </button>
+                    <button
+                        type="button"
+                        class="border-pink-500 bg-pink-500 hover:bg-pink-600 focus:shadow-outline m-2 px-4 py-2 border rounded-md text-white transition duration-500 select-none ease focus:outline-none"
+                    >
+                        Info
+                    </button>
+                    <button
+                        type="button"
+                        class="border-gray-700 bg-gray-700 hover:bg-gray-800 focus:shadow-outline m-2 px-4 py-2 border rounded-md text-white transition duration-500 select-none ease focus:outline-none"
+                    >
+                        Dark
+                    </button>
+                    <button
+                        type="button"
+                        class="border-gray-200 bg-gray-200 hover:bg-gray-300 focus:shadow-outline m-2 px-4 py-2 border rounded-md text-gray-700 transition duration-500 select-none ease focus:outline-none"
+                    >
+                        Light
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="h-10"></div>
+
+    </body>
+
+</html>

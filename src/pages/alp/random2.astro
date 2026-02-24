@@ -1,0 +1,305 @@
+---
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Random Number Generator</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.13.3/cdn.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
+    <style>
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css');
+        
+        .scroll-container {
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        
+        .hex-display {
+            font-family: 'Courier New', monospace;
+            word-break: break-all;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.3s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .btn-pressed {
+            transform: scale(0.98);
+            transition: transform 0.1s;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 py-8 min-h-screen">
+    <div class="mx-auto px-4 max-w-4xl container">
+        <header class="mb-8 text-center">
+            <h1 class="mb-2 font-bold text-gray-800 text-4xl">🎲 Secure Random Generator</h1>
+            <p class="text-gray-600">Generate cryptographically secure random values using Crypto.getRandomValues()</p>
+        </header>
+
+        <div x-data="{
+            // Random Bytes
+            randomBytes: [],
+            byteLength: 16,
+            
+            // Random Integers
+            randomIntegers: [],
+            minValue: 1,
+            maxValue: 100,
+            integerCount: 5,
+            
+            // Random Hex String
+            hexString: '',
+            hexByteLength: 8,
+            
+            // Button states for visual feedback
+            bytesPressed: false,
+            integersPressed: false,
+            hexPressed: false,
+            
+            generateRandomBytes() {
+                this.bytesPressed = true;
+                setTimeout(() => this.bytesPressed = false, 150);
+                
+                const length = Math.max(1, Math.min(64, parseInt(this.byteLength) || 16));
+                const array = new Uint8Array(length);
+                crypto.getRandomValues(array);
+                this.randomBytes = Array.from(array);
+            },
+            
+            generateRandomIntegers() {
+                this.integersPressed = true;
+                setTimeout(() => this.integersPressed = false, 150);
+                
+                const min = parseInt(this.minValue) || 1;
+                const max = parseInt(this.maxValue) || 100;
+                const count = Math.max(1, Math.min(20, parseInt(this.integerCount) || 5));
+                
+                if (min >= max) {
+                    alert('Minimum value must be less than maximum value');
+                    return;
+                }
+                
+                const range = max - min + 1;
+                const array = new Uint32Array(count);
+                crypto.getRandomValues(array);
+                
+                this.randomIntegers = Array.from(array).map(num => {
+                    return min + (num % range);
+                });
+            },
+            
+            generateHexString() {
+                this.hexPressed = true;
+                setTimeout(() => this.hexPressed = false, 150);
+                
+                const length = Math.max(1, Math.min(32, parseInt(this.hexByteLength) || 8));
+                const array = new Uint8Array(length);
+                crypto.getRandomValues(array);
+                
+                this.hexString = Array.from(array)
+                    .map(byte => byte.toString(16).padStart(2, '0'))
+                    .join('');
+            },
+            
+            copyToClipboard(text) {
+                navigator.clipboard.writeText(text).then(() => {
+                    // Simple feedback - you could enhance this with a toast notification
+                    const originalText = event.target.textContent;
+                    event.target.textContent = 'Copied!';
+                    setTimeout(() => {
+                        event.target.textContent = originalText;
+                    }, 1000);
+                });
+            }
+        }" class="space-y-8">
+
+            <!-- Random Bytes Section -->
+            <div class="bg-white shadow-lg p-6 rounded-lg">
+                <h2 class="flex items-center mb-4 font-semibold text-gray-800 text-2xl">
+                    <span class="mr-2 text-blue-500">🔢</span>
+                    Random Bytes
+                </h2>
+                
+                <div class="mb-4">
+                    <label for="byteLength" class="block mb-2 font-medium text-gray-700 text-sm">
+                        Number of bytes (1-64):
+                    </label>
+                    <input 
+                        type="number" 
+                        id="byteLength"
+                        x-model="byteLength" 
+                        min="1" 
+                        max="64" 
+                        class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 w-24"
+                    >
+                </div>
+                
+                <button 
+                    @click="generateRandomBytes()"
+                    :class="{ 'btn-pressed': bytesPressed }"
+                    class="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-lg font-medium text-white transition-colors duration-200"
+                >
+                    Generate Random Bytes
+                </button>
+                
+                <div x-show="randomBytes.length > 0" class="mt-4 fade-in">
+                    <div class="bg-gray-50 p-4 rounded-lg scroll-container">
+                        <div class="flex flex-wrap gap-2">
+                            <template x-for="(byte, index) in randomBytes" :key="index">
+                                <span class="bg-blue-100 px-2 py-1 rounded font-mono text-blue-800 text-sm" x-text="byte"></span>
+                            </template>
+                        </div>
+                        <button 
+                            @click="copyToClipboard(randomBytes.join(', '))"
+                            class="mt-3 text-blue-600 hover:text-blue-800 text-sm underline"
+                        >
+                            Copy as comma-separated values
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Random Integers Section -->
+            <div class="bg-white shadow-lg p-6 rounded-lg">
+                <h2 class="flex items-center mb-4 font-semibold text-gray-800 text-2xl">
+                    <span class="mr-2 text-green-500">🎯</span>
+                    Random Integers
+                </h2>
+                
+                <div class="gap-4 grid grid-cols-1 md:grid-cols-3 mb-4">
+                    <div>
+                        <label for="minValue" class="block mb-2 font-medium text-gray-700 text-sm">
+                            Minimum value:
+                        </label>
+                        <input 
+                            type="number" 
+                            id="minValue"
+                            x-model="minValue" 
+                            class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 w-full"
+                        >
+                    </div>
+                    <div>
+                        <label for="maxValue" class="block mb-2 font-medium text-gray-700 text-sm">
+                            Maximum value:
+                        </label>
+                        <input 
+                            type="number" 
+                            id="maxValue"
+                            x-model="maxValue" 
+                            class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 w-full"
+                        >
+                    </div>
+                    <div>
+                        <label for="integerCount" class="block mb-2 font-medium text-gray-700 text-sm">
+                            Count (1-20):
+                        </label>
+                        <input 
+                            type="number" 
+                            id="integerCount"
+                            x-model="integerCount" 
+                            min="1" 
+                            max="20" 
+                            class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 w-full"
+                        >
+                    </div>
+                </div>
+                
+                <button 
+                    @click="generateRandomIntegers()"
+                    :class="{ 'btn-pressed': integersPressed }"
+                    class="bg-green-500 hover:bg-green-600 px-4 py-2 rounded-lg font-medium text-white transition-colors duration-200"
+                >
+                    Generate Random Integers
+                </button>
+                
+                <div x-show="randomIntegers.length > 0" class="mt-4 fade-in">
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <div class="flex flex-wrap gap-2">
+                            <template x-for="(integer, index) in randomIntegers" :key="index">
+                                <span class="bg-green-100 px-3 py-2 rounded-lg font-semibold text-green-800 text-lg" x-text="integer"></span>
+                            </template>
+                        </div>
+                        <button 
+                            @click="copyToClipboard(randomIntegers.join(', '))"
+                            class="mt-3 text-green-600 hover:text-green-800 text-sm underline"
+                        >
+                            Copy as comma-separated values
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Random Hex String Section -->
+            <div class="bg-white shadow-lg p-6 rounded-lg">
+                <h2 class="flex items-center mb-4 font-semibold text-gray-800 text-2xl">
+                    <span class="mr-2 text-purple-500">🔐</span>
+                    Random Hex String
+                </h2>
+                
+                <div class="mb-4">
+                    <label for="hexByteLength" class="block mb-2 font-medium text-gray-700 text-sm">
+                        Number of bytes (1-32):
+                    </label>
+                    <input 
+                        type="number" 
+                        id="hexByteLength"
+                        x-model="hexByteLength" 
+                        min="1" 
+                        max="32" 
+                        class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 w-24"
+                    >
+                    <p class="mt-1 text-gray-500 text-sm">
+                        This will generate <span x-text="(hexByteLength * 2)"></span> hex characters
+                    </p>
+                </div>
+                
+                <button 
+                    @click="generateHexString()"
+                    :class="{ 'btn-pressed': hexPressed }"
+                    class="bg-purple-500 hover:bg-purple-600 px-4 py-2 rounded-lg font-medium text-white transition-colors duration-200"
+                >
+                    Generate Hex String
+                </button>
+                
+                <div x-show="hexString.length > 0" class="mt-4 fade-in">
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <div class="bg-purple-50 p-3 border-2 border-purple-200 rounded font-mono text-purple-800 text-lg break-all hex-display" x-text="hexString"></div>
+                        <button 
+                            @click="copyToClipboard(hexString)"
+                            class="mt-3 text-purple-600 hover:text-purple-800 text-sm underline"
+                        >
+                            Copy hex string
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Information Section -->
+            <div class="bg-blue-50 p-4 border-blue-400 border-l-4 rounded-lg">
+                <div class="flex">
+                    <div class="flex-shrink-0">
+                        <span class="text-blue-400 text-xl">ℹ️</span>
+                    </div>
+                    <div class="ml-3">
+                        <h3 class="font-medium text-blue-800 text-lg">About Crypto.getRandomValues()</h3>
+                        <p class="mt-2 text-blue-700 text-sm">
+                            This application uses the browser's built-in <code class="bg-blue-100 px-1 rounded">Crypto.getRandomValues()</code> 
+                            method to generate cryptographically secure random numbers. Unlike <code class="bg-blue-100 px-1 rounded">Math.random()</code>, 
+                            these values are suitable for security-sensitive applications like generating tokens, passwords, and cryptographic keys.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

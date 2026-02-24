@@ -1,0 +1,6 @@
+---
+import { db, User_a1 } from "astro:db";
+const users = await db.select().from(User_a1);
+---
+
+<pre>{JSON.stringify(users, null, 2)}</pre>

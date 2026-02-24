@@ -6,6 +6,10 @@ import tailwindcss from '@tailwindcss/vite';
 import alpinejs from '@astrojs/alpinejs';
 import db from '@astrojs/db';
 
+import qwikdev from '@qwikdev/astro';
+
+import solidJs from '@astrojs/solid-js';
+
 // https://astro.build/config
 export default defineConfig({
   output: 'server',
@@ -15,5 +19,5 @@ export default defineConfig({
     plugins: [tailwindcss()]
   },
 
-  integrations: [alpinejs(), db()]
+  integrations: [alpinejs(), db(), qwikdev(), solidJs()]
 });
