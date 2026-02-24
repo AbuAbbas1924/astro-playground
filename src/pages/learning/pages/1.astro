@@ -1,0 +1,11 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const data = await (await fetch("https://jsonplaceholder.typicode.com/todos/1")).json();
+---
+
+<BaseLayout>
+  <div>simple data call: {data.title}</div>
+
+  <p slot="s1">with slotname</p>
+  <h2>without slotname</h2>
+</BaseLayout>
