@@ -1,0 +1,18 @@
+---
+// src/pages/blog/[slug].astro
+
+// For SSG: MUST define all possible values
+export function getStaticPaths() {
+  return [
+    { params: { slug: "first-post" }, props: { title: "First Post" } },
+    { params: { slug: "second-post" }, props: { title: "Second Post" } },
+  ];
+}
+
+const { slug } = Astro.params;
+const { title } = Astro.props;
+if (!title) return Astro.redirect("/404");
+export const prerender = true;
+---
+
+<h1>{title}</h1>

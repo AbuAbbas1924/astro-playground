@@ -1,0 +1,18 @@
+---
+// src/pages/docs/[...path].astro
+// Matches: /docs, /docs/intro, /docs/guide/setup
+export const prerender = true;
+export function getStaticPaths() {
+  return [
+    { params: { path: undefined }, props: { title: "Docs Home" } },
+    { params: { path: "intro" }, props: { title: "Intro" } },
+    { params: { path: "guide/setup" }, props: { title: "Setup Guide" } },
+  ];
+}
+
+const title = Astro.props.title;
+const slug = Astro.params.path;
+---
+
+<h1>title: {title}</h1>
+<h2>slug: {slug}</h2>

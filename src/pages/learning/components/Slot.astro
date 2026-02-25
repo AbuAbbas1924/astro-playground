@@ -1,0 +1,23 @@
+---
+interface Props {
+  title: string;
+}
+import "@tw";
+const { title = "test" } = Astro.props;
+---
+
+<div class="fixed inset-0 flex justify-center items-center bg-black/50">
+  <div class="bg-white rounded-xl w-1/2 max-w-lg">
+    <div class="px-6 py-4 border-gray-200 border-b">
+      <slot name="header"><h2 class="font-bold text-xl">{title}</h2></slot>
+    </div>
+    <div class="px-6 py-4">
+      <slot />
+    </div>
+    <div class="px-6 py-4 border-gray-200 border-t">
+      <slot name="footer">
+        <button class="bg-gray-200 px-4 py-2 rounded">Close</button>
+      </slot>
+    </div>
+  </div>
+</div>

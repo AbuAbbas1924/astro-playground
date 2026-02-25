@@ -1,0 +1,27 @@
+---
+import "@tw";
+interface Props {
+  title: string;
+}
+const { title = "title1" } = Astro.props;
+---
+
+<div
+  class="fixed inset-0 flex justify-center items-center bg-black/50"
+  x-init="console.log('init')"
+  x-data="{show: true}"
+  x-show="show"
+>
+  <div class="bg-white rounded-xl w-full max-w-lg">
+    <div class="px-6 py-4 border-gray-200 border-b">
+      <slot name="header"><h2 class="font-bold text-xl">{title}</h2></slot>
+    </div>
+    <div class="px-6 py-4">
+      <slot />
+      <!-- Default slot -->
+    </div>
+    <div class="px-6 py-4 border-gray-200 border-t">
+      <slot name="footer" />
+    </div>
+  </div>
+</div>
