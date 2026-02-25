@@ -1,0 +1,11 @@
+---
+// astro.config.mjs
+import defineConfig from "astro";
+
+export default defineConfig({
+  redirects: {
+    "/old-blog": "/blog",
+    "/old-blog/[...slug]": "/blog/[...slug]",
+  },
+});
+---

@@ -1,0 +1,52 @@
+---
+// src/layouts/BaseLayout.astro
+import "@tw";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+const { title, description = "My Astro Site" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+
+    <!-- Alpine.js v3 — CSR engine -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15/dist/cdn.min.js"></script>
+
+    <!-- HTMX v2 — SSR interactions -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.8/dist/htmx.min.js"
+      integrity="sha384-/TgkGk7p307TH7EXJDuUlgG3Ce1UVolAOFopFekQkkXihi5u/6OCvVKyz1W+idaz"
+      crossorigin="anonymous"></script>
+  </head>
+  <body class="bg-gray-50 min-h-screen text-gray-900 antialiased">
+    <header class="top-0 z-50 sticky bg-white/80 backdrop-blur-sm border-gray-200 border-b">
+      <nav class="flex justify-between items-center mx-auto px-4 py-4 max-w-6xl">
+        <a href="/" class="font-bold text-xl">🚀 MySite</a>
+        <div class="flex gap-6 font-medium text-sm">
+          <a href="/" class="hover:text-blue-600 transition-colors">Home</a>
+          <a href="/blog" class="hover:text-blue-600 transition-colors">Blog</a>
+          <a href="/about" class="hover:text-blue-600 transition-colors">About</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="mx-auto px-4 py-8 max-w-6xl">
+      <slot />
+    </main>
+
+    <footer class="bg-white mt-auto border-gray-200 border-t">
+      <div class="mx-auto px-4 py-6 max-w-6xl text-gray-500 text-sm text-center">
+        &copy; {new Date().getFullYear()} MySite. Built with Astro.
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+<script>
+  document.addEventListener("alpine:init", () => {
+    Alpine.store("cart", {
+      items: [],
+      add(item) {
+        this.items.push(item);
+      },
+      remove(index) {
+        this.items.splice(index, 1);
+      },
+      get total() {
+        return this.items.reduce((sum, i) => sum + i.price, 0);
+      },
+      get count() {
+        return this.items.length;
+      },
+    });
+  });
+</script>
+
+<!-- Use anywhere -->
+<span x-data x-text="$store.cart.count" class="bg-red-500 px-2 rounded-full text-white text-xs"></span>

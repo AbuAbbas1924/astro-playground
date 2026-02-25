@@ -1,0 +1,63 @@
+---
+import "@tw";
+---
+
+<form
+  x-data="{
+    name: '', email: '', message: '',
+    errors: {},
+    submitted: false,
+    validate() {
+      this.errors = {};
+      if (!this.name.trim()) this.errors.name = 'Name is required';
+      if (!this.email.trim()) this.errors.email = 'Email is required';
+      else if (!/\S+@\S+\.\S+/.test(this.email)) this.errors.email = 'Invalid email';
+      if (!this.message.trim()) this.errors.message = 'Message is required';
+      return Object.keys(this.errors).length === 0;
+    },
+    submit() { if (this.validate()) this.submitted = true; }
+  }"
+  @submit.prevent="submit()"
+  class="space-y-4 max-w-lg"
+>
+  <template x-if="submitted">
+    <div class="bg-green-50 p-4 border border-green-200 rounded-lg text-green-800">
+      Thank you! Your message has been sent.
+    </div>
+  </template>
+
+  <template x-if="!submitted">
+    <div class="space-y-4">
+      <div>
+        <label class="block mb-1 font-medium text-gray-700 text-sm">Name</label>
+        <input
+          x-model="name"
+          type="text"
+          class="px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 w-full"
+          :class="errors.name ? 'border-red-500' : 'border-gray-300'"
+        />
+        <p x-show="errors.name" x-text="errors.name" class="mt-1 text-red-600 text-sm"></p>
+      </div>
+      <div>
+        <label class="block mb-1 font-medium text-gray-700 text-sm">Email</label>
+        <input
+          x-model="email"
+          type="email"
+          class="px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 w-full"
+          :class="errors.email ? 'border-red-500' : 'border-gray-300'"
+        />
+        <p x-show="errors.email" x-text="errors.email" class="mt-1 text-red-600 text-sm"></p>
+      </div>
+      <div>
+        <label class="block mb-1 font-medium text-gray-700 text-sm">Message</label>
+        <textarea
+          x-model="message"
+          rows="4"
+          class="px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 w-full"
+          :class="errors.message ? 'border-red-500' : 'border-gray-300'"></textarea>
+        <p x-show="errors.message" x-text="errors.message" class="mt-1 text-red-600 text-sm"></p>
+      </div>
+      <button type="submit" class="btn-primary">Send Message</button>
+    </div>
+  </template>
+</form>

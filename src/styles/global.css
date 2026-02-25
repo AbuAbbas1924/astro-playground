@@ -1,1 +1,22 @@
 @import "tailwindcss";
+/* Alpine.js cloak support */
+[x-cloak] {
+    display: none !important;
+}
+
+/* HTMX indicator styles */
+.htmx-indicator {
+    display: none;
+}
+
+.htmx-request .htmx-indicator {
+    display: block;
+}
+
+.htmx-request.htmx-indicator {
+    display: block;
+}
+
+.test1 {
+    @apply bg-green-500 shadow-sm p-6 border border-gray-100 rounded-xl;
+}
