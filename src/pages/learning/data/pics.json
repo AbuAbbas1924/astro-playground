@@ -1,0 +1,35 @@
+[
+  {
+    "author": {
+      "name": "name1",
+      "avatar": "https://picsum.photos/501"
+    },
+    "title": "title1",
+    "description": "description1",
+    "category": "category1",
+    "hero": "https://picsum.photos/800/401",
+    "time": "today"
+  },
+  {
+    "author": {
+      "name": "name2",
+      "avatar": "https://picsum.photos/502"
+    },
+    "title": "title2",
+    "description": "description2",
+    "category": "category2",
+    "hero": "https://picsum.photos/800/402",
+    "time": "yesterday"
+  },
+  {
+    "author": {
+      "name": "name3",
+      "avatar": "https://picsum.photos/503"
+    },
+    "title": "title3",
+    "description": "description3",
+    "category": "category3",
+    "hero": "https://picsum.photos/800/403",
+    "time": "two days ago"
+  }
+]
