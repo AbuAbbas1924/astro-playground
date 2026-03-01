@@ -1,5 +1,6 @@
 ---
 const { title = "NO TITLE" } = Astro.props;
+import htmxScript from "../../../utils/htmx.js?raw";
 ---
 
 <!doctype html>
@@ -9,6 +10,7 @@ const { title = "NO TITLE" } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- <title>{Astro.props.title}</title> -->
     <title>{title}</title>
+    <script is:inline set:html={htmxScript}></script>
   </head>
   <body>
     <nav>

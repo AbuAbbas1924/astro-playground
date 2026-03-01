@@ -10,10 +10,14 @@ import qwikdev from '@qwikdev/astro';
 
 import solidJs from '@astrojs/solid-js';
 
+import node from '@astrojs/node';
+
 // https://astro.build/config
 export default defineConfig({
   output: 'server',
-  adapter: cloudflare(),
+  adapter: node({
+    mode: 'standalone'
+  }),
 
   vite: {
     plugins: [tailwindcss()]
