@@ -1,0 +1,35 @@
+---
+import { db } from "./index";
+import { comments } from "./schema";
+
+// Seed some rows if the table is empty
+const count = db.select().from(comments).all().length;
+if (count === 0) {
+  db.insert(comments)
+    .values([
+      { author: "Alice", body: "Hello from the database!" },
+      { author: "Bob", body: "Drizzle + better-sqlite3 works great." },
+    ])
+    .run();
+}
+
+const allComments = db.select().from(comments).all();
+// bun run db:generate
+// bun run db:migrate
+---
+
+<h1>Comments</h1>
+{
+  allComments.length === 0 ? (
+    <p>No comments yet.</p>
+  ) : (
+    allComments.map(({ author, body }) => (
+      <article>
+        <p>
+          <strong>{author}</strong>
+        </p>
+        <p>{body}</p>
+      </article>
+    ))
+  )
+}

@@ -6,7 +6,10 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:studio": "drizzle-kit studio"
   },
   "dependencies": {
     "@astrojs/alpinejs": "^0.4.9",
@@ -21,6 +24,9 @@
     "alpinejs": "^3.15.4",
     "astro": "^5.17.3",
     "bcryptjs": "^3.0.3",
+    "better-sqlite3": "^12.6.2",
+    "drizzle-kit": "^0.31.9",
+    "drizzle-orm": "^0.45.1",
     "elysia": "^1.4.22",
     "jwt": "^0.2.0",
     "solid-js": "^1.9.10",
