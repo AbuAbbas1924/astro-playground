@@ -23,5 +23,10 @@ export default defineConfig({
     plugins: [tailwindcss()]
   },
 
-  integrations: [alpinejs(), db(), qwikdev(), solidJs()]
+  integrations: [
+    alpinejs(),
+    db(),
+    solidJs({ include: ['**/solid/**'] }),
+    qwikdev({ include: ['**/qwik/**'] })
+  ]
 });
