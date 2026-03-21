@@ -9,6 +9,14 @@ const channel = (room: string) => `chat:room:${room}`;
 // so we don't add duplicate listeners on every new connection
 const subscribedChannels = new Set<string>();
 
+// Fan Redis messages back out to local websocket clients.
+sub.on("message", (incomingCh, payload) => {
+  if (!incomingCh.startsWith("chat:room:")) return;
+
+  const room = incomingCh.slice("chat:room:".length);
+  registry.broadcast(room, payload);
+});
+
 export const chatPlugin = new Elysia({ prefix: "/ws" }).ws("/chat/:room", {
   // ── Validate incoming message shape ───────────────────
   body: t.Object({
@@ -26,16 +34,13 @@ export const chatPlugin = new Elysia({ prefix: "/ws" }).ws("/chat/:room", {
 
     registry.join(room, ws);
 
-    // Subscribe this NODE to the Redis channel only once
+    // Subscribe this NODE to the Redis channel only once.
+    // Don't block the websocket handshake on Redis.
     if (!subscribedChannels.has(ch)) {
       subscribedChannels.add(ch);
-      await sub.subscribe(ch);
-
-      sub.on("message", (incomingCh, payload) => {
-        if (incomingCh === ch) {
-          // Deliver to all local clients in this room
-          registry.broadcast(room, payload);
-        }
+      void sub.subscribe(ch).catch((err) => {
+        console.error(`[chat] failed to subscribe to ${ch}`, err);
+        subscribedChannels.delete(ch);
       });
     }
   },
@@ -51,9 +56,11 @@ export const chatPlugin = new Elysia({ prefix: "/ws" }).ws("/chat/:room", {
       time: Date.now(),
     });
 
-    // Publish to Redis — all nodes (including this one) receive it
-    // and broadcast to their local clients via the sub.on('message') handler
-    await pub.publish(ch, payload);
+    // Echo locally immediately, then fan out through Redis if available.
+    registry.broadcast(room, payload, ws);
+    void pub.publish(ch, payload).catch((err) => {
+      console.error(`[chat] failed to publish to ${ch}`, err);
+    });
   },
 
   // ── Client disconnects ────────────────────────────────

@@ -1,5 +1,6 @@
 import { Elysia } from "elysia";
 import { cors } from "@elysiajs/cors";
+import { chatPlugin } from "./chat";
 // import { OK } from "astro:schema";
 
 const PORT = 3000;
@@ -16,9 +17,9 @@ new Elysia()
     node: process.env.NODE_ID ?? "unknown",
     time: new Date().toISOString(),
   }))
+  .use(chatPlugin)
   .listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
   })
   // .get("/", () => ({ hello: "world" }))
   // .post("/", (body) => ({ hello: body }))
-  .listen(PORT);
