@@ -1,7 +1,7 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import { db } from "../db/index";
-import { comments } from "../db/schema";
+import BaseLayout from "../../../layouts/learning/BaseLayout.astro";
+import { db } from "../../../db/index";
+import { comments } from "../../../db/schema";
 
 const rows = db.select().from(comments).all();
 ---

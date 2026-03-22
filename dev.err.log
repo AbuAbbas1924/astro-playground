@@ -1,0 +1,28 @@
+$ astro dev
+(node:22368) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:22368) [DEP0193] DeprecationWarning: The _stream_duplex module is deprecated. Use `node:stream` instead.
+(node:22368) [DEP0193] DeprecationWarning: The _stream_passthrough module is deprecated. Use `node:stream` instead.
+(node:22368) [DEP0193] DeprecationWarning: The _stream_readable module is deprecated. Use `node:stream` instead.
+(node:22368) [DEP0193] DeprecationWarning: The _stream_transform module is deprecated. Use `node:stream` instead.
+(node:22368) [DEP0193] DeprecationWarning: The _stream_writable module is deprecated. Use `node:stream` instead.
+(node:22368) [DEP0192] DeprecationWarning: The _tls_common module is deprecated. Use `node:tls` instead.
+(node:22368) [DEP0192] DeprecationWarning: The _tls_wrap module is deprecated. Use `node:tls` instead.
+node:internal/process/promises:332
+    triggerUncaughtException(err, true /* fromPromise */);
+    ^
+
+The "to" argument must be of type string. Received undefined
+While inspecting:
+TypeError [ERR_INVALID_ARG_TYPE]: The "to" argument must be of type string. Received undefined
+    at Module.relative (node:path:612:5)
+    at findModuleEntry (file:///D:/OneDrive/Documents/DevSrc/Astro/PLAYGROUND/node_modules/@inox-tools/inline-mod/dist/chunk-FA7XAX2X.js:1760:35)
+    at async Inspector.inspectComplex (file:///D:/OneDrive/Documents/DevSrc/Astro/PLAYGROUND/node_modules/@inox-tools/inline-mod/dist/chunk-FA7XAX2X.js:1339:25)
+    at async Inspector.unsafeInspect (file:///D:/OneDrive/Documents/DevSrc/Astro/PLAYGROUND/node_modules/@inox-tools/inline-mod/dist/chunk-FA7XAX2X.js:1262:19)
+    at async Inspector.inspect (file:///D:/OneDrive/Documents/DevSrc/Astro/PLAYGROUND/node_modules/@inox-tools/inline-mod/dist/chunk-FA7XAX2X.js:1210:14)
+    at async file:///D:/OneDrive/Documents/DevSrc/Astro/PLAYGROUND/node_modules/@inox-tools/inline-mod/dist/vite.js:462:41
+    at async Promise.all (index 0)
+    at async inspectInlineMod (file:///D:/OneDrive/Documents/DevSrc/Astro/PLAYGROUND/node_modules/@inox-tools/inline-mod/dist/vite.js:460:7)
+
+Node.js v25.8.0
+error: script "dev" exited with code 1

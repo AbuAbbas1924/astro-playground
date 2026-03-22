@@ -16,6 +16,13 @@ export default defineDb({
         updated_at: column.date({ default: NOW, onUpdate: NOW }),
       },
     }),
+    Todo_b1: defineTable({
+      columns: {
+    id: column.number({ primaryKey: true }),
+    text: column.text(),
+    completed: column.boolean({ default: false }),
+  },
+    }),
     User_a1: defineTable({
       columns: {
         id: column.text({ primaryKey: true, unique: true }),

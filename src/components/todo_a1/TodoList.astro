@@ -3,7 +3,7 @@
 ---
 
 <div
-  x-data="{
+      x-data="{
     todos: [],
     async getTodos() {
       const res = await fetch('/api/todo/a1');
@@ -19,7 +19,7 @@
         completed: todo.completed,
         editMode: false,
         async updateTodo(updatedTodo) {
-          await fetch('/api/todo/a1/' + updatedTodo.id, {
+          await fetch('/api/todo/a1?id=' + updatedTodo.id, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(updatedTodo),
@@ -43,7 +43,7 @@
         <p x-text="todo.priority" :class="{ 'line-through': completed }"></p>
         <p
           class="text-red-500 cursor-pointer"
-          @click="fetch('/api/todo/a1/' + todo.id, { method: 'DELETE' }).then(() => { $dispatch('recall-api') })"
+          @click="fetch('/api/todo/a1?id=' + todo.id, { method: 'DELETE' }).then(() => { $dispatch('recall-api') })"
         >
           &times;
         </p>

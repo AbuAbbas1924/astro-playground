@@ -1,5 +1,5 @@
 ---
-import "@tailwind";
+import "@tw";
 export const prerender = false;
 
 import { db, User_a1, eq } from "astro:db";
@@ -14,11 +14,7 @@ let csrfToken = "";
 // --- Minimal stateless session (HMAC-signed cookie) ---
 function getSecret() {
   // Use either runtime or build-time env, fallback for dev only
-  return (
-    process.env.SESSION_SECRET ||
-    import.meta.env.SESSION_SECRET ||
-    "dev-insecure-secret"
-  );
+  return process.env.SESSION_SECRET || import.meta.env.SESSION_SECRET || "dev-insecure-secret";
 }
 
 function sign(payload) {
@@ -75,10 +71,7 @@ if (Astro.request.method === "POST") {
   } else {
     try {
       // Lookup user and verify bcrypt hash from DB
-      const [user] = await db
-        .select()
-        .from(User_a1)
-        .where(eq(User_a1.email, email));
+      const [user] = await db.select().from(User_a1).where(eq(User_a1.email, email));
       if (!user) {
         error = "Invalid email or password.";
       } else {
@@ -118,19 +111,17 @@ if (Astro.request.method === "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Login</title>
   </head>
-  <body class="min-h-screen bg-gray-50 text-gray-900 antialiased p-6">
-    <main
-      class="mx-auto w-full max-w-sm bg-white shadow-sm rounded-xl p-6 border border-gray-200"
-    >
-      <h1 class="text-2xl font-semibold mb-4">Login</h1>
+  <body class="bg-gray-50 p-6 min-h-screen text-gray-900 antialiased">
+    <main class="bg-white shadow-sm mx-auto p-6 border border-gray-200 rounded-xl w-full max-w-sm">
+      <h1 class="mb-4 font-semibold text-2xl">Login</h1>
 
-      {error && <p class="mb-3 text-sm text-red-600">{error}</p>}
-      {message && <p class="mb-3 text-sm text-green-600">{message}</p>}
+      {error && <p class="mb-3 text-red-600 text-sm">{error}</p>}
+      {message && <p class="mb-3 text-green-600 text-sm">{message}</p>}
 
       <form method="POST" class="space-y-4">
         <input type="hidden" name="csrf_token" value={csrfToken} />
         <div>
-          <label for="email" class="block text-sm font-medium">Email</label>
+          <label for="email" class="block font-medium text-sm">Email</label>
           <input
             id="email"
             name="email"
@@ -139,13 +130,11 @@ if (Astro.request.method === "POST") {
             required
             autocomplete="email"
             placeholder="you@example.com"
-            class="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            class="mt-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full text-sm"
           />
         </div>
         <div>
-          <label for="password" class="block text-sm font-medium"
-            >Password</label
-          >
+          <label for="password" class="block font-medium text-sm">Password</label>
           <input
             id="password"
             name="password"
@@ -153,21 +142,19 @@ if (Astro.request.method === "POST") {
             required
             autocomplete="current-password"
             placeholder="••••••••"
-            class="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            class="mt-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full text-sm"
           />
         </div>
         <button
           type="submit"
-          class="w-full rounded-lg bg-blue-600 text-white font-semibold px-4 py-2 hover:bg-blue-700"
+          class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg w-full font-semibold text-white"
         >
           Sign in
         </button>
       </form>
 
       <p class="mt-4 text-sm">
-        New here? <a href="/user/register" class="text-blue-600 hover:underline"
-          >Create an account</a
-        >
+        New here? <a href="/user/register" class="text-blue-600 hover:underline">Create an account</a>
       </p>
     </main>
   </body>

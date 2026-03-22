@@ -8,7 +8,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script is:inline src="https://unpkg.com/htmx.org"></script>
-    <script is:inline src="https://cdn.tailwindcss.com"></script>
     <meta name="htmx-config" content='{"selfRequestsOnly":false}' />
     <title>Document</title>
   </head>
@@ -86,15 +85,17 @@
       <br />https://codepen.io/collection/NqrGQR
     </small>
   </body>
-  <style type="text/tailwindcss">
+  <style>
+    @reference "@tw";
+
     div {
-      @apply w-[90%] bg-[#eee] min-h-[50px] cursor-pointer p-2.5 rounded-[5px];
+      @apply bg-[#eee] p-2.5 rounded-[5px] w-[90%] min-h-[50px] cursor-pointer;
     }
     button {
       @apply mx-0 my-2.5;
     }
     .htmx-indicator {
-      @apply h-5 w-5;
+      @apply w-5 h-5;
     }
   </style>
 </html>

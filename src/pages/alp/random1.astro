@@ -1,18 +1,18 @@
 ---
-import "@tailwind";
+import "@tw";
 ---
+
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Random Generators — Alpine + Tailwind</title>
-</head>
-<body class="bg-gray-50 text-gray-900 antialiased">
-
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Random Generators — Alpine + Tailwind</title>
+  </head>
+  <body class="bg-gray-50 text-gray-900 antialiased">
     <h1 x-data="data()" x-text="msg"></h1>
 
-  <!-- <main class="mx-auto p-6 max-w-5xl" x-data="{
+    <!-- <main class="mx-auto p-6 max-w-5xl" x-data="{
     // Inputs
     min: 1, max: 6,
     minFloat: 0, maxFloat: 10,
@@ -129,7 +129,6 @@ import "@tailwind";
 
     <!-- Grid of cards -->
     <div class="gap-6 grid sm:grid-cols-2 lg:grid-cols-3">
-
       <!-- Random float 0..1 -->
       <section class="flex flex-col gap-3 bg-white shadow p-4 border rounded-lg">
         <h2 class="font-semibold">Float: 0 ≤ x &lt; 1</h2>
@@ -145,8 +144,8 @@ import "@tailwind";
       <section class="flex flex-col gap-3 bg-white shadow p-4 border rounded-lg">
         <h2 class="font-semibold">Float: [min, max)</h2>
         <div class="flex gap-2">
-          <input type="number" step="any" class="w-1/2 input" placeholder="min" x-model="minFloat">
-          <input type="number" step="any" class="w-1/2 input" placeholder="max" x-model="maxFloat">
+          <input type="number" step="any" class="w-1/2 input" placeholder="min" x-model="minFloat" />
+          <input type="number" step="any" class="w-1/2 input" placeholder="max" x-model="maxFloat" />
         </div>
         <button @click="randFloat" class="bg-blue-600 hover:bg-blue-700 px-3 py-2 rounded text-white">Generate</button>
         <div class="text-gray-600 text-sm" title="Math.random() * (max - min) + min">
@@ -162,10 +161,11 @@ import "@tailwind";
       <section class="flex flex-col gap-3 bg-white shadow p-4 border rounded-lg">
         <h2 class="font-semibold">Int: [min, max]</h2>
         <div class="flex gap-2">
-          <input type="number" class="w-1/2 input" placeholder="min" x-model="min">
-          <input type="number" class="w-1/2 input" placeholder="max" x-model="max">
+          <input type="number" class="w-1/2 input" placeholder="min" x-model="min" />
+          <input type="number" class="w-1/2 input" placeholder="max" x-model="max" />
         </div>
-        <button @click="randIntIncl" class="bg-blue-600 hover:bg-blue-700 px-3 py-2 rounded text-white">Generate</button>
+        <button @click="randIntIncl" class="bg-blue-600 hover:bg-blue-700 px-3 py-2 rounded text-white">Generate</button
+        >
         <div class="text-gray-600 text-sm" title="Math.floor(Math.random() * (max - min + 1)) + min">
           Inclusive of both ends.
         </div>
@@ -179,13 +179,12 @@ import "@tailwind";
       <section class="flex flex-col gap-3 bg-white shadow p-4 border rounded-lg">
         <h2 class="font-semibold">Int: [min, max)</h2>
         <div class="flex gap-2">
-          <input type="number" class="w-1/2 input" placeholder="min" x-model="min">
-          <input type="number" class="w-1/2 input" placeholder="max" x-model="max">
+          <input type="number" class="w-1/2 input" placeholder="min" x-model="min" />
+          <input type="number" class="w-1/2 input" placeholder="max" x-model="max" />
         </div>
-        <button @click="randIntExcl" class="bg-blue-600 hover:bg-blue-700 px-3 py-2 rounded text-white">Generate</button>
-        <div class="text-gray-600 text-sm" title="Math.floor(Math.random() * (max - min)) + min">
-          Max is excluded.
-        </div>
+        <button @click="randIntExcl" class="bg-blue-600 hover:bg-blue-700 px-3 py-2 rounded text-white">Generate</button
+        >
+        <div class="text-gray-600 text-sm" title="Math.floor(Math.random() * (max - min)) + min">Max is excluded.</div>
         <div class="mt-auto">
           <span class="text-gray-500 text-xs">Result</span>
           <div class="font-mono" aria-live="polite" x-text="out.randIntExcl ?? '—'"></div>
@@ -195,7 +194,10 @@ import "@tailwind";
       <!-- Random array element -->
       <section class="flex flex-col gap-3 bg-white shadow p-4 border rounded-lg">
         <h2 class="font-semibold">Array element</h2>
-        <textarea class="w-full h-24 input" x-model="arrayText" placeholder="Comma-separated items, e.g. apple, banana, cherry"></textarea>
+        <textarea
+          class="w-full h-24 input"
+          x-model="arrayText"
+          placeholder="Comma-separated items, e.g. apple, banana, cherry"></textarea>
         <button @click="sample" class="bg-blue-600 hover:bg-blue-700 px-3 py-2 rounded text-white">Pick one</button>
         <div class="mt-auto">
           <span class="text-gray-500 text-xs">Result</span>
@@ -217,7 +219,8 @@ import "@tailwind";
       <!-- Fisher–Yates shuffle -->
       <section class="flex flex-col gap-3 bg-white shadow p-4 border rounded-lg">
         <h2 class="font-semibold">Shuffle (Fisher–Yates)</h2>
-        <textarea class="w-full h-24 input" x-model="shuffleText" placeholder="Comma-separated list to shuffle"></textarea>
+        <textarea class="w-full h-24 input" x-model="shuffleText" placeholder="Comma-separated list to shuffle"
+        ></textarea>
         <button @click="shuffle" class="bg-blue-600 hover:bg-blue-700 px-3 py-2 rounded text-white">Shuffle</button>
         <div class="text-gray-600 text-sm">Unbiased in-place shuffle.</div>
         <div class="mt-auto">
@@ -229,7 +232,9 @@ import "@tailwind";
       <!-- Secure float 0..1 -->
       <section class="flex flex-col gap-3 bg-white shadow p-4 border rounded-lg">
         <h2 class="font-semibold">Secure float: 0 ≤ x &lt; 1</h2>
-        <button @click="secure01" class="bg-emerald-600 hover:bg-emerald-700 px-3 py-2 rounded text-white">Generate</button>
+        <button @click="secure01" class="bg-emerald-600 hover:bg-emerald-700 px-3 py-2 rounded text-white"
+          >Generate</button
+        >
         <div class="text-gray-600 text-sm">crypto.getRandomValues(Uint32Array).</div>
         <div class="mt-auto">
           <span class="text-gray-500 text-xs">Result</span>
@@ -241,10 +246,12 @@ import "@tailwind";
       <section class="flex flex-col gap-3 bg-white shadow p-4 border rounded-lg">
         <h2 class="font-semibold">Secure int: [min, max]</h2>
         <div class="flex gap-2">
-          <input type="number" class="w-1/2 input" placeholder="min" x-model="sMin">
-          <input type="number" class="w-1/2 input" placeholder="max" x-model="sMax">
+          <input type="number" class="w-1/2 input" placeholder="min" x-model="sMin" />
+          <input type="number" class="w-1/2 input" placeholder="max" x-model="sMax" />
         </div>
-        <button @click="secureInt" class="bg-emerald-600 hover:bg-emerald-700 px-3 py-2 rounded text-white">Generate</button>
+        <button @click="secureInt" class="bg-emerald-600 hover:bg-emerald-700 px-3 py-2 rounded text-white"
+          >Generate</button
+        >
         <div class="text-gray-600 text-sm" title="Rejection sampling to avoid modulo bias">
           Cryptographically secure, unbiased.
         </div>
@@ -253,7 +260,6 @@ import "@tailwind";
           <div class="font-mono" aria-live="polite" x-text="out.secureInt ?? '—'"></div>
         </div>
       </section>
-
     </div>
 
     <!-- Generate all shortcut -->
@@ -261,10 +267,10 @@ import "@tailwind";
       <button @click="generateAll" class="bg-gray-800 hover:bg-black px-3 py-2 rounded text-white">Generate All</button>
       <button @click="resetAll" class="bg-gray-200 hover:bg-gray-300 px-3 py-2 rounded">Reset</button>
     </div>
-  </main> -->
+  </body> -->
 
   <style>
-    @reference "@tailwind";
+    @reference "@tw";
     .input {
       @apply bg-white px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm;
     }
@@ -273,10 +279,8 @@ import "@tailwind";
   <script>
     function data() {
       return {
-        msg: "Hello"
+        msg: "Hello",
       };
     }
   </script>
-
-</body>
 </html>

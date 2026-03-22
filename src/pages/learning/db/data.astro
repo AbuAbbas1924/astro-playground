@@ -1,6 +1,6 @@
 ---
-import { db } from "./index";
-import { comments } from "./schema";
+import { db } from "../../../db/index";
+import { comments } from "../../../db/schema";
 
 // Seed some rows if the table is empty
 const count = db.select().from(comments).all().length;

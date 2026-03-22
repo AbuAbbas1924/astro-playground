@@ -2,6 +2,8 @@
 // src/pages/blog/[...page].astro
 import type { GetStaticPaths } from "astro";
 
+export const prerender = true;
+
 export const getStaticPaths = (async ({ paginate }) => {
   const allPosts = [
     /* ...50 posts */

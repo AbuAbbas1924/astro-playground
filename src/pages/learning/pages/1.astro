@@ -1,6 +1,6 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import Link from "../components/Link.astro";
+import BaseLayout from "../../../layouts/learning/BaseLayout.astro";
+import Link from "../../../components/learning/Link.astro";
 const data = await (await fetch("https://jsonplaceholder.typicode.com/todos/1")).json();
 ---
 
@@ -10,10 +10,9 @@ const data = await (await fetch("https://jsonplaceholder.typicode.com/todos/1"))
   <p x-data @click="console.log('call')" slot="s1" class="text-blue-400">with slotname</p>
   <h2>without slotname</h2>
   <Link href="/learning/pages/home" class="text-green-500">home</Link>
-</BaseLayout>
 
-<script>
-  import { getYear } from "../utils";
-  const year = getYear();
-  console.log("year", year);
-</script>
+  <script>
+    const year = new Date().getFullYear();
+    console.log("year", year);
+  </script>
+</BaseLayout>

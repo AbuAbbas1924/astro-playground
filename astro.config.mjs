@@ -6,7 +6,7 @@ import tailwindcss from '@tailwindcss/vite';
 import alpinejs from '@astrojs/alpinejs';
 import db from '@astrojs/db';
 
-import qwikdev from '@qwikdev/astro';
+// import qwikdev from '@qwikdev/astro';
 
 import solidJs from '@astrojs/solid-js';
 
@@ -14,7 +14,7 @@ import node from '@astrojs/node';
 
 // https://astro.build/config
 export default defineConfig({
-  output: 'server',
+  output: 'static',
   adapter: node({
     mode: 'standalone'
   }),
@@ -24,9 +24,9 @@ export default defineConfig({
   },
 
   integrations: [
-    alpinejs({ entrypoint: 'src/pages/chat/a1/entry.ts' }),
+    alpinejs({ entrypoint: 'src/alpine/chat/a1/entry.ts' }),
     db(),
     solidJs({ include: ['**/solid/**'] }),
-    qwikdev({ include: ['**/qwik/**'] })
+    // qwikdev({ include: ['**/qwik/**'] })
   ]
 });

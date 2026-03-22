@@ -1,0 +1,29 @@
+﻿---
+import Author from "./Author.astro";
+
+interface Props {
+  data: {
+    hero: string;
+    title: string;
+    category: string;
+    description: string;
+    time: string;
+    author: {
+      name: string;
+      avatar: string;
+    };
+  };
+}
+
+const { data } = Astro.props as Props;
+---
+
+<article class="overflow-hidden rounded-2xl bg-white shadow-md">
+  <img src={data.hero} alt={data.title} class="h-56 w-full object-cover" />
+  <div class="p-5">
+    <p class="text-xs uppercase tracking-[0.2em] text-sky-500">{data.category}</p>
+    <h2 class="mt-2 text-xl font-bold text-slate-900">{data.title}</h2>
+    <p class="mt-2 text-sm leading-6 text-slate-600">{data.description}</p>
+    <Author name={data.author.name} avatar={data.author.avatar} time={data.time} />
+  </div>
+</article>

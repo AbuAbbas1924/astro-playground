@@ -19,16 +19,6 @@
         }
     }
 </script>
-<script type="module">
-    const data = () => ({
-        msg: "Hello",
-        show: true,
-        toggle() {
-            this.show = !this.show;
-        },
-    });
-    window.data = data;
-</script>
 <script>
     document.addEventListener("alpine:init", () => {
         Alpine.data("data", () => ({
