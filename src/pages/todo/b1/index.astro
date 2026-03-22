@@ -1,0 +1,91 @@
+---
+import "@tw";
+export const prerender = false;
+import { db, Todo_b1, eq } from "astro:db";
+
+// Handle form actions
+if (Astro.request.method === "POST") {
+  const contentType = Astro.request.headers.get("content-type") ?? "";
+  let formData = null;
+
+  if (contentType.includes("multipart/form-data") || contentType.includes("application/x-www-form-urlencoded")) {
+    formData = await Astro.request.formData();
+  }
+
+  if (!formData) {
+    return new Response("Unsupported content type", { status: 415 });
+  }
+
+  const action = formData.get("action");
+
+  if (action === "add") {
+    const text = formData.get("text");
+    if (text) {
+      await db.insert(Todo_b1).values({
+        text: String(text),
+        completed: false,
+      });
+    }
+  }
+
+  if (action === "toggle") {
+    const id = Number(formData.get("id"));
+    const todo = await db.select().from(Todo_b1).where(eq(Todo_b1.id, id)).get();
+    if (todo) {
+      await db.update(Todo_b1).set({ completed: !todo.completed }).where(eq(Todo_b1.id, id));
+    }
+  }
+
+  if (action === "delete") {
+    const id = Number(formData.get("id"));
+    await db.delete(Todo_b1).where(eq(Todo_b1.id, id));
+  }
+
+  return Astro.redirect(Astro.url.pathname);
+}
+
+// Fetch todos
+const todos = await db.select().from(Todo_b1).all();
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Astro Todo</title>
+  </head>
+  <body class="flex justify-center items-center bg-gray-100 min-h-screen">
+    <div class="bg-white shadow-xl p-6 rounded-2xl w-full max-w-md">
+      <h1 class="mb-4 font-bold text-2xl text-center">📝 Todo App</h1>
+
+      <!-- Add Todo -->
+      <form method="POST" class="flex gap-2 mb-4">
+        <input type="hidden" name="action" value="add" />
+        <input name="text" placeholder="New todo..." class="flex-1 px-3 py-2 border rounded-lg" />
+        <button class="bg-blue-500 px-4 rounded-lg text-white"> Add </button>
+      </form>
+
+      <!-- Todo List -->
+      <ul class="space-y-2">
+        {
+          todos.map((todo) => (
+            <li class="flex justify-between items-center bg-gray-50 p-2 rounded-lg">
+              <form method="POST" class="flex flex-1 items-center gap-2">
+                <input type="hidden" name="action" value="toggle" />
+                <input type="hidden" name="id" value={todo.id} />
+                <button class="flex-1 text-left">
+                  <span class={todo.completed ? "line-through text-gray-400" : ""}>{todo.text}</span>
+                </button>
+              </form>
+
+              <form method="POST">
+                <input type="hidden" name="action" value="delete" />
+                <input type="hidden" name="id" value={todo.id} />
+                <button class="ml-2 text-red-500">✕</button>
+              </form>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </body>
+</html>
