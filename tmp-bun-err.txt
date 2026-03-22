@@ -1,0 +1,6 @@
+1 | import
+         ^
+error: Unexpected end of file
+    at D:\OneDrive\Documents\DevSrc\Astro\PLAYGROUND\[eval]:1:6
+
+Bun v1.3.6 (Windows x64)

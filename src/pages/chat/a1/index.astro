@@ -1,0 +1,42 @@
+---
+import Base from "./Base.astro";
+import ChatWindow from "./ChatWindow.astro";
+---
+
+<Base title="ChatApp">
+  <div class="space-y-4 bg-gray-900 shadow-2xl p-6 rounded-2xl w-full max-w-lg">
+    <!-- Header + Connection Status -->
+    <div x-data class="flex justify-between items-center">
+      <h1 class="font-bold text-indigo-400 text-xl">💬 ChatApp</h1>
+
+      <div class="flex items-center gap-2 text-sm">
+        <span
+          class="rounded-full w-2.5 h-2.5"
+          :class="{
+            'bg-green-400':                $store.chat.status === 'connected',
+            'bg-yellow-400 animate-pulse': $store.chat.status === 'connecting',
+            'bg-red-500':                  $store.chat.status === 'disconnected',
+            'bg-gray-500':                 $store.chat.status === 'failed'
+          }"
+        ></span>
+        <span
+          class="font-mono text-xs capitalize"
+          :class="{
+            'text-green-400':  $store.chat.status === 'connected',
+            'text-yellow-400': $store.chat.status === 'connecting',
+            'text-red-400':    $store.chat.status === 'disconnected',
+            'text-gray-400':   $store.chat.status === 'failed'
+          }"
+          x-text="$store.chat.status"></span>
+        <button
+          x-show="$store.chat.status === 'failed'"
+          @click="$store.chat.retry()"
+          class="text-indigo-400 text-xs underline">Retry</button
+        >
+      </div>
+    </div>
+
+    <!-- Chat -->
+    <ChatWindow />
+  </div>
+</Base>

@@ -1,0 +1,33 @@
+---
+import "@tw";
+const message = "toggle";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2
+      class="font-bold text-violet-500 text-4xl"
+      onclick="this.classList.toggle('text-violet-500'); this.classList.toggle('text-green-500'); console.log('clicked')"
+    >
+      {message + "1"}
+    </h2>
+    <h2
+      class="font-bold text-yellow-500 text-4xl"
+      onclick="this.classList.toggle('!text-blue-500'); console.log('clicked')"
+    >
+      {message + "2"}
+    </h2>
+    <h2
+      class="font-bold text-orange-500 text-4xl"
+      onclick="this.classList.remove('text-orange-500'); this.classList.add('text-red-500'); console.log('clicked')"
+    >
+      {"no " + message}
+    </h2>
+  </body>
+</html>

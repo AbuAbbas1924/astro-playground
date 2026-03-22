@@ -1,0 +1,107 @@
+---
+// No frontmatter needed — purely Alpine-driven
+---
+
+<!--
+  x-data scoped to this component.
+  'username' is what the current user identifies as.
+  Messages from $store.chat where msg.sender === username
+  are styled as "sent" (right-aligned, indigo).
+  All others are "received" (left-aligned, gray).
+-->
+<div
+  x-data="{ username: '', draft: '' }"
+  x-init="username = 'User' + Math.floor(Math.random() * 1000)"
+  class="flex flex-col gap-4 w-full"
+>
+  <!-- Username Field -->
+  <div class="flex items-center gap-2">
+    <label class="text-gray-500 text-xs shrink-0">Your name:</label>
+    <input
+      x-model="username"
+      type="text"
+      maxlength="32"
+      class="bg-gray-800 px-3 py-1.5 border border-gray-700 focus:border-indigo-500 rounded-lg outline-none w-full text-white text-sm transition"
+    />
+  </div>
+
+  <!-- Message List -->
+  <div
+    x-ref="msgList"
+    x-effect="
+      $store.chat.messages;
+      $nextTick(() => {
+        $refs.msgList.scrollTop = $refs.msgList.scrollHeight
+      })
+    "
+    class="flex flex-col gap-2 bg-gray-950 p-4 rounded-xl h-96 overflow-y-auto scroll-smooth"
+  >
+    <!-- Empty state -->
+    <template x-if="$store.chat.messages.length === 0">
+      <p class="m-auto text-gray-600 text-sm text-center">No messages yet. Say something! 👋</p>
+    </template>
+
+    <!-- Message bubbles -->
+    <template x-for="(msg, i) in $store.chat.messages" :key="i">
+      <div
+        class="flex flex-col gap-0.5 max-w-xs"
+        :class="msg.sender === username ? 'self-end items-end' : 'self-start items-start'"
+      >
+        <!-- Sender name (only shown for received messages) -->
+        <span x-show="msg.sender !== username" x-text="msg.sender" class="px-1 text-gray-500 text-xs"></span>
+
+        <!-- Bubble -->
+        <div
+          x-text="msg.text"
+          class="px-4 py-2 rounded-2xl text-sm break-words leading-relaxed"
+          :class="msg.sender === username
+            ? 'bg-indigo-600 text-white rounded-br-sm'
+            : 'bg-gray-700 text-gray-100 rounded-bl-sm'"
+        >
+        </div>
+
+        <!-- Timestamp -->
+        <span
+          class="px-1 text-gray-600 text-xs"
+          x-text="new Date(msg.time).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })"></span>
+      </div>
+    </template>
+  </div>
+
+  <!-- Input Row -->
+  <div class="flex gap-2">
+    <input
+      x-model="draft"
+      @keydown.enter.prevent="
+        if (draft.trim() && $store.chat.status === 'connected') {
+          $store.chat.send(username, draft.trim())
+          draft = ''
+        }
+      "
+      type="text"
+      placeholder="Type a message..."
+      :disabled="$store.chat.status !== 'connected'"
+      class="flex-1 bg-gray-800 disabled:opacity-40 px-4 py-2.5 border border-gray-700 focus:border-indigo-500 rounded-xl outline-none text-sm transition disabled:cursor-not-allowed placeholder-gray-600"
+    />
+    <button
+      @click="
+        if (draft.trim() && $store.chat.status === 'connected') {
+          $store.chat.send(username, draft.trim())
+          draft = ''
+        }
+      "
+      :disabled="!draft.trim() || $store.chat.status !== 'connected'"
+      class="bg-indigo-600 hover:bg-indigo-500 disabled:opacity-40 px-5 py-2.5 rounded-xl font-medium text-sm transition disabled:cursor-not-allowed"
+    >
+      Send
+    </button>
+  </div>
+
+  <!-- Queued messages notice (shown when offline) -->
+  <p
+    x-show="$store.chat._queue.length > 0"
+    class="text-yellow-500 text-xs text-center"
+    x-text="`⏳ ${$store.chat._queue.length} message(s) queued — will send on reconnect`"
+  >
+  </p>
+</div>

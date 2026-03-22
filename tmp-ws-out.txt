@@ -1,0 +1,3 @@
+temp-ready
+[registry] joined room="general" total=1
+[registry] left room="general"

@@ -24,7 +24,7 @@ export default defineConfig({
   },
 
   integrations: [
-    alpinejs(),
+    alpinejs({ entrypoint: 'src/pages/chat/a1/entry.ts' }),
     db(),
     solidJs({ include: ['**/solid/**'] }),
     qwikdev({ include: ['**/qwik/**'] })

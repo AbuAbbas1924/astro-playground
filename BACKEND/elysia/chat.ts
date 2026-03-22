@@ -56,8 +56,7 @@ export const chatPlugin = new Elysia({ prefix: "/ws" }).ws("/chat/:room", {
       time: Date.now(),
     });
 
-    // Echo locally immediately, then fan out through Redis if available.
-    registry.broadcast(room, payload, ws);
+    // Publish once; the Redis subscriber below fans it back out to all local clients.
     void pub.publish(ch, payload).catch((err) => {
       console.error(`[chat] failed to publish to ${ch}`, err);
     });
