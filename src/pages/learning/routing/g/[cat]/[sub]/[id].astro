@@ -1,0 +1,22 @@
+---
+// import type { GetStaticPaths } from "astro";
+// export const getStaticPaths: GetStaticPaths = async () => {
+
+export const getStaticPaths = async () => {
+  return [
+    { params: { cat: "c1", sub: "s1", id: "i1" } },
+    { params: { cat: "c1", sub: "s2", id: "i2" } },
+    { params: { cat: "c2", sub: "s1", id: "i3" } },
+  ];
+};
+
+const { cat, sub, id } = Astro.params;
+---
+
+<html>
+  <body>
+    <h1>Category: {cat}</h1>
+    <h2>Subcategory: {sub}</h2>
+    <p>Item ID: {id}</p>
+  </body>
+</html>

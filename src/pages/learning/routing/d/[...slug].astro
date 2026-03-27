@@ -1,0 +1,18 @@
+---
+// src/pages/docs/[...slug].astro
+
+export function getStaticPaths() {
+  return [
+    { params: { slug: "guide/intro" } },
+    { params: { slug: "guide/advanced/tips" } },
+    { params: { slug: undefined } }, // matches /docs/
+  ];
+}
+---
+
+<html>
+  <body>
+    <h1>Documentation</h1>
+    <p>Slug: {Astro.params.slug}</p>
+  </body>
+</html>

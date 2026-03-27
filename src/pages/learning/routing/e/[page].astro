@@ -1,0 +1,84 @@
+---
+import type { GetStaticPaths } from "astro";
+
+export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
+  const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+  const allPosts: { id: number; title: string; body: string; userId: number }[] = await res.json();
+
+  return paginate(allPosts, { pageSize: 10 });
+};
+
+interface Props {
+  currentPage: number;
+  lastPage: number;
+  total: number;
+  page: {
+    currentPage: number;
+    lastPage: number;
+    total: number;
+    data: Post[];
+    url: {
+      prev?: string;
+      next?: string;
+    };
+  };
+}
+
+interface Post {
+  id: number;
+  title: string;
+  body: string;
+  userId: number;
+}
+
+const { page } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Blog — Page {page.currentPage}</title>
+  </head>
+  <body class="bg-zinc-950 mx-auto p-8 max-w-3xl min-h-screen text-zinc-100">
+    <h1 class="mb-2 font-bold text-3xl">Blog</h1>
+    <p class="mb-8 text-zinc-400">
+      Page {page.currentPage} of {page.lastPage} — {page.total} posts total
+    </p>
+
+    <ul class="space-y-4">
+      {
+        page.data.map((post: Post) => (
+          <li>
+            <a href={`/blog/${post.id}`} class="block bg-zinc-900 hover:bg-zinc-800 p-4 rounded-lg transition">
+              <span class="text-zinc-500 text-sm">#{post.id}</span>
+              <h2 class="font-semibold text-lg capitalize">{post.title}</h2>
+              <p class="mt-1 text-zinc-400 text-sm line-clamp-2">{post.body}</p>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <nav class="flex justify-between items-center mt-10">
+      {
+        page.url.prev ? (
+          <a href={page.url.prev} class="bg-zinc-800 hover:bg-zinc-700 px-4 py-2 rounded transition">
+            ← Previous
+          </a>
+        ) : (
+          <span />
+        )
+      }
+      <span class="text-zinc-500">{page.currentPage} / {page.lastPage}</span>
+      {
+        page.url.next ? (
+          <a href={page.url.next} class="bg-zinc-800 hover:bg-zinc-700 px-4 py-2 rounded transition">
+            Next →
+          </a>
+        ) : (
+          <span />
+        )
+      }
+    </nav>
+  </body>
+</html>

@@ -1,0 +1,18 @@
+---
+export function getStaticPaths() {
+  return [
+    { params: { category: "electronics", id: "phone-1" } },
+    { params: { category: "electronics", id: "laptop-2" } },
+    { params: { category: "clothing", id: "shirt-1" } },
+  ];
+}
+
+const { category, id } = Astro.params;
+---
+
+<html>
+  <body>
+    <h1>Category: {category}</h1>
+    <p>Product ID: {id}</p>
+  </body>
+</html>
