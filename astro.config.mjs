@@ -4,7 +4,6 @@ import { defineConfig } from 'astro/config';
 import cloudflare from '@astrojs/cloudflare';
 import tailwindcss from '@tailwindcss/vite';
 import alpinejs from '@astrojs/alpinejs';
-import db from '@astrojs/db';
 
 // import qwikdev from '@qwikdev/astro';
 
@@ -24,8 +23,7 @@ export default defineConfig({
   },
 
   integrations: [
-    alpinejs({ entrypoint: 'src/alpine/chat/a1/entry.ts' }),
-    db(),
+    alpinejs({ entrypoint: 'src/utils/chat/a1/entry.ts' }),
     solidJs({ include: ['**/solid/**'] }),
     // qwikdev({ include: ['**/qwik/**'] })
   ]

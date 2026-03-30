@@ -1,0 +1,40 @@
+---
+const items = ["Apple", "Banana", "Cherry"];
+const boldText = "<strong>Bold</strong>";
+import "@tw";
+---
+
+<button id="toggleBtn" class="bg-blue-500 hover:bg-blue-600 mb-4 px-4 py-2 rounded text-white cursor-pointer">
+  Toggle Login
+</button>
+
+<div id="status">
+  <p class="text-gray-500">Please log in.</p>
+</div>
+
+<ul class="space-y-2">
+  {
+    items.map((item, i) => (
+      <li class="flex items-center gap-2">
+        <span class="text-gray-400">{i + 1}.</span>
+        <span>{item}</span>
+      </li>
+    ))
+  }
+</ul>
+
+<!-- ⚠️ set:html — Only use with TRUSTED content (XSS risk!) -->
+<div set:html={boldText} />
+
+<script>
+  let isLoggedIn = false;
+  const btn = document.getElementById("toggleBtn");
+  const status = document.getElementById("status");
+
+  btn?.addEventListener("click", () => {
+    isLoggedIn = !isLoggedIn;
+    status.innerHTML = isLoggedIn
+      ? '<p class="text-green-600">Welcome!</p>'
+      : '<p class="text-gray-500">Please log in.</p>';
+  });
+</script>

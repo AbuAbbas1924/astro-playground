@@ -1,0 +1,39 @@
+---
+import type { GetStaticPaths } from "astro";
+import "@tw";
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const allPosts = Array.from({ length: 50 }, (_, i) => ({
+    title: `Post ${i + 1}`,
+    slug: `post-${i + 1}`,
+  }));
+  return paginate(allPosts, { pageSize: 10 });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+---
+
+<div class="bg-gray-100 p-8 min-h-screen">
+  <ul class="space-y-2">
+    {page.data.map((post) => <li class="bg-white shadow p-3 rounded-lg">{post.title}</li>)}
+  </ul>
+
+  <nav class="flex gap-4 mt-8">
+    {
+      page.url.prev && (
+        <a href={page.url.prev} class="text-blue-600 underline">
+          {" "}
+          Previous
+        </a>
+      )
+    }
+    <span>Page {page.currentPage} of {page.lastPage}</span>
+    {
+      page.url.next && (
+        <a href={page.url.next} class="text-blue-600 underline">
+          Next{" "}
+        </a>
+      )
+    }
+  </nav>
+</div>

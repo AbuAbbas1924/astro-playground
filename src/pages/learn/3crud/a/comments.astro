@@ -1,0 +1,65 @@
+---
+import BaseLayout from "@layouts/learn/BaseLayout.astro";
+import { db } from "@src/db/drizzle/index";
+import { comments } from "../../../db/drizzle/schema";
+import "@tw";
+const rows = db.select().from(comments).all();
+---
+
+<BaseLayout title="Comments">
+  <div class="space-y-6 mx-auto max-w-xl">
+    <h1 class="font-bold text-2xl">Comments</h1>
+
+    <!-- Add comment form -->
+    <form
+      hx-post="/learning/api/comments"
+      hx-target="#comment-list"
+      hx-swap="beforeend"
+      hx-on::after-request="this.reset()"
+      class="space-y-3 bg-gray-50 p-4 border border-gray-200 rounded-lg"
+    >
+      <input
+        name="author"
+        placeholder="Your name"
+        required
+        class="px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 w-full"
+      />
+      <textarea
+        name="body"
+        placeholder="Write a comment..."
+        required
+        rows="3"
+        class="px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 w-full"></textarea>
+      <button type="submit" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-md text-white">Post</button>
+    </form>
+
+    <!-- Comment list (server-rendered initially) -->
+    <ul id="comment-list" class="space-y-3">
+      {
+        rows.length === 0 ? (
+          <li class="py-4 text-gray-400 text-center">No comments yet.</li>
+        ) : (
+          rows.map((c) => (
+            <li
+              id={`comment-${c.id}`}
+              class="flex justify-between items-start bg-white p-4 border border-gray-200 rounded-lg"
+            >
+              <div>
+                <span class="font-semibold text-gray-800">{c.author}</span>
+                <p class="mt-1 text-gray-600">{c.body}</p>
+              </div>
+              <button
+                hx-delete={`/learning/api/comments/${c.id}`}
+                hx-target={`#comment-${c.id}`}
+                hx-swap="outerHTML"
+                class="ml-4 text-red-400 hover:text-red-600 text-sm shrink-0"
+              >
+                Delete
+              </button>
+            </li>
+          ))
+        )
+      }
+    </ul>
+  </div>
+</BaseLayout>

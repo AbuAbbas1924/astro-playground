@@ -13,6 +13,24 @@
     "paths": {
       "@tw": [
         "./src/styles/global.css"
+      ],
+      "@src/*": [
+        "./src/*"
+      ],
+      "@assets/*": [
+        "./src/assets/*"
+      ],
+      "@components/*": [
+        "./src/components/*"
+      ],
+      "@layouts/*": [
+        "./src/layouts/*"
+      ],
+      "@utils/*": [
+        "./src/utils/*"
+      ],
+      "@types/*": [
+        "./src/types/*"
       ]
     },
     "jsx": "preserve",

@@ -1,0 +1,43 @@
+---
+
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script is:inline src="https://unpkg.com/htmx.org"></script>
+    <meta name="htmx-config" content='{"selfRequestsOnly":false}' />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <h1>hx-target</h1>
+    <article>
+      <h2>by id</h2>
+      <button
+        class="border-2"
+        hx-get="https://dummyjson.com/products/1"
+        hx-swap="innerHTML"
+        hx-trigger="click"
+        hx-target="#search">click</button
+      >
+      <div>
+        <textarea name="" id="search"></textarea>
+      </div>
+    </article>
+    <article>
+      <h2>by element</h2>
+      <button>btn1</button>
+      <button>btn2</button>
+      <button
+        class="border-2"
+        hx-get="https://dummyjson.com/products/1"
+        hx-swap="outerHTML"
+        hx-trigger="click"
+        hx-target="previous button">replace btn</button
+      >
+    </article>
+  </body>
+</html>

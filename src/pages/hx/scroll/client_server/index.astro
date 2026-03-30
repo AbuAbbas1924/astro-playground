@@ -1,0 +1,66 @@
+---
+import "@tw";
+
+const pageSize = 10;
+const page = 1;
+
+const response = await fetch(
+  `https://hn.algolia.com/api/v1/search?tags=front_page&page=${page - 1}&hitsPerPage=${pageSize}`
+);
+const data = await response.json();
+const hits = data.hits ?? [];
+const hasMore = page < (data.nbPages ?? page);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="htmx-config" content='{"selfRequestsOnly":false}' />
+    <script src="https://unpkg.com/htmx.org"></script>
+    <title>Infinite Scroll</title>
+  </head>
+  <body class="bg-slate-950 text-slate-100">
+    <main class="flex flex-col gap-6 mx-auto px-4 py-10 w-full max-w-3xl min-h-screen">
+      <header class="space-y-2">
+        <p class="text-sky-400 text-xs uppercase tracking-[0.35em]">HTMX Learning</p>
+        <h1 class="font-bold text-3xl">Infinite Scroll</h1>
+        <p class="max-w-xl text-slate-400 text-sm">
+          Scroll down to keep loading the next page. The loader swaps itself with the next batch, then reappears at the
+          end.
+        </p>
+      </header>
+
+      <ul id="content" class="space-y-3">
+        {
+          hits.map((hit) => (
+            <li class="bg-slate-900/80 shadow-lg p-4 border border-slate-800 rounded-2xl">
+              <a
+                href={hit.url || "#"}
+                target="_blank"
+                rel="noreferrer"
+                class="block font-medium text-slate-100 hover:text-sky-400 text-base"
+              >
+                {hit.title || "Untitled"}
+              </a>
+            </li>
+          ))
+        }
+
+        {
+          hasMore && (
+            <li
+              hx-get={`/hx/scroll/more?page=${page + 1}`}
+              hx-trigger="revealed"
+              hx-swap="outerHTML"
+              class="bg-slate-900/40 px-4 py-5 border border-slate-700 border-dashed rounded-2xl text-slate-400 text-sm text-center"
+            >
+              Loading more stories...
+            </li>
+          )
+        }
+      </ul>
+    </main>
+  </body>
+</html>

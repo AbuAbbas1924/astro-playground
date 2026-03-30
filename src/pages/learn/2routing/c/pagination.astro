@@ -1,0 +1,46 @@
+---
+import "@tw";
+
+export const prerender = false;
+
+const pageSize = 10;
+const currentPage = Math.max(1, Number(Astro.url.searchParams.get("page") ?? "1"));
+
+const allPosts = Array.from({ length: 50 }, (_, i) => ({
+  title: `Post ${i + 1}`,
+}));
+
+const lastPage = Math.ceil(allPosts.length / pageSize);
+const start = (currentPage - 1) * pageSize;
+const page = {
+  data: allPosts.slice(start, start + pageSize),
+  currentPage,
+  lastPage,
+  url: {
+    prev: currentPage > 1 ? `/learn/pages/pagination?page=${currentPage - 1}` : null,
+    next: currentPage < lastPage ? `/learn/pages/pagination?page=${currentPage + 1}` : null,
+  },
+};
+---
+
+<ul class="space-y-2">
+  {page.data.map((post) => <li class="bg-white shadow p-3 rounded-lg">{post.title}</li>)}
+</ul>
+
+<nav class="flex gap-4 mt-8">
+  {
+    page.url.prev && (
+      <a href={page.url.prev} class="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded text-white">
+        ← Previous
+      </a>
+    )
+  }
+  <span>Page {page.currentPage} of {page.lastPage}</span>
+  {
+    page.url.next && (
+      <a href={page.url.next} class="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded text-white">
+        Next →
+      </a>
+    )
+  }
+</nav>
