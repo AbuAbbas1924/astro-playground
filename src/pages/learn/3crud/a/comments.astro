@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "@layouts/learn/BaseLayout.astro";
 import { db } from "@src/db/drizzle/index";
-import { comments } from "../../../db/drizzle/schema";
+import { comments } from "@src/db/drizzle/schema";
 import "@tw";
 const rows = db.select().from(comments).all();
 ---

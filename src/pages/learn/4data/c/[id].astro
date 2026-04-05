@@ -1,7 +1,7 @@
 ---
 export const prerender = true;
 import { getCollection, render } from "astro:content";
-import BaseLayout from "@src/layouts/learning/BaseLayout.astro";
+import BaseLayout from "@layouts/learn/BaseLayout.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog_a1");

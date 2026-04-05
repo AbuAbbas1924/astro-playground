@@ -1,30 +1,35 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 
-import cloudflare from '@astrojs/cloudflare';
 import tailwindcss from '@tailwindcss/vite';
 import alpinejs from '@astrojs/alpinejs';
 
 // import qwikdev from '@qwikdev/astro';
 
 import solidJs from '@astrojs/solid-js';
-
 import node from '@astrojs/node';
+import chatWs from './src/integrations/chat-ws.js';
 
 // https://astro.build/config
 export default defineConfig({
-  output: 'static',
+  output: 'server',
   adapter: node({
     mode: 'standalone'
   }),
 
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
+    build: {
+      rollupOptions: {
+        external: ['astro:db']
+      }
+    }
   },
 
   integrations: [
-    alpinejs({ entrypoint: 'src/utils/chat/a1/entry.ts' }),
+    alpinejs(),
     solidJs({ include: ['**/solid/**'] }),
+    chatWs(),
     // qwikdev({ include: ['**/qwik/**'] })
   ]
 });

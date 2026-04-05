@@ -1,4 +1,5 @@
 ---
+export const prerender = false;
 import { db, Todo_b1 } from "astro:db";
 
 const todos = await db.select().from(Todo_b1);

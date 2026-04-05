@@ -1,9 +1,9 @@
 ---
 import "@tw";
 export const prerender = false;
-import TodoList from "src/components/todo_a1/TodoList.astro";
-import AddTodo from "src/components/todo_a1/AddTodo.astro";
-import Home from "src/layouts/Home.astro";
+import TodoList from "@components/todo/a1/TodoList.astro";
+import AddTodo from "@components/todo/a1/AddTodo.astro";
+import Home from "@layouts/Home.astro";
 
 const token = Astro.cookies.get("session")?.value;
 
@@ -14,7 +14,7 @@ if (!token) {
 
 <Home>
   <div class="flex flex-col items-center gap-8 mt-8">
-    <h1 class="text-4xl font-bold text-violet-600">Astro Todo A1</h1>
+    <h1 class="font-bold text-violet-600 text-4xl">Astro Todo A1</h1>
     <AddTodo />
     <TodoList />
   </div>

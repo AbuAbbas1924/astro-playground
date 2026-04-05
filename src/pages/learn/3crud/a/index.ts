@@ -1,7 +1,7 @@
 export const prerender = false;
 import type { APIRoute } from "astro";
-import { db } from "../../../../db/index";
-import { comments } from "../../../../db/drizzle/schema";
+import { db } from "@src/db/drizzle";
+import { comments } from "@src/db/drizzle/schema";
 
 const commentHtml = (c: { id: number; author: string; body: string }) => `
 <li id="comment-${c.id}" class="flex justify-between items-start bg-white border border-gray-200 rounded-lg p-4">
