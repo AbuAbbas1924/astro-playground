@@ -9,6 +9,9 @@ import alpinejs from '@astrojs/alpinejs';
 import solidJs from '@astrojs/solid-js';
 import node from '@astrojs/node';
 import chatWs from './src/integrations/chat-ws.js';
+import chatB1Ws from './src/integrations/chat-b1-ws.js';
+
+import qwikDev from '@qwik.dev/astro';
 
 // https://astro.build/config
 export default defineConfig({
@@ -29,7 +32,8 @@ export default defineConfig({
   integrations: [
     alpinejs(),
     solidJs({ include: ['**/solid/**'] }),
+    qwikDev({ include: ['**/qwik/**'] }),
     chatWs(),
-    // qwikdev({ include: ['**/qwik/**'] })
+    chatB1Ws(),
   ]
 });
