@@ -8,7 +8,7 @@ import alpinejs from '@astrojs/alpinejs';
 
 import solidJs from '@astrojs/solid-js';
 import node from '@astrojs/node';
-import chatWs from './src/integrations/chat-ws.js';
+import chatA1Ws from './src/integrations/chat-a1-ws.js';
 import chatB1Ws from './src/integrations/chat-b1-ws.js';
 
 import qwikDev from '@qwik.dev/astro';
@@ -19,7 +19,6 @@ export default defineConfig({
   adapter: node({
     mode: 'standalone'
   }),
-
   vite: {
     plugins: [tailwindcss()],
     build: {
@@ -33,7 +32,7 @@ export default defineConfig({
     alpinejs(),
     solidJs({ include: ['**/solid/**'] }),
     qwikDev({ include: ['**/qwik/**'] }),
-    chatWs(),
+    chatA1Ws(),
     chatB1Ws(),
   ]
 });

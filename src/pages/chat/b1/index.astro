@@ -61,6 +61,7 @@ import "@tw";
 
             this.ws.onmessage = (e) => {
               this.msgs.push(e.data);
+              console.log("Received message:", e.data);
             };
           },
 

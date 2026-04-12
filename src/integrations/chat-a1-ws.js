@@ -10,7 +10,7 @@ function attachWss(httpServer) {
     if (req.url === WS_PATH) {
       wss.handleUpgrade(req, socket, head, (ws) => {
         clients.add(ws);
-        console.log(`[WS] ✅ Client connected. Total: ${clients.size}`);
+        console.log(`[WS-a1] ✅ Client connected. Total: ${clients.size}`);
 
         ws.on('message', (data) => {
           const text = data.toString();
