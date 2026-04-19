@@ -1,0 +1,71 @@
+---
+// src/pages/index.astro
+export const prerender = false;
+import "@tw";
+---
+
+<html lang="en">
+  <body class="flex justify-center items-center bg-gray-100 h-screen">
+    <div x-data="chat()" class="bg-white shadow p-4 rounded-xl w-96">
+      <div class="flex justify-between items-center mb-3">
+        <h1 class="font-bold text-lg">Simple Chat</h1>
+        <div class="flex items-center gap-2">
+          <span :class="connected ? 'bg-green-500' : 'bg-red-500'" class="rounded-full w-3 h-3"></span>
+          <span class="text-xs" x-text="connected ? 'Connected' : 'Disconnected'"></span>
+        </div>
+      </div>
+
+      <!-- Messages -->
+      <div class="mb-3 p-2 border h-64 overflow-y-auto text-sm">
+        <template x-for="m in msgs">
+          <div x-text="m"></div>
+        </template>
+      </div>
+
+      <!-- Input -->
+      <div class="flex gap-2">
+        <input x-model="input" @keydown.enter="send" class="flex-1 px-2 py-1 border rounded" placeholder="Type..." />
+        <button @click="send" class="bg-blue-500 px-3 py-1 rounded text-white"> Send </button>
+      </div>
+    </div>
+
+    <script is:inline>
+      function chat() {
+        return {
+          ws: null,
+          msgs: [],
+          input: "",
+          connected: false,
+
+          init() {
+            this.ws = new WebSocket(`ws://${location.host}/api/chat/c1/ws`);
+
+            this.ws.onopen = () => {
+              this.connected = true;
+              console.log("✅ Connected");
+            };
+
+            this.ws.onclose = () => {
+              this.connected = false;
+              console.log("❌ Disconnected");
+            };
+
+            this.ws.onerror = (err) => {
+              console.error("❌ WebSocket Error:", err);
+            };
+
+            this.ws.onmessage = (e) => {
+              this.msgs.push(e.data);
+            };
+          },
+
+          send() {
+            if (!this.input.trim()) return;
+            this.ws.send(this.input);
+            this.input = "";
+          },
+        };
+      }
+    </script>
+  </body>
+</html>

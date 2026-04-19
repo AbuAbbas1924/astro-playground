@@ -1,6 +1,6 @@
 import { WebSocketServer } from 'ws';
 
-const WS_PATH = '/api/chat/a1/ws';
+const WS_PATH = '/api/chat/c1/ws';
 
 function attachWss(httpServer) {
   const clients = new Set();
@@ -10,7 +10,7 @@ function attachWss(httpServer) {
     if (req.url === WS_PATH) {
       wss.handleUpgrade(req, socket, head, (ws) => {
         clients.add(ws);
-        console.log(`[WS-a1] ✅ Client connected. Total: ${clients.size}`);
+        console.log(`[WS-c1] ✅ Client connected. Total: ${clients.size}`);
 
         ws.on('message', (data) => {
           const text = data.toString();
@@ -21,7 +21,7 @@ function attachWss(httpServer) {
 
         ws.on('close', () => {
           clients.delete(ws);
-          console.log(`[WS-a1] Client disconnected. Total: ${clients.size}`);
+          console.log(`[WS-c1] Client disconnected. Total: ${clients.size}`);
         });
 
         ws.on('error', () => clients.delete(ws));
@@ -33,13 +33,13 @@ function attachWss(httpServer) {
 /** @returns {import('astro').AstroIntegration} */
 export default function chatWsIntegration() {
   return {
-    name: 'chat-ws',
+    name: 'chat-c1-ws',
     hooks: {
       'astro:config:setup': ({ updateConfig }) => {
         updateConfig({
           vite: {
             plugins: [{
-              name: 'chat-ws-vite',
+              name: 'chat-c1-ws-vite',
               configureServer(server) {
                 if (server.httpServer) attachWss(server.httpServer);
               },

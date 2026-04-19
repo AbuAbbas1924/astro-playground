@@ -10,6 +10,7 @@ import solidJs from '@astrojs/solid-js';
 import node from '@astrojs/node';
 import chatA1Ws from './src/integrations/chat-a1-ws.js';
 import chatB1Ws from './src/integrations/chat-b1-ws.js';
+import chatC1Ws from './src/integrations/chat-c1-ws.js';
 
 import qwikDev from '@qwik.dev/astro';
 
@@ -34,5 +35,6 @@ export default defineConfig({
     qwikDev({ include: ['**/qwik/**'] }),
     chatA1Ws(),
     chatB1Ws(),
+    chatC1Ws(),
   ]
 });
