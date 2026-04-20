@@ -4,4 +4,7 @@ compatibility_flags = [
   "nodejs_compat",
   "disable_nodejs_process_v2"
 ]
-pages_build_output_dir = "dist"
+[[durable_objects.bindings]]
+name = "CHAT_ROOM"
+class_name = "ChatRoom"
+script_name = "chat-room"

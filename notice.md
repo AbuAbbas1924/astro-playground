@@ -7,3 +7,8 @@ testing <br>
 
 # post req
 `curl -X POST http://localhost:4321/api/elysia/test -H "Content-Type: application/json" -d '{"a": "A" }'`
+
+
+### deployment
+
+`bunx wrangler deploy --config workers/chat-room/wrangler.toml`
