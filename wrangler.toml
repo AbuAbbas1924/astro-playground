@@ -5,6 +5,16 @@ compatibility_flags = [
   "disable_nodejs_process_v2"
 ]
 [[durable_objects.bindings]]
-name = "CHAT_ROOM"
-class_name = "ChatRoom"
-script_name = "chat-room"
+name = "CHAT_A1_ROOM"
+class_name = "ChatA1Room"
+script_name = "chat-a1-room"
+
+[[durable_objects.bindings]]
+name = "CHAT_B1_ROOM"
+class_name = "ChatB1Room"
+script_name = "chat-b1-room"
+
+[[durable_objects.bindings]]
+name = "CHAT_C1_ROOM"
+class_name = "ChatC1Room"
+script_name = "chat-c1-room"

@@ -1,26 +1,13 @@
-// src/pages/api/ws.ts
+import { env } from 'cloudflare:workers';
 import type { APIRoute } from 'astro';
 
-const clients = new Set<WebSocket>();
+export const GET: APIRoute = async ({ request }) => {
+  if (request.headers.get('Upgrade') !== 'websocket') {
+    return new Response('Expected WebSocket upgrade', { status: 426 });
+  }
 
-export const GET: APIRoute = ({ request }) => {
-    if (request.headers.get("upgrade") !== "websocket") {
-        return new Response("Expected WebSocket", { status: 400 });
-    }
+  const id = (env as Env).CHAT_B1_ROOM.idFromName('global');
+  const room = (env as Env).CHAT_B1_ROOM.get(id);
 
-    const { socket, response } = Bun.upgradeWebSocket(request);
-
-    socket.onopen = () => clients.add(socket);
-
-    socket.onmessage = (e) => {
-        for (const c of clients) {
-            if (c.readyState === WebSocket.OPEN) {
-                c.send(e.data);
-            }
-        }
-    };
-
-    socket.onclose = () => clients.delete(socket);
-
-    return response;
+  return room.fetch(request);
 };

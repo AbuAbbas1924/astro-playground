@@ -50,7 +50,7 @@ import "@tw";
           },
 
           connectWebSocket() {
-            const wsUrl = `ws://${location.host}/api/chat/a1/ws`;
+            const wsUrl = `${location.protocol === 'https:' ? 'wss' : 'ws'}://${location.host}/api/chat/a1/ws`;
             console.log("Attempting to connect to:", wsUrl);
 
             this.socket = new WebSocket(wsUrl);

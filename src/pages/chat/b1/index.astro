@@ -47,7 +47,8 @@ import "@tw";
           connected: false,
 
           init() {
-            this.ws = new WebSocket(`ws://${location.host}/api/chat/b1/ws`);
+            const proto = location.protocol === 'https:' ? 'wss' : 'ws';
+            this.ws = new WebSocket(`${proto}://${location.host}/api/chat/b1/ws`);
 
             this.ws.onopen = () => {
               this.connected = true;

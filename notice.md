@@ -9,6 +9,15 @@ testing <br>
 `curl -X POST http://localhost:4321/api/elysia/test -H "Content-Type: application/json" -d '{"a": "A" }'`
 
 
-### deployment
+# deployment
 
-`bunx wrangler deploy --config workers/chat-room/wrangler.toml`
+### 1. build
+`bun run build`
+
+### OPTIONAL test wrangler auth
+`bunx wrangler whoami`
+### 2 deploy app 
+`bunx wrangler deploy --config dist/server/wrangler.json`
+
+### 2.1 deploy chatroom
+`bunx wrangler deploy --config workers/chat-a1-room/wrangler.toml`
