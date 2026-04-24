@@ -1,0 +1,11 @@
+name = "chat-b1-room-turso"
+main = "index.ts"
+compatibility_date = "2026-01-15"
+
+[vars]
+TURSO_URL = "libsql://playground-shuhib1924.aws-eu-west-1.turso.io"
+TURSO_TOKEN = "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3Njg1MDM2NjUsImlkIjoiZTFmMWYyODgtZmI0MS00YjI3LWE2ZmItZGM0OGU2YmIwZmYyIiwicmlkIjoiMjg2MzVhMjUtMzczNi00OTg5LWE1ZjctNzE5ODE2YTUxMzMzIn0.FtJazXFW-n2EtRzUOAsTC_Bw3OkFPDw4sFUA2OG9xkVwPUO9useBkAsyXQsbEVL8KxwG-8Tjue3ej-QoP5QtAQ"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["ChatB1Room"]
