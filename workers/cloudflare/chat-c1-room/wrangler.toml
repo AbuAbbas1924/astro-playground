@@ -1,0 +1,7 @@
+name = "chat-c1-room"
+main = "index.ts"
+compatibility_date = "2026-01-15"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["ChatC1Room"]
